@@ -3,6 +3,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import AppProvider from './context/AppProvider';
+import DoneRecipes from './pages/DoneRecipes/DoneRecipes';
 import Drinks from './pages/Drinks/Drinks';
 import Explore from './pages/Explore/Explore';
 import ExploreDrinks from './pages/ExploreDrinks/ExploreDrinks';
@@ -10,6 +11,7 @@ import DrinksIngredients from './pages/ExploreDrinksIngredients/DrinksIngredient
 import ExploreFoods from './pages/ExploreFoods/ExploreFoods';
 import FoodsIngredients from './pages/ExploreFoodsIngredients/FoodsIngredients';
 import FoodsNationalities from './pages/ExploreFoodsNationalities/FoodsNationalities';
+import FavoriteRecipes from './pages/FavoriteRecipes/FavoriteRecipes';
 import Foods from './pages/Foods/Foods';
 import Login from './pages/Login/Login';
 import Profile from './pages/Profile/Profile';
@@ -21,6 +23,8 @@ function App() {
         <Route exact path="/foods" component={ Foods } />
         <Route exact path="/drinks" component={ Drinks } />
         <Route exact path="/explore" component={ Explore } />
+        <Route exact path="/done-recipes" component={ DoneRecipes } />
+        <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
         <Route exact path="/explore/foods" component={ ExploreFoods } />
         <Route exact path="/explore/drinks" component={ ExploreDrinks } />
         <Route exact path="/explore/foods/ingredients" component={ FoodsIngredients } />

@@ -18,12 +18,11 @@ function Header(props) {
     <header>
       <Link
         to="/profile"
-        src="/profile"
-        data-testid="profile-top-btn"
       >
         <img
+          data-testid="profile-top-btn"
           src={ profileIcon }
-          alt="Profile icon."
+          alt="profileIcon"
         />
       </Link>
       <h1
@@ -35,10 +34,10 @@ function Header(props) {
         <button
           type="button"
           className="search-button"
-          data-testid="search-top-btn"
           onClick={ toggleSearchInput }
         >
           <img
+            data-testid="search-top-btn"
             src={ searchIcon }
             alt="Search icon."
           />
