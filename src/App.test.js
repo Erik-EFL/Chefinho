@@ -1,8 +1,16 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import App from './App';
 import renderWithRouter from './Service/renderWithRouter';
+
+// describe('',() => {
+//   it('',() => {
+//     const {history} = renderWithRouter(<App />);
+//     history.push('/');
+//     expect().toContain();
+//   });
+// });
 
 describe('Testa o componente Login / requisitos 1 ao 8', () => {
   it('Testa se é possivel digitar nos inputs de email e password', () => {
@@ -34,7 +42,6 @@ describe('Testa o componente Login / requisitos 1 ao 8', () => {
   expect(history.location.pathname).toBe('/foods');
   })
 });
-
 describe('Teste do componente header / requisitos 9 ao 10', () => {
   it('Testa se aparece o botão de perfil, o título da página e o botão de pesquisa',() => {
     const {history} = renderWithRouter(<App />);
@@ -160,6 +167,31 @@ describe('Redireciona para a tela de perfil ao clicar no botão de perfil',() =>
     userEvent.click(profileBtn);
     const textProfile = screen.getByText('Profile');
     expect(screen.getByTestId('page-title').textContent).toContain(textProfile.textContent);
+  });
+});
+describe.only('botão de busca que, ao ser clicado, a barra de busca deve aparecer. O mesmo serve para escondê-la',() => {
+  it('Some e aparece o input', async () => {
+    const {history} = renderWithRouter(<App />);
+    history.push('/foods');
+    expect(history.location.pathname).toBe('/foods');
+
+    const searchBtn = screen.getByTestId('search-top-btn');
+    const inputSearch = screen.queryByTestId('search-input');
+    expect(inputSearch).not.toBeInTheDocument();
+    userEvent.click(searchBtn);
+    expect(searchBtn).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByTestId('search-input')).toBe()
+    });
+
+    // .toBeInTheDocument();
+
+    // // console.log(searchBtn.alt);
+    // console.log(inputSearch);
+    // expect(inputSearch).not.toBeInTheDocument();
+    // userEvent.click(searchBtn);
+
+    // expect(inputSearch).toBeInTheDocument();
   });
 });
 
