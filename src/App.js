@@ -5,12 +5,14 @@ import './App.css';
 import AppProvider from './context/AppProvider';
 import Login from './pages/Login/Login';
 import Foods from './pages/Foods/Foods';
+import Profile from './pages/profile/Profile';
 
 function App() {
   return (
     <AppProvider>
       <Switch>
         <Route exact path="/foods" component={ Foods } />
+        <Route exact path="/profile" component={ Profile } />
         <Route exact path="/" component={ Login } />
       </Switch>
     </AppProvider>
