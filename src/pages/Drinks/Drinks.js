@@ -3,22 +3,20 @@ import Cards from '../../Components/Cards';
 import MenuInferior from '../../Components/MenuInferior';
 import AppContext from '../../context/AppContext';
 
-function Foods() {
-  const { initialFetchs: { foods } } = useContext(AppContext);
+export default function Drinks() {
+  const { initialFetchs: { drinks } } = useContext(AppContext);
   const magicNumber = 12;
-  const initialFoods = foods.filter((_i, index) => index < magicNumber);
+  const initialDrinks = drinks.filter((_i, index) => index < magicNumber);
   return (
     <div>
-      {initialFoods.map((item, index) => (<Cards
+      {initialDrinks.map((item, index) => (<Cards
         key={ index }
-        image={ item.strMealThumb }
+        image={ item.strDrinkThumb }
         index={ index }
-        name={ item.strMeal }
+        name={ item.strDrink }
       />
       ))}
       <MenuInferior />
     </div>
   );
 }
-
-export default Foods;
