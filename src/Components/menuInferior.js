@@ -9,7 +9,7 @@ function MenuInferior() {
   return (
     <footer data-testid="footer" className="footer">
       <Link
-        to="/foods"
+        to="/drinks"
         src={ drinkIcon }
         data-testid="drinks-bottom-btn"
       >
@@ -17,7 +17,7 @@ function MenuInferior() {
       </Link>
 
       <Link
-        to="/foods"
+        to="/explore"
         data-testid="explore-bottom-btn"
         src={ exploreIcon }
       >
