@@ -18,6 +18,7 @@ function Header(props) {
     <header>
       <Link
         to="/profile"
+        src="/profile"
         data-testid="profile-top-btn"
       >
         <img
@@ -33,6 +34,7 @@ function Header(props) {
       {searchButton && (
         <button
           type="button"
+          className="search-button"
           data-testid="search-top-btn"
           onClick={ toggleSearchInput }
         >
@@ -43,8 +45,12 @@ function Header(props) {
         </button>
       )}
       {searchInput && (
-        <label htmlFor="input-search">
-          <input id="input-search" type="text" />
+        <label htmlFor="search-input">
+          <input
+            id="search-input"
+            data-testid="search-input"
+            type="text"
+          />
         </label>
       )}
     </header>
