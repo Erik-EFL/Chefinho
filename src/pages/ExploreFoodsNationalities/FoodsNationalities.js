@@ -1,12 +1,10 @@
 import React from 'react';
 import MenuInferior from '../../Components/menuInferior';
 
-function Foods() {
+export default function FoodsNationalities() {
   return (
     <div>
       <MenuInferior />
     </div>
   );
 }
-
-export default Foods;
