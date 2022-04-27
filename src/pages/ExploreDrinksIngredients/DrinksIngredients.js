@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuInferior from '../../Components/menuInferior';
+import MenuInferior from '../../Components/MenuInferior';
 
 export default function DrinksIngredients() {
   return (
