@@ -1,6 +1,5 @@
 import React from 'react';
 import Header from '../../Components/Header';
-import MenuInferior from '../../Components/MenuInferior';
 
 export default function FavoriteRecipes() {
   return (
@@ -9,7 +8,6 @@ export default function FavoriteRecipes() {
         title="Favorite Recipes"
         searchButton={ false }
       />
-      <MenuInferior />
     </div>
   );
 }
