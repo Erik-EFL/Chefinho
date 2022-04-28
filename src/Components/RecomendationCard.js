@@ -3,14 +3,14 @@ import React from 'react';
 
 export default function RecomendationCard({ image, name, index, type }) {
   return (
-    <div data-testid={ `${index}-recomendation-card` }>
+    <div data-testid={ `${index}-recomendation-card` } className="div-item">
       <img
         src={ image }
         alt={ name }
-        className="img-meal"
+        className="img-carousel"
       />
       <p>{type}</p>
-      <p>{name}</p>
+      <p data-testid={ `${index}-recomendation-title` }>{name}</p>
     </div>
   );
 }

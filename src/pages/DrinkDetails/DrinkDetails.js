@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import RecomendationCard from '../../Components/RecomendationCard';
+import Carousel from '../../Components/Carousel';
 import { fetchRecomendationFoods } from '../../Service/FetchRecomendation';
+import './DrinkDetails.css';
 
 function DrinkDetails() {
   const history = useHistory();
@@ -56,12 +57,16 @@ function DrinkDetails() {
     </p>
   ));
   const magic = 6;
+  const infos = recomendation.slice(0, magic);
+
   return (
     <div>
+
       <img
         data-testid="recipe-photo"
         src={ drinkDetails.strDrinkThumb }
         alt={ drinkDetails.idDrink }
+        className="imgDetails"
       />
       <h1 data-testid="recipe-title">{drinkDetails.strDrink}</h1>
       <p data-testid="recipe-category">{drinkDetails.strAlcoholic}</p>
@@ -72,15 +77,8 @@ function DrinkDetails() {
         {renderIngredients}
       </div>
       <p data-testid="instructions">{drinkDetails.strInstructions}</p>
-      {recomendation.slice(0, magic).map((item, index) => (
-        <RecomendationCard
-          key={ index }
-          name={ item.strMeal }
-          image={ item.strMealThumb }
-          index={ index }
-          type={ item.strArea }
-        />
-      ))}
+
+      {infos.length > 0 && <Carousel info={ infos } />}
 
       <button
         data-testid="start-recipe-btn"
