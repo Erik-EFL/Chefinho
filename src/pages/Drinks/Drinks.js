@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Cards from '../../Components/Cards';
+import CategoryFilter from '../../Components/CategoryFilter';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import AppContext from '../../context/AppContext';
@@ -14,12 +16,20 @@ export default function Drinks() {
         title="Drinks"
         searchButton
       />
-      {initialDrinks.map((item, index) => (<Cards
-        key={ index }
-        image={ item.strDrinkThumb }
-        index={ index }
-        name={ item.strDrink }
+      <CategoryFilter
+        type="drinks"
       />
+      {initialDrinks.map((item, index) => (
+        <Link
+          key={ index }
+          to={ `/drinks/${item.idDrink}` }
+        >
+          <Cards
+            image={ item.strDrinkThumb }
+            index={ index }
+            name={ item.strDrink }
+          />
+        </Link>
       ))}
       <MenuInferior />
     </div>

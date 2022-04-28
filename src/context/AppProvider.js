@@ -78,6 +78,8 @@ function AppProvider({ children }) {
     setFilteredItems,
     handleSearchInput,
     filterSearchInput,
+    setFoods,
+    setDrinks,
   };
 
   return (
