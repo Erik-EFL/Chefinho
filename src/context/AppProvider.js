@@ -33,7 +33,7 @@ function AppProvider({ children }) {
 
     if (location === 'foods') {
       const fetchResult = await fetchFilteredFoods(selectedFilter, filterSearchInput);
-      console.log(fetchResult);
+      // console.log(fetchResult);
       if (fetchResult === null) {
         return global.alert(
           'Sorry, we haven\'t found any recipes for these filters.',

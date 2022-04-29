@@ -4,6 +4,8 @@ import React from 'react';
 import App from './App';
 import renderWithRouter from './Service/renderWithRouter';
 
+const {getByTestId, getByText, queryByText} = screen;
+
 // describe('',() => {
 //   it('',() => {
 //     const {history} = renderWithRouter(<App />);
@@ -183,7 +185,7 @@ describe.only('botão de busca que, ao ser clicado, a barra de busca deve aparec
       console.log('inputSearch');
     }, 2000);
   });
-  it.only('Procurar radio buttons',() => {
+  it('Checa a existência dos radios buttons após clicar na lupa',() => {
     const {history} = renderWithRouter(<App />);
     const {getByTestId} = screen;
     history.push('/foods');
@@ -194,5 +196,20 @@ describe.only('botão de busca que, ao ser clicado, a barra de busca deve aparec
     expect(getByTestId('name-search-radio')).toBeInTheDocument();
     expect(getByTestId('first-letter-search-radio')).toBeInTheDocument();
   });
+    it.only('Exiba um alerta caso a receita não seja encontrada',() => {
+    const {history} = renderWithRouter(<App />);
+    history.push('/foods');
+    const searchBtn = getByTestId('search-top-btn');
+    fireEvent.click(searchBtn);
+    const inputSearch = getByTestId('search-input');
+    expect(inputSearch).toBeInTheDocument();
+    userEvent.type(inputSearch, 'asdfge');
+    console.log(inputSearch.value);
+    fireEvent.click(getByTestId('exec-search-btn'));
+    // alert("Sorry, we haven't found any recipes for these filters.")
+    // window.alert = jest.fn();
+    const alert = queryByText("Sorry, we haven't found any recipes for these filters.");
+    expect(alert).toBeHaveBeenCalled();
+    });
 });
 
