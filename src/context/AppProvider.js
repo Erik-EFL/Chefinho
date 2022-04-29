@@ -14,6 +14,8 @@ function AppProvider({ children }) {
   const [drinks, setDrinks] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('');
   const [filterSearchInput, setFilterSearchInput] = useState('');
+  const [drink, setDrink] = React.useState([]);
+  const [ingredients, setIngredients] = React.useState([]);
 
   const handleSearchInput = (target) => {
     setFilterSearchInput(target.value);
@@ -69,6 +71,10 @@ function AppProvider({ children }) {
     setEmail,
     password,
     setPassword,
+    drink,
+    setDrink,
+    ingredients,
+    setIngredients,
     initialFetchs: {
       foods,
       drinks,

@@ -9,6 +9,7 @@ export default function DoneRecipes() {
         title="Done Recipes"
         searchButton={ false }
       />
+
       <MenuInferior />
     </div>
   );
