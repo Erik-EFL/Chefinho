@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import Carousel from '../../Components/Carousel';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import shareIcon from '../../images/shareIcon.svg';
@@ -11,7 +11,7 @@ import './DrinkDetails.css';
 
 function DrinkDetails() {
   const history = useHistory();
-  const idDrink = history.location.pathname.split('/')[2];
+  const idDrink = useParams().id;
   const [drinkDetails, setDrinkDetails] = useState([]);
   const [recomendation, setRecomendation] = useState([]);
   const [copy, setCopy] = useState(false);
@@ -119,6 +119,7 @@ function DrinkDetails() {
       {copy && <p>Link copied!</p>}
       <button
         type="button"
+        // Função setFavoriteDrink criada na pasta Service - favoritar ou desfavoritar um item */
         onClick={ () => setFavoriteDrink(drinkDetails, setRenderFav) }
       >
         <img

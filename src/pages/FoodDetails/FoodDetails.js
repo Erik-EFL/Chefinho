@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import CarouselFoods from '../../Components/CarouselFoods';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import shareIcon from '../../images/shareIcon.svg';
@@ -11,7 +11,7 @@ import './FoodDetails.css';
 
 export default function FoodDetails() {
   const history = useHistory();
-  const idFood = history.location.pathname.split('/')[2];
+  const idFood = useParams().id;
 
   const [foodDetails, setFoodDetails] = useState([]);
   const [recomendation, setRecomendation] = useState([]);
@@ -115,6 +115,7 @@ export default function FoodDetails() {
         <img src={ shareIcon } alt="share" />
       </button>
       {copy && <p>Link copied!</p>}
+      {/* Função setFavoriteFood criada na pasta Service - favoritar ou desfavoritar um item */}
       <button type="button" onClick={ () => setFavoriteFood(foodDetails, setRenderFav) }>
         <img
           data-testid="favorite-btn"
