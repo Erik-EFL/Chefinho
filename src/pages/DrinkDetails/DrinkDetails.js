@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Carousel from '../../Components/Carousel';
+import shareIcon from '../../images/shareIcon.svg';
 import { fetchRecomendationFoods } from '../../Service/FetchRecomendation';
 import './DrinkDetails.css';
 
@@ -9,6 +10,7 @@ function DrinkDetails() {
   const idDrink = history.location.pathname.split('/')[2];
   const [drinkDetails, setDrinkDetails] = useState([]);
   const [recomendation, setRecomendation] = useState([]);
+  const [copy, setCopy] = useState(false);
 
   // Função que faz o fetch para pegar os detalhes do Drink.
   const fetchDrinkDetails = async () => {
@@ -59,6 +61,36 @@ function DrinkDetails() {
   const magic = 6;
   const infos = recomendation.slice(0, magic);
 
+  const getDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
+  let checkRecipe;
+  if (getDoneRecipes) {
+    checkRecipe = getDoneRecipes.filter((item) => item.id === idDrink);
+  }
+
+  const getInProgressRecipe = JSON.parse(localStorage.getItem('inProgressRecipes'));
+  let checkProgress;
+  if (getInProgressRecipe) {
+    checkProgress = getInProgressRecipe.cocktails[idDrink];
+  }
+
+  const buttonStartRecipe = (
+    <button
+      data-testid="start-recipe-btn"
+      type="button"
+      className="start-recipe"
+      onClick={ () => history.push(`/drinks/${idDrink}/in-progress`) }
+    >
+      {checkProgress ? 'Continue Recipe' : 'Start Recipe'}
+
+    </button>
+  );
+
+  const copyLink = () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url);
+    setCopy(true);
+  };
+
   return (
     <div>
 
@@ -71,7 +103,14 @@ function DrinkDetails() {
       <h1 data-testid="recipe-title">{drinkDetails.strDrink}</h1>
       <p data-testid="recipe-category">{drinkDetails.strAlcoholic}</p>
 
-      <button data-testid="share-btn" type="button">Compartilhar</button>
+      <button
+        data-testid="share-btn"
+        type="button"
+        onClick={ copyLink }
+      >
+        <img src={ shareIcon } alt="share" />
+      </button>
+      {copy && <p>Link copied!</p>}
       <button data-testid="favorite-btn" type="button">Favoritar</button>
       <div>
         {renderIngredients}
@@ -79,15 +118,7 @@ function DrinkDetails() {
       <p data-testid="instructions">{drinkDetails.strInstructions}</p>
 
       {infos.length > 0 && <Carousel info={ infos } />}
-
-      <button
-        data-testid="start-recipe-btn"
-        type="button"
-        className="start-recipe"
-      >
-        Start Recipe
-
-      </button>
+      {!checkRecipe && buttonStartRecipe}
 
     </div>
   );
