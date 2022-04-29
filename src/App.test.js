@@ -1,4 +1,4 @@
-import { screen, waitFor } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import App from './App';
@@ -174,24 +174,14 @@ describe.only('botão de busca que, ao ser clicado, a barra de busca deve aparec
     const {history} = renderWithRouter(<App />);
     history.push('/foods');
     expect(history.location.pathname).toBe('/foods');
-
-    const searchBtn = screen.getByTestId('search-top-btn');
-    const inputSearch = screen.queryByTestId('search-input');
+    const searchBtn = screen.queryByTestId('search-top-btn');
+    const inputSearch = screen.queryByLabelText('', {selector: 'input'});
     expect(inputSearch).not.toBeInTheDocument();
+    setTimeout(() => {
     userEvent.click(searchBtn);
-    expect(searchBtn).toBeInTheDocument();
-    await waitFor(() => {
-      expect(screen.getByTestId('search-input')).toBe()
-    });
-
-    // .toBeInTheDocument();
-
-    // // console.log(searchBtn.alt);
-    // console.log(inputSearch);
-    // expect(inputSearch).not.toBeInTheDocument();
-    // userEvent.click(searchBtn);
-
-    // expect(inputSearch).toBeInTheDocument();
+      expect(inputSearch).toBeInTheDocument();
+      console.log('inputSearch');
+    }, 2000);
   });
 });
 

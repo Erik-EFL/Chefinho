@@ -49,6 +49,7 @@ function Header(props) {
             id="search-input"
             data-testid="search-input"
             type="text"
+            placeholder="Pesquise aqui"
           />
         </label>
       )}
