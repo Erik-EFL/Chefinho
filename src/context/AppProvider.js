@@ -1,6 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import fetchDrinks from '../Service/fetchDrinks';
+import fetchFilteredDrinks from '../Service/fetchFilteredDrinks';
+import fetchFilteredFoods from '../Service/fetchFilteredFoods';
 import fetchFoods from '../Service/fetchFoods';
 import AppContext from './AppContext';
 
@@ -9,16 +12,47 @@ function AppProvider({ children }) {
   const [password, setPassword] = useState('');
   const [foods, setFoods] = useState([]);
   const [drinks, setDrinks] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState('');
+  const [filterSearchInput, setFilterSearchInput] = useState('');
 
-  const contextValue = {
-    email,
-    setEmail,
-    password,
-    setPassword,
-    initialFetchs: {
-      foods,
-      drinks,
-    },
+  const handleSearchInput = (target) => {
+    setFilterSearchInput(target.value);
+  };
+
+  const handleFilters = (target) => {
+    setSelectedFilter(target.value);
+  };
+
+  const history = useHistory();
+
+  const setFilteredItems = async (location) => {
+    // Faz a requisição para as Apis de Foods e Drinks filtrados e armazena no state.
+    if (filterSearchInput.length > 1 && selectedFilter === 'firstLetter') {
+      return global.alert('Your search must have only 1 (one) character');
+    }
+
+    if (location === 'foods') {
+      const fetchResult = await fetchFilteredFoods(selectedFilter, filterSearchInput);
+      console.log(fetchResult);
+      if (fetchResult === null) {
+        return global.alert(
+          'Sorry, we haven\'t found any recipes for these filters.',
+        );
+      }
+      setFoods(fetchResult);
+      const id = fetchResult[0].idMeal;
+      if (fetchResult.length === 1) return history.push(`/foods/${id}`);
+    } else if (location === 'drinks') {
+      const fetchResult = await fetchFilteredDrinks(selectedFilter, filterSearchInput);
+      if (fetchResult === null) {
+        return global.alert(
+          'Sorry, we haven\'t found any recipes for these filters.',
+        );
+      }
+      setDrinks(fetchResult);
+      const id = fetchResult[0].idDrink;
+      if (fetchResult.length === 1) return history.push(`/drinks/${id}`);
+    }
   };
 
   const setFoodsAndDrinks = async () => { // Faz a requisição para as Apis de Foods e Drinks e armazena no state.
@@ -29,6 +63,24 @@ function AppProvider({ children }) {
   useEffect(() => { // Toda vez que a aplicação iniciar ele vai chamar a função setFoodsAndDrinks
     setFoodsAndDrinks();
   }, []);
+
+  const contextValue = {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    initialFetchs: {
+      foods,
+      drinks,
+    },
+    selectedFilter,
+    handleFilters,
+    setFilteredItems,
+    handleSearchInput,
+    filterSearchInput,
+    setFoods,
+    setDrinks,
+  };
 
   return (
     <AppContext.Provider value={ contextValue }>
