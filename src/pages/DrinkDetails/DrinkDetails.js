@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Carousel from '../../Components/Carousel';
+import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import shareIcon from '../../images/shareIcon.svg';
+import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import { fetchRecomendationFoods } from '../../Service/FetchRecomendation';
+import getFavorite from '../../Service/getFavorite';
 import './DrinkDetails.css';
 
 function DrinkDetails() {
@@ -90,7 +93,7 @@ function DrinkDetails() {
     navigator.clipboard.writeText(url);
     setCopy(true);
   };
-
+  const favoriteDrink = getFavorite(idDrink);
   return (
     <div>
 
@@ -111,7 +114,13 @@ function DrinkDetails() {
         <img src={ shareIcon } alt="share" />
       </button>
       {copy && <p>Link copied!</p>}
-      <button data-testid="favorite-btn" type="button">Favoritar</button>
+      <button type="button">
+        <img
+          data-testid="favorite-btn"
+          src={ favoriteDrink ? blackHeartIcon : whiteHeartIcon }
+          alt="favoriteBtn"
+        />
+      </button>
       <div>
         {renderIngredients}
       </div>

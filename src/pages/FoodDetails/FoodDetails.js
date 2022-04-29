@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import CarouselFoods from '../../Components/CarouselFoods';
+import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import shareIcon from '../../images/shareIcon.svg';
+import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import { fetchRecomendationDrinks } from '../../Service/FetchRecomendation';
+import getFavorite from '../../Service/getFavorite';
 import './FoodDetails.css';
 
 export default function FoodDetails() {
@@ -92,6 +95,7 @@ export default function FoodDetails() {
     setCopy(true);
   };
 
+  const favoriteFood = getFavorite(idFood);
   return (
     <div>
       <img
@@ -108,7 +112,13 @@ export default function FoodDetails() {
         <img src={ shareIcon } alt="share" />
       </button>
       {copy && <p>Link copied!</p>}
-      <button data-testid="favorite-btn" type="button">Favoritar</button>
+      <button type="button">
+        <img
+          data-testid="favorite-btn"
+          src={ favoriteFood ? blackHeartIcon : whiteHeartIcon }
+          alt="favoriteBtn"
+        />
+      </button>
       <p data-testid="recipe-category">{foodDetails.strCategory}</p>
       <div>
         {renderIngredients}
