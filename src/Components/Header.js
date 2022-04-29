@@ -1,11 +1,10 @@
-
 import PropTypes from 'prop-types';
-import React, { useState, useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import AppContext from '../context/AppContext';
 import profileIcon from '../images/profileIcon.svg';
 import searchIcon from '../images/searchIcon.svg';
 import './Header.css';
-import AppContext from '../context/AppContext';
 
 function Header(props) {
   const {
