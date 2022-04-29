@@ -183,5 +183,10 @@ describe.only('botão de busca que, ao ser clicado, a barra de busca deve aparec
       console.log('inputSearch');
     }, 2000);
   });
+//   it('',() => {
+//     const {history} = renderWithRouter(<App />);
+//     history.push('/');
+//     expect().toContain();
+//   });
 });
 
