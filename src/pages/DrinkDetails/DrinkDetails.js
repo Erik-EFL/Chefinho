@@ -6,6 +6,7 @@ import shareIcon from '../../images/shareIcon.svg';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import { fetchRecomendationFoods } from '../../Service/FetchRecomendation';
 import getFavorite from '../../Service/getFavorite';
+import { setFavoriteDrink } from '../../Service/setFavorite';
 import './DrinkDetails.css';
 
 function DrinkDetails() {
@@ -14,6 +15,7 @@ function DrinkDetails() {
   const [drinkDetails, setDrinkDetails] = useState([]);
   const [recomendation, setRecomendation] = useState([]);
   const [copy, setCopy] = useState(false);
+  const [renderFav, setRenderFav] = useState(false);
 
   // Função que faz o fetch para pegar os detalhes do Drink.
   const fetchDrinkDetails = async () => {
@@ -27,10 +29,12 @@ function DrinkDetails() {
     setRecomendation(await fetchRecomendationFoods());
   };
 
+  const render = () => setRenderFav(getFavorite(idDrink));
   // Quando inicializar a pagina chama a função de fazer o fetch.
   useEffect(() => {
     fetchDrinkDetails();
     fetchRecomentation();
+    render();
   }, []);
 
   // Pegar a key dos ingredients dentro do objeto;
@@ -93,7 +97,6 @@ function DrinkDetails() {
     navigator.clipboard.writeText(url);
     setCopy(true);
   };
-  const favoriteDrink = getFavorite(idDrink);
   return (
     <div>
 
@@ -114,10 +117,13 @@ function DrinkDetails() {
         <img src={ shareIcon } alt="share" />
       </button>
       {copy && <p>Link copied!</p>}
-      <button type="button">
+      <button
+        type="button"
+        onClick={ () => setFavoriteDrink(drinkDetails, setRenderFav) }
+      >
         <img
           data-testid="favorite-btn"
-          src={ favoriteDrink ? blackHeartIcon : whiteHeartIcon }
+          src={ renderFav ? blackHeartIcon : whiteHeartIcon }
           alt="favoriteBtn"
         />
       </button>
