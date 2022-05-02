@@ -1,10 +1,16 @@
-import React from 'react';
 import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 
 export default function Profile({ history }) {
-  const { email } = JSON.parse(localStorage.user);
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    const store = JSON.parse(localStorage.getItem('user'));
+    if (store) setEmail(store.email);
+  }, []);
+
   return (
     <div>
       <Header
@@ -41,5 +47,5 @@ export default function Profile({ history }) {
 }
 
 Profile.propTypes = {
-  history: PropTypes.func.isRequired,
-};
+  history: PropTypes.object,
+}.isRequired;
