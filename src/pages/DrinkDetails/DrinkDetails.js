@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import Carousel from '../../Components/Carousel';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import shareIcon from '../../images/shareIcon.svg';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
-import { fetchRecomendationFoods } from '../../Service/FetchRecomendation';
+import { fetchRecommendationFoods } from '../../Service/FetchRecommendation';
 import getFavorite from '../../Service/getFavorite';
 import { setFavoriteDrink } from '../../Service/setFavorite';
 import './DrinkDetails.css';
@@ -13,7 +14,7 @@ function DrinkDetails() {
   const history = useHistory();
   const idDrink = useParams().id;
   const [drinkDetails, setDrinkDetails] = useState([]);
-  const [recomendation, setRecomendation] = useState([]);
+  const [recommendation, setRecommendation] = useState([]);
   const [copy, setCopy] = useState(false);
   const [renderFav, setRenderFav] = useState(false);
 
@@ -25,15 +26,15 @@ function DrinkDetails() {
     setDrinkDetails(...data.drinks);
   };
 
-  const fetchRecomentation = async () => {
-    setRecomendation(await fetchRecomendationFoods());
+  const fetchRecommendation = async () => {
+    setRecommendation(await fetchRecommendationFoods());
   };
 
   const render = () => setRenderFav(getFavorite(idDrink));
   // Quando inicializar a pagina chama a função de fazer o fetch.
   useEffect(() => {
     fetchDrinkDetails();
-    fetchRecomentation();
+    fetchRecommendation();
     render();
   }, []);
 
@@ -66,7 +67,7 @@ function DrinkDetails() {
     </p>
   ));
   const magic = 6;
-  const infos = recomendation.slice(0, magic);
+  const infos = recommendation.slice(0, magic);
 
   const getDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
   let checkRecipe;
@@ -116,7 +117,7 @@ function DrinkDetails() {
       >
         <img src={ shareIcon } alt="share" />
       </button>
-      {copy && <p>Link copied!</p>}
+      {copy && <span>Link copied!</span>}
       <button
         type="button"
         // Função setFavoriteDrink criada na pasta Service - favoritar ou desfavoritar um item */
