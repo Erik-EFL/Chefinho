@@ -24,7 +24,7 @@ export function setFavoriteFood(object, callback) {
       const filterItems = actualStore.filter((item) => item.id !== object.idMeal); // Pega tudo que é diferente do item dentro do store atual.
       if (filterItems.length > 0) {
         // Se o filter retornar outros resultados diferentes do meu item eu apenas adiciono eles devolta no LocalStorage.
-        localStorage.setItem('favoriteRecipes', JSON.stringify(remove));
+        localStorage.setItem('favoriteRecipes', JSON.stringify(filterItems));
         callback(false);
       } else {
         // Se não houver nenhum outro item eu removo a chave do localStorage.

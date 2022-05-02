@@ -28,6 +28,7 @@ function FavoriteBtn(props) {
       .then((response) => response.json())
       .then((data) => {
         if (type === 'foods') {
+          console.log(data);
           return setFav(...data.meals);
         }
         return setFav(...data.drinks);
@@ -41,7 +42,6 @@ function FavoriteBtn(props) {
   return (
     <div>
       <button
-        data-testid="favorite-btn"
         type="button"
         onClick={ () => (fav && type === 'drinks'
           ? setFavoriteDrink(fav, setRenderFav)
