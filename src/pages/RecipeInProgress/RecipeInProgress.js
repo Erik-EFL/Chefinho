@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import FavoriteBtn from '../../Components/Buttons/FavoriteBtn';
 import ShareBtn from '../../Components/Buttons/ShareBtn';
-import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import ListIngredients from './components/ListIngredients';
 
@@ -33,10 +32,6 @@ function RecipeInProgress() {
 
   return (
     <div>
-      <Header
-        title="Recipe In Progress"
-        searchButton={ false }
-      />
       <main className="mainProgress">
         {progress && type === 'drinks'
           ? (
