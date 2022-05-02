@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import CarouselFoods from '../../Components/CarouselFoods';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import shareIcon from '../../images/shareIcon.svg';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
-import { fetchRecomendationDrinks } from '../../Service/FetchRecomendation';
+import { fetchRecommendationDrinks } from '../../Service/FetchRecommendation';
 import getFavorite from '../../Service/getFavorite';
 import { setFavoriteFood } from '../../Service/setFavorite';
 import './FoodDetails.css';
@@ -14,10 +15,10 @@ export default function FoodDetails() {
   const idFood = useParams().id;
 
   const [foodDetails, setFoodDetails] = useState([]);
-  const [recomendation, setRecomendation] = useState([]);
+  const [recommendation, setRecommendation] = useState([]);
   const [copy, setCopy] = useState(false);
   const [renderFav, setRenderFav] = useState(false);
-
+  console.log('foodDetails', foodDetails);
   // Função que faz o fetch para pegar os detalhes do Food.
   const fetchFoodDetails = async () => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idFood}`;
@@ -26,15 +27,15 @@ export default function FoodDetails() {
     setFoodDetails(...data.meals);
   };
 
-  const fetchRecomentation = async () => {
-    setRecomendation(await fetchRecomendationDrinks());
+  const fetchRecommendation = async () => {
+    setRecommendation(await fetchRecommendationDrinks());
   };
 
   const render = () => setRenderFav(getFavorite(idFood));
   // Quando inicializar a pagina chama a função de fazer o fetch.
   useEffect(() => {
     fetchFoodDetails();
-    fetchRecomentation();
+    fetchRecommendation();
     render();
   }, []);
 
@@ -68,7 +69,7 @@ export default function FoodDetails() {
   ));
 
   const magic = 6;
-  const infos = recomendation.slice(0, magic);
+  const infos = recommendation.slice(0, magic);
 
   const getDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
   let checkRecipe;
@@ -114,7 +115,7 @@ export default function FoodDetails() {
       >
         <img src={ shareIcon } alt="share" />
       </button>
-      {copy && <p>Link copied!</p>}
+      {copy && <span>Link copied!</span>}
       {/* Função setFavoriteFood criada na pasta Service - favoritar ou desfavoritar um item */}
       <button type="button" onClick={ () => setFavoriteFood(foodDetails, setRenderFav) }>
         <img

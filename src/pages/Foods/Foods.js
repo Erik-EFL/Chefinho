@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import Cards from '../../Components/Cards';
+import CategoryFilter from '../../Components/CategoryFilter';
+import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import AppContext from '../../context/AppContext';
-import Header from '../../Components/Header';
-import CategoryFilter from '../../Components/CategoryFilter';
 
 function Foods() {
   const { initialFetchs: { foods } } = useContext(AppContext);
