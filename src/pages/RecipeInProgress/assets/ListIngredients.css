@@ -1,0 +1,11 @@
+.checked {
+  text-decoration: line-through;
+}
+
+.mainProgress {
+  margin-bottom: 70px;
+}
+
+.mainProgress .img-recipe {
+  width: 28%;
+}

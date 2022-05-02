@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
 import PropTypes from 'prop-types';
-import fetchCategories from '../Service/fetchCategories';
-import fetchFilteredByCategory from '../Service/fetchFilteredByCategory';
+import React, { useContext, useEffect, useState } from 'react';
 import AppContext from '../context/AppContext';
-import fetchFoods from '../Service/fetchFoods';
+import fetchCategories from '../Service/fetchCategories';
 import fetchDrinks from '../Service/fetchDrinks';
+import fetchFilteredByCategory from '../Service/fetchFilteredByCategory';
+import fetchFoods from '../Service/fetchFoods';
 
 export default function CategoryFilter(props) {
   const {
