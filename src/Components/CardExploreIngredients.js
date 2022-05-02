@@ -6,18 +6,20 @@ import fetchFilteredDrinks from '../Service/fetchFilteredDrinks';
 import fetchFilteredFoods from '../Service/fetchFilteredFoods';
 
 export default function CardExploreIngredients({ image, name, index, type }) {
-  const { setFoods, setDrink } = useContext(AppContext);
+  const { setFoods, setDrinks, setActiveFilter } = useContext(AppContext);
   const history = useHistory();
 
   const handleClick = async () => {
     if (type === 'food') {
-      await fetchFilteredFoods('ingredient', name).then((data) => {
-        setFoods(data);
-        history.push('/foods');
-      });
+      const data = await fetchFilteredFoods('ingredient', name);
+      setActiveFilter('redirected');
+      setFoods(data);
+      history.push('/foods');
     } else {
-      const newSearch = await fetchFilteredDrinks('ingredient', name);
-      setDrink(newSearch).then(() => history.push('/drinks'));
+      const data = await fetchFilteredDrinks('ingredient', name);
+      setActiveFilter('redirected');
+      setDrinks(data);
+      history.push('/drinks');
     }
   };
 

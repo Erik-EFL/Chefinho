@@ -12,10 +12,11 @@ export default function CategoryFilter(props) {
     type,
   } = props;
   const [categories, setCategories] = useState([]);
-  const [activeFilter, setActiveFilter] = useState('');
   const {
     setFoods,
     setDrinks,
+    activeFilter,
+    setActiveFilter,
   } = useContext(AppContext);
 
   const handleFilter = ({ target }) => {
@@ -38,7 +39,7 @@ export default function CategoryFilter(props) {
         setDrinks(drinksResult);
       }
     }
-    if (activeFilter !== '') {
+    if (activeFilter !== '' && activeFilter !== 'redirected') {
       const fetchResult = await fetchFilteredByCategory(type, activeFilter);
       if (type === 'foods') {
         setFoods(fetchResult);

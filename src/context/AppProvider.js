@@ -14,6 +14,7 @@ function AppProvider({ children }) {
   const [drinks, setDrinks] = useState([]);
   const [selectedFilter, setSelectedFilter] = useState('');
   const [filterSearchInput, setFilterSearchInput] = useState('');
+  const [activeFilter, setActiveFilter] = useState('');
 
   const handleSearchInput = (target) => {
     setFilterSearchInput(target.value);
@@ -55,15 +56,6 @@ function AppProvider({ children }) {
     }
   };
 
-  const setFoodsAndDrinks = async () => { // Faz a requisição para as Apis de Foods e Drinks e armazena no state.
-    setFoods(await fetchFoods()); // Função fetchFoods criada na Pasta Service.
-    setDrinks(await fetchDrinks()); // Função fetchDrinks criada na Pasta Service.
-  };
-
-  useEffect(() => { // Toda vez que a aplicação iniciar ele vai chamar a função setFoodsAndDrinks
-    if (!foods && !drinks) setFoodsAndDrinks();
-  }, []);
-
   const contextValue = {
     email,
     setEmail,
@@ -80,7 +72,18 @@ function AppProvider({ children }) {
     filterSearchInput,
     setFoods,
     setDrinks,
+    setActiveFilter,
+    activeFilter,
   };
+
+  const setFoodsAndDrinks = async () => { // Faz a requisição para as Apis de Foods e Drinks e armazena no state.
+    setFoods(await fetchFoods()); // Função fetchFoods criada na Pasta Service.
+    setDrinks(await fetchDrinks()); // Função fetchDrinks criada na Pasta Service.
+  };
+
+  useEffect(() => { // Toda vez que a aplicação iniciar ele vai chamar a função setFoodsAndDrinks
+    setFoodsAndDrinks();
+  }, []);
 
   return (
     <AppContext.Provider value={ contextValue }>

@@ -10,7 +10,7 @@ function Foods() {
   const { initialFetchs: { foods } } = useContext(AppContext);
   const magicNumber = 12;
   const initialFoods = foods.filter((_i, index) => index < magicNumber);
-  console.log(foods);
+
   return (
     <div>
       <Header
