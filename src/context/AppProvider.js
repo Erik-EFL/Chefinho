@@ -61,7 +61,7 @@ function AppProvider({ children }) {
   };
 
   useEffect(() => { // Toda vez que a aplicação iniciar ele vai chamar a função setFoodsAndDrinks
-    setFoodsAndDrinks();
+    if (!foods && !drinks) setFoodsAndDrinks();
   }, []);
 
   const contextValue = {
