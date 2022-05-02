@@ -1,31 +1,44 @@
 import clipboardCopy from 'clipboard-copy';
-import PropTypes, { object } from 'prop-types';
-import React from 'react';
+import PropTypes from 'prop-types';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import blackHeart from '../images/blackHeartIcon.svg';
 import shareIcon from '../images/shareIcon.svg';
-import { setFavoriteDrink, setFavoriteFood } from '../Service/setFavorite';
 
-export default function FavoriteCards({ image, title, index }) {
+export default function FavoriteCards({ item, index, callback }) {
   const [copy, setCopy] = useState(false);
+  const { name, id, type, category, nationality, alcoholicOrNot, image } = item;
 
   const removeFavorite = () => {
-    if (object.type === 'food') return setFavoriteFood(object, () => {});
-    if (object.type === 'drink') return setFavoriteDrink(object, () => {});
+    const store = JSON.parse(localStorage.getItem('favoriteRecipes'));
+    const newStore = store.filter((recipe) => recipe.id !== id);
+    localStorage.setItem('favoriteRecipes', JSON.stringify(newStore));
+    callback(name);
   };
 
   const handleShareButton = () => {
     clipboardCopy(`http://localhost:3000/foods/${id}`);
     setCopy(true);
   };
+  const pathName = type === 'food' ? `/foods/${id}` : `/drinks/${id}`;
   return (
     <div>
-      <img src={ image } alt={ title } data-testid={ `${index}-horizontal-image` } />
+      <Link to={ pathName }>
+        <img
+          style={ { width: '120px' } }
+          src={ image }
+          alt={ name }
+          data-testid={ `${index}-horizontal-image` }
+        />
+      </Link>
       <p
         data-testid={ `${index}-horizontal-top-text` }
       >
-        {`${nationality} - ${category}`}
+        {type === 'food' ? `${nationality} - ${category}` : alcoholicOrNot}
       </p>
-      <h2 data-testid={ `${index}-horizontal-name` }>{title}</h2>
+      <Link to={ pathName }>
+        <h2 data-testid={ `${index}-horizontal-name` }>{name}</h2>
+      </Link>
       <button
         type="button"
         onClick={ handleShareButton }
@@ -38,7 +51,11 @@ export default function FavoriteCards({ image, title, index }) {
       </button>
       {copy && <p>Link copied!</p>}
       <button type="button" onClick={ () => removeFavorite() }>
-        <img src={ blackHeart } alt="blackHeart" />
+        <img
+          src={ blackHeart }
+          data-testid={ `${index}-horizontal-favorite-btn` }
+          alt="blackHeart"
+        />
       </button>
     </div>
   );
