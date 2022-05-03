@@ -2,16 +2,16 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
 import AppContext from '../context/AppContext';
-import fetchCategories from '../Service/fetchCategories';
 import fetchDrinks from '../Service/fetchDrinks';
-import fetchFilteredByCategory from '../Service/fetchFilteredByCategory';
+import fetchFilteredByNationality from '../Service/fetchFilteredByNationality';
 import fetchFoods from '../Service/fetchFoods';
+import fetchNationalities from '../Service/fetchNationalities';
 
-export default function CategoryFilter(props) {
+export default function NationalitiesDropDown(props) {
   const {
     type,
   } = props;
-  const [categories, setCategories] = useState([]);
+  const [nationalities, setNationalities] = useState([]);
   const {
     setFoods,
     setDrinks,
@@ -40,12 +40,8 @@ export default function CategoryFilter(props) {
       }
     }
     if (activeFilter !== '' && activeFilter !== 'redirected') {
-      const fetchResult = await fetchFilteredByCategory(type, activeFilter);
-      if (type === 'foods') {
-        setFoods(fetchResult);
-      } else {
-        setDrinks(fetchResult);
-      }
+      const fetchResult = await fetchFilteredByNationality(activeFilter);
+      setFoods(fetchResult);
     }
   };
 
@@ -53,45 +49,45 @@ export default function CategoryFilter(props) {
     renderizeFiltered();
   }, [activeFilter]);
 
-  const getCategories = async () => {
-    const fetchResult = await fetchCategories(type);
-    const position = 0;
-    const position2 = 5;
-    const sliced = fetchResult.slice(position, position2);
-    setCategories(sliced);
+  const getNationalities = async () => {
+    const fetchResult = await fetchNationalities();
+    setNationalities(fetchResult);
   };
 
   useEffect(() => {
-    getCategories();
+    getNationalities();
   }, []);
 
   return (
     <div>
-      <button
-        type="button"
-        data-testid="All-category-filter"
-        value="All"
-        onClick={ handleFilter }
+      <select
+        data-testid="explore-by-nationality-dropdown"
+        onChange={ handleFilter }
       >
-        All
-      </button>
-      {
-        categories.map((e, i) => (
-          <button
-            key={ i }
-            type="button"
-            data-testid={ `${e.strCategory}-category-filter` }
-            value={ e.strCategory }
-            onClick={ handleFilter }
-          >
-            { e.strCategory }
-          </button>
-        ))
-      }
+        <option>
+          Select a nationality
+        </option>
+        <option
+          data-testid="All-option"
+        >
+          All
+        </option>
+        {
+          nationalities.map((e, i) => (
+            <option
+              key={ i }
+              data-testid={ `${e.strArea}-option` }
+              value={ e.strArea }
+            >
+              { e.strArea }
+            </option>
+          ))
+        }
+      </select>
     </div>
   );
 }
 
-CategoryFilter.propTypes = {
+NationalitiesDropDown.propTypes = {
   type: PropTypes.string.isRequired,
 };

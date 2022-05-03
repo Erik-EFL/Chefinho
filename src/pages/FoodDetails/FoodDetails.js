@@ -18,7 +18,6 @@ export default function FoodDetails() {
   const [recommendation, setRecommendation] = useState([]);
   const [copy, setCopy] = useState(false);
   const [renderFav, setRenderFav] = useState(false);
-  console.log('foodDetails', foodDetails);
   // Função que faz o fetch para pegar os detalhes do Food.
   const fetchFoodDetails = async () => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idFood}`;

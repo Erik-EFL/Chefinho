@@ -16,6 +16,7 @@ import FavoriteRecipes from './pages/FavoriteRecipes/FavoriteRecipes';
 import FoodDetails from './pages/FoodDetails/FoodDetails';
 import Foods from './pages/Foods/Foods';
 import Login from './pages/Login/Login';
+import NotFound from './pages/NotFound/NotFound';
 import Profile from './pages/Profile/Profile';
 import RecipeInProgress from './pages/RecipeInProgress/RecipeInProgress';
 
@@ -43,6 +44,7 @@ function App() {
         />
         <Route exact path="/profile" component={ Profile } />
         <Route exact path="/" component={ Login } />
+        <Route exact path="*" component={ NotFound } />
       </Switch>
     </AppProvider>
   );
