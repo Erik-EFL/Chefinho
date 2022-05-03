@@ -2,7 +2,7 @@
 import PropType from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import '../assets/ListIngredients.css';
-import setRecipeInProgress from '../helper/setLocalStorage';
+import { setRecipeInProgress } from '../helper/setLocalStorage';
 
 function ListIngredients(props) {
   const {
@@ -15,9 +15,7 @@ function ListIngredients(props) {
 
   useEffect(() => {
     setRecipeInProgress(id, checked, type);
-    JSON.parse(localStorage
-      .getItem('inProgressRecipes'));
-  }, [setChecked, checked]);
+  }, [checked]);
 
   if (!progress.length) return null;
 

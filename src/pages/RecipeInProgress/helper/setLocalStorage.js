@@ -1,5 +1,5 @@
 /* Seta os item no local storage conforme este modelo
-{
+inProgressRecipes {
     cocktails: {
         id-da-bebida: [lista-de-ingredientes-utilizados],
         ...
@@ -11,40 +11,43 @@
 }
 */
 
-/* export function setKeyLocalStorage() {
-  const verifyLocalStorage = JSON.parse(localStorage
-    .getItem('inProgressRecipes'));
-  const newObj = {
-    cocktails: {
-
+/* Essa function esta sendo utilizada no Login para criar o
+  LocalStorage
+*/
+export const setLocalStorage = () => localStorage
+  .setItem('inProgressRecipes', JSON.stringify(
+    {
+      cocktails: {},
+      meals: {},
     },
-    meals: {
-
-    },
-  };
-  if (!verifyLocalStorage) {
-    localStorage.setItem('inProgressRecipes',
-      JSON.stringify(newObj));
-  }
-} */
+  ));
 
 /* Fazer tudo de novo em vez de adicionar um novo. */
-export default function setRecipeInProgress(id, ingredient, type) {
+export function setRecipeInProgress(id, ingredient, type) {
   const verifyLocalStorage = JSON.parse(localStorage
     .getItem('inProgressRecipes'));
 
-  if (verifyLocalStorage && type === 'drinks' && verifyLocalStorage.cocktails) {
-    verifyLocalStorage.cocktails = {
-      [id]: [...ingredient],
+  if (verifyLocalStorage && type === 'foods') {
+    /* Clone do objeto no localStorage e depois o seta de novo */
+    const newObj = {
+      meals: verifyLocalStorage.meals,
     };
-    localStorage.setItem('inProgressRecipes',
-      JSON.stringify(verifyLocalStorage));
-  }
-  if (verifyLocalStorage && type === 'foods' && verifyLocalStorage.meals) {
-    verifyLocalStorage.meals = {
-      [id]: [...ingredient],
+    newObj.meals[id] = ingredient;
+
+    localStorage
+      .setItem('inProgressRecipes', JSON.stringify(
+        newObj,
+      ));
+  } else if (verifyLocalStorage && type === 'drinks') {
+    /* Clone do objeto no localStorage e depois o seta de novo */
+    const newObj = {
+      cocktails: verifyLocalStorage.cocktails,
     };
-    localStorage.setItem('inProgressRecipes',
-      JSON.stringify(verifyLocalStorage));
+    newObj.cocktails[id] = ingredient;
+
+    localStorage
+      .setItem('inProgressRecipes', JSON.stringify(
+        newObj,
+      ));
   }
 }

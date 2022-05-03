@@ -95,7 +95,6 @@ function RecipeInProgress() {
               </div>
             ))
           )}
-
         <button
           data-testid="finish-recipe-btn"
           type="submit"
