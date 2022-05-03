@@ -78,6 +78,7 @@ function DrinkDetails() {
   const getInProgressRecipe = JSON.parse(localStorage.getItem('inProgressRecipes'));
   let checkProgress;
   if (getInProgressRecipe) {
+    console.log(getInProgressRecipe.cocktails[idDrink]);
     checkProgress = getInProgressRecipe.cocktails[idDrink];
   }
 
