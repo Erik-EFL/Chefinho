@@ -210,12 +210,12 @@ describe.only('botão de busca que, ao ser clicado, a barra de busca deve aparec
 
     // alert("Sorry, we haven't found any recipes for these filters.")
 
-    // global.alert = jest.fn().mockImplementation();
-    // Object.defineProperty(global, 'alert', alert);
-    // expect(global.alert).toHaveBeenCalledTimes(1);
+    const alertMock = jest.spyOn(window, 'alert').mockImplementation();
 
-    await waitFor(() => screen.findByRole('alert'));
-    console.log(screen.findByRole('alert'));
-    expect(screen.findByRole('alert')).toHaveTextContent("Sorry, we haven't found any recipes for these filters.");
-    });
+    await waitFor(() => expect(alertMock).toHaveBeenCalledTimes(1));
+    // console.log(screen.findByRole('alert'));
+    // expect(screen.findByRole('alert')).toHaveTextContent("Sorry, we haven't found any recipes for these filters.");
+    
+
+  });
 });
