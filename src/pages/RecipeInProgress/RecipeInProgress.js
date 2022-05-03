@@ -54,10 +54,14 @@ function RecipeInProgress() {
                 </h1>
                 <div style={ { display: 'flex' } }>
                   <ShareBtn />
-                  <FavoriteBtn id={ id } progress={ progress } />
+                  <FavoriteBtn id={ id } />
                 </div>
                 <h2 data-testid="recipe-category">{item.strCategory}</h2>
-                <ListIngredients progress={ progress } />
+                <ListIngredients
+                  progress={ progress }
+                  id={ id }
+                  type={ type }
+                />
                 <div className="containerSteps">
                   <h2>Instruction</h2>
                   <p data-testid="instructions">
@@ -80,10 +84,14 @@ function RecipeInProgress() {
                 </h1>
                 <div style={ { display: 'flex' } }>
                   <ShareBtn />
-                  <FavoriteBtn id={ id } progress={ progress } />
+                  <FavoriteBtn id={ id } />
                 </div>
                 <h2 data-testid="recipe-category">{item.strCategory}</h2>
-                <ListIngredients progress={ progress } />
+                <ListIngredients
+                  progress={ progress }
+                  id={ id }
+                  type={ type }
+                />
                 <div className="containerSteps">
                   <h2>Instruction</h2>
                   <p data-testid="instructions">
