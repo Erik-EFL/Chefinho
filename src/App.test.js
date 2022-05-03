@@ -1,8 +1,10 @@
-import { screen } from '@testing-library/react';
+import { fireEvent, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import React from 'react';
 import App from './App';
 import renderWithRouter from './Service/renderWithRouter';
+
+const {getByTestId, getByText, queryByText} = screen;
 
 // describe('',() => {
 //   it('',() => {
@@ -183,5 +185,37 @@ describe.only('botão de busca que, ao ser clicado, a barra de busca deve aparec
       console.log('inputSearch');
     }, 2000);
   });
-});
+  it('Checa a existência dos radios buttons após clicar na lupa',() => {
+    const {history} = renderWithRouter(<App />);
+    const {getByTestId} = screen;
+    history.push('/foods');
+    const searchBtn = screen.getByTestId('search-top-btn');
+    fireEvent.click(searchBtn);
+    expect(getByTestId('search-input')).toBeInTheDocument();
+    expect(getByTestId('ingredient-search-radio')).toBeInTheDocument();
+    expect(getByTestId('name-search-radio')).toBeInTheDocument();
+    expect(getByTestId('first-letter-search-radio')).toBeInTheDocument();
+  });
+    it.only('Exiba um alerta caso a receita não seja encontrada',async () => {
+    const {history} = renderWithRouter(<App />);
+    history.push('/foods');
 
+    const searchBtn = getByTestId('search-top-btn');
+    fireEvent.click(searchBtn);
+    const inputSearch = getByTestId('search-input');
+    expect(inputSearch).toBeInTheDocument();
+    userEvent.type(inputSearch, 'asdfge');
+    console.log(inputSearch.value);
+    userEvent.click(getByTestId('exec-search-btn'));
+
+    // alert("Sorry, we haven't found any recipes for these filters.")
+
+    const alertMock = jest.spyOn(window, 'alert').mockImplementation();
+
+    await waitFor(() => expect(alertMock).toHaveBeenCalledTimes(1));
+    // console.log(screen.findByRole('alert'));
+    // expect(screen.findByRole('alert')).toHaveTextContent("Sorry, we haven't found any recipes for these filters.");
+    
+
+  });
+});
