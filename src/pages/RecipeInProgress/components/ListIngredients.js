@@ -1,16 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import PropType from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../assets/ListIngredients.css';
+import { setRecipeInProgress } from '../helper/setLocalStorage';
 
 function ListIngredients(props) {
   const {
     progress,
+    id,
+    type,
   } = props;
+
+  const [checked, setChecked] = useState('');
+
+  useEffect(() => {
+    setRecipeInProgress(id, checked, type);
+  }, [checked]);
 
   if (!progress.length) return null;
 
-  /* função para marcar como checados os ingredientes */
+  /* função para marcar e desmarcar como checados os ingredientes */
   const lineThroughAddAndRemove = () => {
     const list = document.querySelectorAll('span.ingredients');
     const listItems = document.querySelectorAll('input[type=checkbox]');
@@ -21,6 +30,20 @@ function ListIngredients(props) {
         list[index].classList.remove('checked');
       }
     });
+  };
+
+  /* função para enviar os items checados para o localStorage */
+  const sendToLocalStorage = () => {
+    const list = document.querySelectorAll('span.ingredients');
+    const listItems = document.querySelectorAll('input[type=checkbox]');
+    const checkedItems = [];
+    listItems.forEach((item, index) => {
+      if (item.checked) {
+        checkedItems.push(list[index].innerHTML);
+      }
+    });
+    setChecked(checkedItems);
+    return checkedItems;
   };
 
   const ingredientsKeys = Object.keys(progress[0])
@@ -50,6 +73,7 @@ function ListIngredients(props) {
       <label htmlFor={ item }>
         <input
           type="checkbox"
+          onChange={ sendToLocalStorage }
           onClick={ lineThroughAddAndRemove }
           name={ item }
           id={ item }
@@ -75,6 +99,8 @@ function ListIngredients(props) {
 
 ListIngredients.propTypes = {
   progress: PropType.arrayOf(PropType.object).isRequired,
+  id: PropType.string.isRequired,
+  type: PropType.string.isRequired,
 };
 
 export default ListIngredients;

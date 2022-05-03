@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
+import { setLocalStorage } from '../RecipeInProgress/helper/setLocalStorage';
 
 export default function Login() {
   const { email, setEmail, password, setPassword } = useContext(AppContext);
   const history = useHistory();
+
+  useEffect(() => {
+    setLocalStorage();
+  });
 
   const validate = () => {
     const numberSix = 6;
