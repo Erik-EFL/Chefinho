@@ -3,7 +3,11 @@ import PropType from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import '../assets/ListIngredients.css';
 import { setCheckedRecipes, verifyChecked } from '../helper/helper';
-import { reloadRecipe, setRecipeInProgress } from '../helper/setLocalStorage';
+import {
+  reloadRecipe,
+  // eslint-disable-next-line comma-dangle
+  setLocalStorage, setRecipeInProgress
+} from '../helper/setLocalStorage';
 
 function ListIngredients(props) {
   const {
@@ -15,6 +19,7 @@ function ListIngredients(props) {
   const [checked, setChecked] = useState('');
 
   useEffect(() => {
+    setLocalStorage();
     const checados = document.querySelectorAll('.checked');
     setCheckedRecipes(checados, checked, setChecked);
     reloadRecipe(type, setChecked, id);

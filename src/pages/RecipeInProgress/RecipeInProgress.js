@@ -77,6 +77,7 @@ function RecipeInProgress() {
                   className="img-recipe"
                   src={ item.strMealThumb }
                   alt={ item.strMeal }
+                  style={ { width: '28%' } }
                   data-testid="recipe-photo"
                 />
                 <h1 data-testid="recipe-title">
