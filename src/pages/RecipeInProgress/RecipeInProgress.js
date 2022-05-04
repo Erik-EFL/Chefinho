@@ -75,9 +75,10 @@ function RecipeInProgress() {
               <div key={ item.idMeal }>
                 <img
                   className="img-recipe"
+                  data-testid="recipe-photo"
                   src={ item.strMealThumb }
                   alt={ item.strMeal }
-                  data-testid="recipe-photo"
+                  style={ { width: '28%' } }
                 />
                 <h1 data-testid="recipe-title">
                   {item.strMeal}
