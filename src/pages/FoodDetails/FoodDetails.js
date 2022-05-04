@@ -79,7 +79,9 @@ export default function FoodDetails() {
   const getInProgressRecipe = JSON.parse(localStorage.getItem('inProgressRecipes'));
   let checkProgress;
   if (getInProgressRecipe) {
-    checkProgress = getInProgressRecipe.meals[idFood];
+    const check = Object.keys(getInProgressRecipe.meals)
+      .filter((key) => key === idFood);
+    checkProgress = check.length > 0;
   }
 
   const buttonStartRecipe = (

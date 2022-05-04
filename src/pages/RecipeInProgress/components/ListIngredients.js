@@ -1,4 +1,3 @@
-/* eslint-disable comma-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
 import PropType from 'prop-types';
 import React, { useEffect, useState } from 'react';
@@ -7,7 +6,7 @@ import { setCheckedRecipes, verifyChecked } from '../helper/helper';
 import {
   reloadRecipe,
   setLocalStorage,
-  setRecipeInProgress
+  setRecipeInProgress,
 } from '../helper/setLocalStorage';
 
 function ListIngredients(props) {
@@ -18,10 +17,11 @@ function ListIngredients(props) {
   } = props;
 
   const [checked, setChecked] = useState('');
-
-  useEffect(() => {
+  if (!localStorage.inProgressRecipes) {
     setLocalStorage();
-    const checados = document.querySelectorAll('.checked');
+  }
+  useEffect(() => {
+    const checados = document.querySelectorAll('.inputBox');
     setCheckedRecipes(checados, checked, setChecked);
     reloadRecipe(type, setChecked, id);
   }, []);
@@ -85,13 +85,13 @@ function ListIngredients(props) {
     >
       <label htmlFor={ item }>
         <input
-          className="checked"
+          className="inputBox"
           type="checkbox"
           onChange={ sendToLocalStorage }
           onClick={ lineThroughAddAndRemove }
           name={ item }
           id={ item }
-          checked={ verifyChecked(item, checked) }
+          defaultChecked={ verifyChecked(item, checked) }
         />
         <span className="ingredients">
           {measures[index] !== undefined
