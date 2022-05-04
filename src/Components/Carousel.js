@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import './Carousel.css';
+import RecommendationCard from './RecomendationCard';
 
 export default function Carousel({ info }) {
   return (
     <div className="carousel-container">
       {info.map((item, index) => (
-        <recommendationCard
+        <RecommendationCard
           key={ index }
           name={ item.strMeal }
           image={ item.strMealThumb }

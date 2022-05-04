@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import FavoriteBtn from '../../Components/Buttons/FavoriteBtn';
 import ShareBtn from '../../Components/Buttons/ShareBtn';
-import MenuInferior from '../../Components/MenuInferior';
 import ListIngredients from './components/ListIngredients';
 
 function RecipeInProgress() {
@@ -96,7 +95,6 @@ function RecipeInProgress() {
           Finish Recipe
         </button>
       </main>
-      <MenuInferior />
     </div>
   );
 }
