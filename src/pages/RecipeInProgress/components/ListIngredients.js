@@ -1,3 +1,4 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
 import PropType from 'prop-types';
 import React, { useEffect, useState } from 'react';
@@ -5,8 +6,8 @@ import '../assets/ListIngredients.css';
 import { setCheckedRecipes, verifyChecked } from '../helper/helper';
 import {
   reloadRecipe,
-  // eslint-disable-next-line comma-dangle
-  setLocalStorage, setRecipeInProgress
+  setLocalStorage,
+  setRecipeInProgress
 } from '../helper/setLocalStorage';
 
 function ListIngredients(props) {
