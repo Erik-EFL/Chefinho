@@ -13,6 +13,7 @@ import './DrinkDetails.css';
 function DrinkDetails() {
   const history = useHistory();
   const idDrink = useParams().id;
+  console.log(typeof idDrink);
   const [drinkDetails, setDrinkDetails] = useState([]);
   const [recommendation, setRecommendation] = useState([]);
   const [copy, setCopy] = useState(false);
@@ -77,8 +78,7 @@ function DrinkDetails() {
 
   const getInProgressRecipe = JSON.parse(localStorage.getItem('inProgressRecipes'));
   let checkProgress;
-  if (getInProgressRecipe) {
-    console.log(getInProgressRecipe.cocktails[idDrink]);
+  if (getInProgressRecipe.cocktails[idDrink]) {
     checkProgress = getInProgressRecipe.cocktails[idDrink];
   }
 

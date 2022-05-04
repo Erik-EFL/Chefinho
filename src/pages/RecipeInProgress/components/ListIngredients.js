@@ -2,6 +2,7 @@
 import PropType from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import '../assets/ListIngredients.css';
+import { setCheckedRecipes, verifyChecked } from '../helper/helper';
 import { reloadRecipe, setRecipeInProgress } from '../helper/setLocalStorage';
 
 function ListIngredients(props) {
@@ -13,9 +14,9 @@ function ListIngredients(props) {
 
   const [checked, setChecked] = useState('');
 
-  console.log();
-
   useEffect(() => {
+    const checados = document.querySelectorAll('.checked');
+    setCheckedRecipes(checados, checked, setChecked);
     reloadRecipe(type, setChecked, id);
   }, []);
 
@@ -41,9 +42,9 @@ function ListIngredients(props) {
   /* função para enviar os items checados para o localStorage */
   const sendToLocalStorage = () => {
     const list = document.querySelectorAll('span.ingredients');
-    const listItems = document.querySelectorAll('input[type=checkbox]');
+    const allBox = document.querySelectorAll('input[type=checkbox]');
     const checkedItems = [];
-    listItems.forEach((item, index) => {
+    allBox.forEach((item, index) => {
       if (item.checked) {
         checkedItems.push(list[index].innerHTML);
       }
@@ -78,11 +79,13 @@ function ListIngredients(props) {
     >
       <label htmlFor={ item }>
         <input
+          className="checked"
           type="checkbox"
           onChange={ sendToLocalStorage }
           onClick={ lineThroughAddAndRemove }
           name={ item }
           id={ item }
+          checked={ verifyChecked(item, checked) }
         />
         <span className="ingredients">
           {measures[index] !== undefined
