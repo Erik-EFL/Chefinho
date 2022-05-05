@@ -52,13 +52,11 @@ export function setRecipeInProgress(id, ingredient, type) {
   }
 
   if (verifyLocalStorage && type === 'drinks') {
-    console.log(verifyLocalStorage.cocktails);
     const newObj = {
       cocktails: verifyLocalStorage.cocktails,
       meals: verifyLocalStorage.meals,
     };
     newObj.cocktails[id] = ingredient;
-    console.log(verifyLocalStorage.cocktails);
     localStorage
       .setItem('inProgressRecipes', JSON.stringify(
         newObj,
