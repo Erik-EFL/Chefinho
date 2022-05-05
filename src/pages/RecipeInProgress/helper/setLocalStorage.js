@@ -34,7 +34,6 @@ export function reloadRecipe(type, setChecked, id) {
 export function setRecipeInProgress(id, ingredient, type) {
   const verifyLocalStorage = JSON.parse(localStorage
     .getItem('inProgressRecipes'));
-  console.log(verifyLocalStorage.cocktails);
   // const nevo = localStorage.inProgressRecipes.meals;
   if (verifyLocalStorage && type === 'foods') {
     const newObj = {
@@ -49,13 +48,11 @@ export function setRecipeInProgress(id, ingredient, type) {
   }
 
   if (verifyLocalStorage && type === 'drinks') {
-    console.log(verifyLocalStorage.cocktails);
     const newObj = {
       cocktails: verifyLocalStorage.cocktails,
       meals: verifyLocalStorage.meals,
     };
     newObj.cocktails[id] = ingredient;
-    console.log(verifyLocalStorage.cocktails);
     localStorage
       .setItem('inProgressRecipes', JSON.stringify(
         newObj,

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-export default function recommendationCard({ image, name, index, type }) {
+export default function RecommendationCard({ image, name, index, type }) {
   return (
     <div data-testid={ `${index}-recommendation-card` } className="div-item">
       <img
@@ -15,7 +15,7 @@ export default function recommendationCard({ image, name, index, type }) {
   );
 }
 
-recommendationCard.propTypes = {
+RecommendationCard.propTypes = {
   name: PropTypes.string,
   image: PropTypes.string,
   index: PropTypes.string,
