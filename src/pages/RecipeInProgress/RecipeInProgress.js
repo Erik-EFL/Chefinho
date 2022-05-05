@@ -1,14 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import FavoriteBtn from '../../Components/Buttons/FavoriteBtn';
 import ShareBtn from '../../Components/Buttons/ShareBtn';
+import AppContext from '../../context/AppContext';
 import ListIngredients from './components/ListIngredients';
 
 function RecipeInProgress() {
   const { id } = useParams();
   const history = useHistory();
   const [progress, setProgress] = useState([]);
+  const { handleChange, btnDisabled } = useContext(AppContext);
+  // const [btnDisabled] = useState();
   const path = history.location.pathname;
   const type = path.includes('drinks') ? 'drinks' : 'foods';
 
@@ -29,6 +32,12 @@ function RecipeInProgress() {
       });
   }, []);
 
+  useEffect(() => {
+    handleChange();
+  });
+
+  // console.log('TBN', btnDisabled);
+
   return (
     <div>
       <main className="mainProgress">
@@ -48,10 +57,14 @@ function RecipeInProgress() {
                 </h1>
                 <div style={ { display: 'flex' } }>
                   <ShareBtn />
-                  <FavoriteBtn id={ id } progress={ progress } />
+                  <FavoriteBtn id={ id } />
                 </div>
                 <h2 data-testid="recipe-category">{item.strCategory}</h2>
-                <ListIngredients progress={ progress } />
+                <ListIngredients
+                  progress={ progress }
+                  id={ id }
+                  type={ type }
+                />
                 <div className="containerSteps">
                   <h2>Instruction</h2>
                   <p data-testid="instructions">
@@ -65,19 +78,24 @@ function RecipeInProgress() {
               <div key={ item.idMeal }>
                 <img
                   className="img-recipe"
+                  data-testid="recipe-photo"
                   src={ item.strMealThumb }
                   alt={ item.strMeal }
-                  data-testid="recipe-photo"
+                  style={ { width: '28%' } }
                 />
                 <h1 data-testid="recipe-title">
                   {item.strMeal}
                 </h1>
                 <div style={ { display: 'flex' } }>
                   <ShareBtn />
-                  <FavoriteBtn id={ id } progress={ progress } />
+                  <FavoriteBtn id={ id } />
                 </div>
                 <h2 data-testid="recipe-category">{item.strCategory}</h2>
-                <ListIngredients progress={ progress } />
+                <ListIngredients
+                  progress={ progress }
+                  id={ id }
+                  type={ type }
+                />
                 <div className="containerSteps">
                   <h2>Instruction</h2>
                   <p data-testid="instructions">
@@ -87,10 +105,11 @@ function RecipeInProgress() {
               </div>
             ))
           )}
-
         <button
           data-testid="finish-recipe-btn"
           type="submit"
+          disabled={ btnDisabled }
+          onClick={ () => history.push('/done-recipes') }
         >
           Finish Recipe
         </button>
