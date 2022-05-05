@@ -1,12 +1,14 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
 import PropType from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import AppContext from '../../../context/AppContext';
 import '../assets/ListIngredients.css';
 import { setCheckedRecipes, verifyChecked } from '../helper/helper';
 import {
   reloadRecipe,
   setLocalStorage,
-  setRecipeInProgress,
+  setRecipeInProgress
 } from '../helper/setLocalStorage';
 
 function ListIngredients(props) {
@@ -17,6 +19,8 @@ function ListIngredients(props) {
   } = props;
 
   const [checked, setChecked] = useState('');
+  const { handleChange } = useContext(AppContext);
+
   if (!localStorage.inProgressRecipes) {
     setLocalStorage();
   }
@@ -33,6 +37,21 @@ function ListIngredients(props) {
   if (!progress.length) return null;
 
   /* função para marcar e desmarcar como checados os ingredientes */
+  /* função para enviar os items checados para o localStorage */
+  const setCheckedOnState = () => {
+    const list = document.querySelectorAll('span.ingredients');
+    const allBox = document.querySelectorAll('input[type=checkbox]');
+    const checkedItems = [];
+    allBox.forEach((item, index) => {
+      if (item.checked) {
+        checkedItems.push(list[index].innerHTML);
+      }
+    });
+    setChecked(checkedItems);
+    handleChange();
+    return checkedItems;
+  };
+
   const lineThroughAddAndRemove = () => {
     const list = document.querySelectorAll('span.ingredients');
     const listItems = document.querySelectorAll('input[type=checkbox]');
@@ -43,20 +62,7 @@ function ListIngredients(props) {
         list[index].classList.remove('checked');
       }
     });
-  };
-
-  /* função para enviar os items checados para o localStorage */
-  const sendToLocalStorage = () => {
-    const list = document.querySelectorAll('span.ingredients');
-    const allBox = document.querySelectorAll('input[type=checkbox]');
-    const checkedItems = [];
-    allBox.forEach((item, index) => {
-      if (item.checked) {
-        checkedItems.push(list[index].innerHTML);
-      }
-    });
-    setChecked(checkedItems);
-    return checkedItems;
+    setCheckedOnState();
   };
 
   const ingredientsKeys = Object.keys(progress[0])
@@ -87,7 +93,7 @@ function ListIngredients(props) {
         <input
           className="inputBox"
           type="checkbox"
-          onChange={ sendToLocalStorage }
+          onChange={ setCheckedOnState }
           onClick={ lineThroughAddAndRemove }
           name={ item }
           id={ item }

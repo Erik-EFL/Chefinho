@@ -27,14 +27,18 @@ export function reloadRecipe(type, setChecked, id) {
     .getItem('inProgressRecipes'));
   if (type === 'foods' && verifyLocalStorage.meals[id]) {
     setChecked(verifyLocalStorage.meals[id]);
+  } else {
+    setChecked(verifyLocalStorage.cocktails[id]);
   }
 }
 
 /* Fazer tudo de novo em vez de adicionar um novo. */
 export function setRecipeInProgress(id, ingredient, type) {
+/*   console.log('id', id);
+  console.log('ingredient', ingredient);
+  console.log('type', type); */
   const verifyLocalStorage = JSON.parse(localStorage
     .getItem('inProgressRecipes'));
-  // const nevo = localStorage.inProgressRecipes.meals;
   if (verifyLocalStorage && type === 'foods') {
     const newObj = {
       cocktails: verifyLocalStorage.cocktails,

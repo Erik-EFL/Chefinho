@@ -15,6 +15,7 @@ function AppProvider({ children }) {
   const [selectedFilter, setSelectedFilter] = useState('');
   const [filterSearchInput, setFilterSearchInput] = useState('');
   const [activeFilter, setActiveFilter] = useState('');
+  const [btnDisabled, setBtnDisabled] = useState();
 
   const handleSearchInput = (target) => {
     setFilterSearchInput(target.value);
@@ -56,7 +57,16 @@ function AppProvider({ children }) {
     }
   };
 
+  const handleChange = () => {
+    const checkBox = document.querySelectorAll('input[type=checkbox]').length;
+    const checkBoxChecked = document.querySelectorAll('input:checked').length;
+    return checkBox === checkBoxChecked
+      ? setBtnDisabled(false)
+      : setBtnDisabled(true);
+  };
+
   const contextValue = {
+    handleChange,
     email,
     setEmail,
     password,
@@ -74,6 +84,8 @@ function AppProvider({ children }) {
     setDrinks,
     setActiveFilter,
     activeFilter,
+    btnDisabled,
+    setBtnDisabled,
   };
 
   const setFoodsAndDrinks = async () => { // Faz a requisição para as Apis de Foods e Drinks e armazena no state.

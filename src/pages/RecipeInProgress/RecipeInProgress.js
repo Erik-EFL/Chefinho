@@ -1,15 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import FavoriteBtn from '../../Components/Buttons/FavoriteBtn';
 import ShareBtn from '../../Components/Buttons/ShareBtn';
+import AppContext from '../../context/AppContext';
 import ListIngredients from './components/ListIngredients';
 
 function RecipeInProgress() {
   const { id } = useParams();
   const history = useHistory();
   const [progress, setProgress] = useState([]);
-  const [btnDisabled/* , setBtnDisabled */] = useState(true);
+  const { handleChange, btnDisabled } = useContext(AppContext);
+  // const [btnDisabled] = useState();
   const path = history.location.pathname;
   const type = path.includes('drinks') ? 'drinks' : 'foods';
 
@@ -30,10 +32,11 @@ function RecipeInProgress() {
       });
   }, []);
 
-  const setBtnEnabled = () => {
-    const checkBox = document.querySelectorAll('input[type=checkbox]');
-    console.log(checkBox);
-  };
+  useEffect(() => {
+    handleChange();
+  });
+
+  // console.log('TBN', btnDisabled);
 
   return (
     <div>
@@ -106,7 +109,7 @@ function RecipeInProgress() {
           data-testid="finish-recipe-btn"
           type="submit"
           disabled={ btnDisabled }
-          onClick={ setBtnEnabled }
+          onClick={ () => history.push('/done-recipes') }
         >
           Finish Recipe
         </button>
