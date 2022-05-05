@@ -11,6 +11,11 @@ export default function Profile({ history }) {
     if (store) setEmail(store.email);
   }, []);
 
+  const setClearStorage = () => {
+    localStorage.clear();
+    history.push('/');
+  };
+
   return (
     <div>
       <Header
@@ -36,7 +41,7 @@ export default function Profile({ history }) {
         <button
           type="button"
           data-testid="profile-logout-btn"
-          onClick={ () => { localStorage.clear(); history.push('/'); } }
+          onClick={ setClearStorage }
         >
           Logout
         </button>
