@@ -9,7 +9,7 @@ function RecipeInProgress() {
   const { id } = useParams();
   const history = useHistory();
   const [progress, setProgress] = useState([]);
-  const [btnDisabled/* , setBtnDisabled */] = useState(true);
+  const [btnDisabled, setBtnDisabled] = useState(true);
   const path = history.location.pathname;
   const type = path.includes('drinks') ? 'drinks' : 'foods';
 
@@ -30,10 +30,9 @@ function RecipeInProgress() {
       });
   }, []);
 
-  const setBtnEnabled = () => {
+  function enabledFinishRecipe() {
     const checkBox = document.querySelectorAll('input[type=checkbox]');
-    console.log(checkBox);
-  };
+  }
 
   return (
     <div>
@@ -106,7 +105,7 @@ function RecipeInProgress() {
           data-testid="finish-recipe-btn"
           type="submit"
           disabled={ btnDisabled }
-          onClick={ setBtnEnabled }
+          onClick={ enabledFinishRecipe }
         >
           Finish Recipe
         </button>
