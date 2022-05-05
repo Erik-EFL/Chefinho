@@ -28,7 +28,6 @@ function FavoriteBtn(props) {
       .then((response) => response.json())
       .then((data) => {
         if (type === 'foods') {
-          console.log(data);
           return setFav(...data.meals);
         }
         return setFav(...data.drinks);

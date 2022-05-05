@@ -22,29 +22,37 @@ export const setLocalStorage = () => localStorage
     },
   ));
 
+export function reloadRecipe(type, setChecked, id) {
+  const verifyLocalStorage = JSON.parse(localStorage
+    .getItem('inProgressRecipes'));
+  if (type === 'foods' && verifyLocalStorage.meals[id]) {
+    setChecked(verifyLocalStorage.meals[id]);
+  }
+}
+
 /* Fazer tudo de novo em vez de adicionar um novo. */
 export function setRecipeInProgress(id, ingredient, type) {
   const verifyLocalStorage = JSON.parse(localStorage
     .getItem('inProgressRecipes'));
-
+  // const nevo = localStorage.inProgressRecipes.meals;
   if (verifyLocalStorage && type === 'foods') {
-    /* Clone do objeto no localStorage e depois o seta de novo */
     const newObj = {
+      cocktails: verifyLocalStorage.cocktails,
       meals: verifyLocalStorage.meals,
     };
     newObj.meals[id] = ingredient;
-
     localStorage
       .setItem('inProgressRecipes', JSON.stringify(
         newObj,
       ));
-  } else if (verifyLocalStorage && type === 'drinks') {
-    /* Clone do objeto no localStorage e depois o seta de novo */
+  }
+
+  if (verifyLocalStorage && type === 'drinks') {
     const newObj = {
       cocktails: verifyLocalStorage.cocktails,
+      meals: verifyLocalStorage.meals,
     };
     newObj.cocktails[id] = ingredient;
-
     localStorage
       .setItem('inProgressRecipes', JSON.stringify(
         newObj,

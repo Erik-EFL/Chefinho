@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import Carousel from '../../Components/Carousel';
+import SliderDrink from '../../Components/SliderDrink';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import shareIcon from '../../images/shareIcon.svg';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
@@ -13,6 +13,7 @@ import './DrinkDetails.css';
 function DrinkDetails() {
   const history = useHistory();
   const idDrink = useParams().id;
+
   const [drinkDetails, setDrinkDetails] = useState([]);
   const [recommendation, setRecommendation] = useState([]);
   const [copy, setCopy] = useState(false);
@@ -78,7 +79,9 @@ function DrinkDetails() {
   const getInProgressRecipe = JSON.parse(localStorage.getItem('inProgressRecipes'));
   let checkProgress;
   if (getInProgressRecipe) {
-    checkProgress = getInProgressRecipe.cocktails[idDrink];
+    const check = Object.keys(getInProgressRecipe.cocktails)
+      .filter((key) => key === idDrink);
+    checkProgress = check.length > 0;
   }
 
   const buttonStartRecipe = (
@@ -100,7 +103,6 @@ function DrinkDetails() {
   };
   return (
     <div>
-
       <img
         data-testid="recipe-photo"
         src={ drinkDetails.strDrinkThumb }
@@ -134,7 +136,7 @@ function DrinkDetails() {
       </div>
       <p data-testid="instructions">{drinkDetails.strInstructions}</p>
 
-      {infos.length > 0 && <Carousel info={ infos } />}
+      {infos.length > 0 && <SliderDrink info={ infos } />}
       {!checkRecipe && buttonStartRecipe}
 
     </div>

@@ -1,23 +1,8 @@
-.carousel-container {
-  display: flex;
-  -webkit-overflow-scrolling: touch;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  width: 100%;
-}
-
-.carousel-container::-webkit-scrollbar {
-  display: none;
-}
-
 .div-item {
   display: flex;
-  flex: none;
   flex-direction: column;
   height: 200px;
-  scroll-snap-align: start;
-  width: 50%;
+  width: 100%;
 }
 
 .img-carousel {

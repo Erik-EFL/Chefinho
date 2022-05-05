@@ -1,5 +1,6 @@
 .checked {
-  text-decoration: line-through;
+  color: black;
+  text-decoration: none solid;
 }
 
 .mainProgress {

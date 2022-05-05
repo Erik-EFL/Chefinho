@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import CarouselFoods from '../../Components/CarouselFoods';
+import SliderFoods from '../../Components/SliderFoods';
 import blackHeartIcon from '../../images/blackHeartIcon.svg';
 import shareIcon from '../../images/shareIcon.svg';
 import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
@@ -79,7 +79,9 @@ export default function FoodDetails() {
   const getInProgressRecipe = JSON.parse(localStorage.getItem('inProgressRecipes'));
   let checkProgress;
   if (getInProgressRecipe) {
-    checkProgress = getInProgressRecipe.meals[idFood];
+    const check = Object.keys(getInProgressRecipe.meals)
+      .filter((key) => key === idFood);
+    checkProgress = check.length > 0;
   }
 
   const buttonStartRecipe = (
@@ -139,7 +141,7 @@ export default function FoodDetails() {
         frameBorder="0"
         allowFullScreen
       />
-      {infos.length > 0 && <CarouselFoods info={ infos } />}
+      {infos.length > 0 && <SliderFoods info={ infos } />}
       {!checkRecipe && buttonStartRecipe}
     </div>
   );
