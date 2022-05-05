@@ -34,6 +34,9 @@ export function reloadRecipe(type, setChecked, id) {
 
 /* Fazer tudo de novo em vez de adicionar um novo. */
 export function setRecipeInProgress(id, ingredient, type) {
+/*   console.log('id', id);
+  console.log('ingredient', ingredient);
+  console.log('type', type); */
   const verifyLocalStorage = JSON.parse(localStorage
     .getItem('inProgressRecipes'));
   if (verifyLocalStorage && type === 'foods') {
