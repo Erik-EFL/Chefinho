@@ -104,6 +104,7 @@ export default function FoodDetails() {
   return (
     <div>
       <img
+        style={ { width: '95%' } }
         data-testid="recipe-photo"
         src={ foodDetails.strMealThumb }
         alt={ foodDetails.idMeal }
@@ -132,8 +133,7 @@ export default function FoodDetails() {
       <p data-testid="instructions">{foodDetails.strInstructions}</p>
 
       <iframe
-        width="560"
-        height="315"
+        style={ { width: '100%', height: '315px', marginBottom: '50px' } }
         data-testid="video"
         src={ foodDetails.strYoutube
           && foodDetails.strYoutube.replace('watch?v=', 'embed/') }

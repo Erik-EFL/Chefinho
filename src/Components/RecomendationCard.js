@@ -3,15 +3,26 @@ import React from 'react';
 
 export default function RecommendationCard({ image, name, index, type }) {
   return (
-    <div data-testid={ `${index}-recommendation-card` } className="div-item">
+    <button
+      type="button"
+      data-testid={ `${index}-recommendation-card` }
+      style={ { padding: '30px', margin: '30px' } }
+    >
       <img
+        className="carousel-img card-img-top"
+        data-testid={ `${index}-carousel-img` }
         src={ image }
         alt={ name }
-        className="img-carousel"
       />
+      <h4
+        className="card-title"
+        data-testid={ `${index}-recommendation-title` }
+      >
+        {name}
+
+      </h4>
       <p>{type}</p>
-      <p data-testid={ `${index}-recommendation-title` }>{name}</p>
-    </div>
+    </button>
   );
 }
 
@@ -19,4 +30,5 @@ RecommendationCard.propTypes = {
   name: PropTypes.string,
   image: PropTypes.string,
   index: PropTypes.string,
+  type: PropTypes.string,
 }.isRequired;

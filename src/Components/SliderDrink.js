@@ -15,9 +15,10 @@ export default class SliderDrink extends Component {
       slidesToShow: 2,
       slidesToScroll: 2,
     };
+
     return (
       <div>
-        <h2>Recomendations</h2>
+        <h2>Recommendations</h2>
         <Slider { ...settings }>
           {info.map((item, index) => (
             <RecommendationCard
