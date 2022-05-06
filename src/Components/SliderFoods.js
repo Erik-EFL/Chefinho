@@ -18,7 +18,7 @@ export default class SliderFoods extends Component {
     };
     return (
       <div>
-        <h2>Recomendations</h2>
+        <h2>Recommendations</h2>
         <Slider { ...settings }>
           {info.map((item, index) => (
             <RecommendationCard

@@ -50,7 +50,7 @@ function RecipeInProgress() {
                   src={ item.strDrinkThumb }
                   alt={ item.strDrink }
                   data-testid="recipe-photo"
-                  style={ { width: '28%' } }
+                  style={ { width: '95%' } }
                 />
                 <h1 data-testid="recipe-title">
                   {item.strDrink}
@@ -81,7 +81,7 @@ function RecipeInProgress() {
                   data-testid="recipe-photo"
                   src={ item.strMealThumb }
                   alt={ item.strMeal }
-                  style={ { width: '28%' } }
+                  style={ { width: '95%' } }
                 />
                 <h1 data-testid="recipe-title">
                   {item.strMeal}
