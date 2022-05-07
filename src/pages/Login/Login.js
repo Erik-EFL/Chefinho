@@ -31,20 +31,22 @@ export default function Login() {
 
   return (
     <div>
-      <input
-        type="email"
-        data-testid="email-input"
-        value={ email }
-        placeholder="Email"
-        onChange={ ({ target }) => setEmail(target.value) }
-      />
-      <input
-        type="password"
-        value={ password }
-        data-testid="password-input"
-        placeholder="Password"
-        onChange={ ({ target }) => setPassword(target.value) }
-      />
+      <div>
+        <input
+          type="email"
+          data-testid="email-input"
+          value={ email }
+          placeholder="Email"
+          onChange={ ({ target }) => setEmail(target.value) }
+        />
+        <input
+          type="password"
+          value={ password }
+          data-testid="password-input"
+          placeholder="Password"
+          onChange={ ({ target }) => setPassword(target.value) }
+        />
+      </div>
       <button
         data-testid="login-submit-btn"
         type="button"
