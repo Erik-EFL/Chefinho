@@ -1,7 +1,11 @@
+/* eslint-disable comma-dangle */
 import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
+import chef from '../../chef.png';
 import AppContext from '../../context/AppContext';
-import LoginStyled from '../../StyledComponents/LoginStyled';
+import {
+  ButtonActive, ButtonDisabled, LoginStyled
+} from '../../StyledComponents/LoginStyled';
 
 export default function Login() {
   const { email, setEmail, password, setPassword } = useContext(AppContext);
@@ -33,6 +37,9 @@ export default function Login() {
   return (
     <div>
       <LoginStyled>
+        <img src={ chef } alt="imagem de logo" style={ { width: '60px' } } />
+        <h1>Recipe App!</h1>
+        <p>Please enter your account here</p>
         <div>
           <input
             type="email"
@@ -50,16 +57,31 @@ export default function Login() {
           />
           <p><Link to="/refoundPassword">Forgot password?</Link></p>
         </div>
-        <button
-          data-testid="login-submit-btn"
-          type="button"
-          disabled={ !validate() }
-          onClick={ handleClick }
-        >
-          Enter
+        {!validate()
+          ? (
+            <ButtonDisabled
+              data-testid="login-submit-btn"
+              type="button"
+              disabled={ !validate() }
+              onClick={ handleClick }
+            >
+              Enter
+            </ButtonDisabled>)
+          : (
+            <ButtonActive
+              data-testid="login-submit-btn"
+              type="button"
+              disabled={ !validate() }
+              onClick={ handleClick }
+            >
+              Enter
 
-        </button>
-        <p>Dont have </p>
+            </ButtonActive>)}
+        <p>
+          Dont have any account?
+          {' '}
+          <Link to="/register">Sing Up</Link>
+        </p>
       </LoginStyled>
     </div>
   );

@@ -6,7 +6,7 @@ const theme = {
   text: '#D97016',
 };
 
-const LoginStyled = styled.div`
+export const LoginStyled = styled.div`
   background: ${theme.bg};
   display: flex;
   flex-direction: column;
@@ -19,11 +19,14 @@ const LoginStyled = styled.div`
   }
   h1 {
     color: ${theme.title};
+    text-align: center;
   }
 
   div {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 32px;
 
     input {
@@ -37,6 +40,10 @@ const LoginStyled = styled.div`
     input + input{
       margin-top: 16px;
     }
+
+    input:focus {
+      outline: 0;
+    }
     
     p {
       margin-top: 24px;
@@ -45,16 +52,25 @@ const LoginStyled = styled.div`
       align-self: flex-end;
     }
   }
-
-  button {
-      width: 327px;
-      height: 56px;
-      border-radius: 32px;
-      border: none;
-      color: #1b1b1b;
-      background: #BF9663;
-      margin-bottom: 24px;
-  }
 `;
 
-export default LoginStyled;
+export const ButtonActive = styled.button`
+  width: 327px;
+  height: 56px;
+  border-radius: 32px;
+  border: none;
+  color: #1b1b1b;
+  background: #BF9663;
+  margin-bottom: 24px;
+  cursor: pointer;
+`;
+
+export const ButtonDisabled = styled.button`
+  width: 327px;
+  height: 56px;
+  border-radius: 32px;
+  border: none;
+  color: #2b2b2b;
+  background: #a39483;
+  margin-bottom: 24px;
+`;
