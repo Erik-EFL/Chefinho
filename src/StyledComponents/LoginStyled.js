@@ -7,6 +7,7 @@ const theme = {
 };
 
 const LoginStyled = styled.div`
+  background: ${theme.bg};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -56,4 +57,4 @@ const LoginStyled = styled.div`
   }
 `;
 
-export default LoginContainer;
+export default LoginStyled;

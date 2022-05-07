@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import AppContext from '../../context/AppContext';
+import LoginStyled from '../../StyledComponents/LoginStyled';
 
 export default function Login() {
   const { email, setEmail, password, setPassword } = useContext(AppContext);
@@ -31,31 +32,35 @@ export default function Login() {
 
   return (
     <div>
-      <div>
-        <input
-          type="email"
-          data-testid="email-input"
-          value={ email }
-          placeholder="Email"
-          onChange={ ({ target }) => setEmail(target.value) }
-        />
-        <input
-          type="password"
-          value={ password }
-          data-testid="password-input"
-          placeholder="Password"
-          onChange={ ({ target }) => setPassword(target.value) }
-        />
-      </div>
-      <button
-        data-testid="login-submit-btn"
-        type="button"
-        disabled={ !validate() }
-        onClick={ handleClick }
-      >
-        Enter
+      <LoginStyled>
+        <div>
+          <input
+            type="email"
+            data-testid="email-input"
+            value={ email }
+            placeholder="Email"
+            onChange={ ({ target }) => setEmail(target.value) }
+          />
+          <input
+            type="password"
+            value={ password }
+            data-testid="password-input"
+            placeholder="Password"
+            onChange={ ({ target }) => setPassword(target.value) }
+          />
+          <p><Link to="/refoundPassword">Forgot password?</Link></p>
+        </div>
+        <button
+          data-testid="login-submit-btn"
+          type="button"
+          disabled={ !validate() }
+          onClick={ handleClick }
+        >
+          Enter
 
-      </button>
+        </button>
+        <p>Dont have </p>
+      </LoginStyled>
     </div>
   );
 }
