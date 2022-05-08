@@ -1,37 +1,52 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { BiDrink } from 'react-icons/bi';
+import { GiHotMeal } from 'react-icons/gi';
+import { VscCompass } from 'react-icons/vsc';
+import { NavLink } from 'react-router-dom';
 import drinkIcon from '../images/drinkIcon.svg';
 import exploreIcon from '../images/exploreIcon.svg';
 import mealIcon from '../images/mealIcon.svg';
-import './MenuInferior.css';
+import FooterStyled from '../StyledComponents/FooterStyled';
 
 function MenuInferior() {
   return (
-    <footer data-testid="footer" className="footer">
-      <Link
+    <FooterStyled data-testid="footer" className="footer">
+      <NavLink
         to="/drinks"
         src={ drinkIcon }
         data-testid="drinks-bottom-btn"
+        activeClassName="active"
       >
-        <img src={ drinkIcon } alt="drinkBtn" />
-      </Link>
+        <div>
+          <BiDrink />
+          <p>Drinks</p>
+        </div>
+      </NavLink>
 
-      <Link
+      <NavLink
         to="/explore"
         data-testid="explore-bottom-btn"
         src={ exploreIcon }
+        activeClassName="active"
       >
-        <img src={ exploreIcon } alt="exploreBtn" />
-      </Link>
+        <div>
+          <VscCompass />
+          <p>Explore</p>
+        </div>
+      </NavLink>
 
-      <Link
+      <NavLink
         to="/foods"
         data-testid="food-bottom-btn"
         src={ mealIcon }
+        activeClassName="active"
       >
-        <img src={ mealIcon } alt="foodBtn" />
-      </Link>
-    </footer>
+        <div>
+          <GiHotMeal />
+          <p>Meals</p>
+        </div>
+      </NavLink>
+    </FooterStyled>
   );
 }
 
