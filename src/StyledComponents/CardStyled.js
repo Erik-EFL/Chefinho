@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const theme = {
-  bg: '#1b1b1b',
   title: '#BF9663',
   text: '#D97016',
 };
@@ -12,6 +11,7 @@ const DivCard = styled.div`
   width: 151px;
   height: 205px;
   margin: 8px;
+  
   img {
     width: 151px;
     height: 151px;

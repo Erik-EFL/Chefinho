@@ -19,9 +19,11 @@ function Foods() {
         searchButton
       />
       <h4>Filters by Category</h4>
+
       <CategoryFilter
         type="foods"
       />
+
       <CardContainer>
         {initialFoods.map((item, index) => (
           <Link

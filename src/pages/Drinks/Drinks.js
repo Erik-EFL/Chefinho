@@ -5,6 +5,7 @@ import CategoryFilter from '../../Components/CategoryFilter';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import AppContext from '../../context/AppContext';
+import { CardContainer } from '../../StyledComponents/FoodStyled';
 
 export default function Drinks() {
   const { initialFetchs: { drinks } } = useContext(AppContext);
@@ -16,21 +17,25 @@ export default function Drinks() {
         title="Drinks"
         searchButton
       />
+
       <CategoryFilter
         type="drinks"
       />
-      {initialDrinks.map((item, index) => (
-        <Link
-          key={ index }
-          to={ `/drinks/${item.idDrink}` }
-        >
-          <Cards
-            image={ item.strDrinkThumb }
-            index={ index }
-            name={ item.strDrink }
-          />
-        </Link>
-      ))}
+
+      <CardContainer>
+        {initialDrinks.map((item, index) => (
+          <Link
+            key={ index }
+            to={ `/drinks/${item.idDrink}` }
+          >
+            <Cards
+              image={ item.strDrinkThumb }
+              index={ index }
+              name={ item.strDrink }
+            />
+          </Link>
+        ))}
+      </CardContainer>
       <MenuInferior />
     </div>
   );

@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 
 const theme = {
-  bg: '#1b1b1b',
   title: '#BF9663',
   text: '#D97016',
 };
 
-export const LoginStyled = styled.div`
-
-  background: ${theme.bg};
+const LoginStyled = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,6 +13,7 @@ export const LoginStyled = styled.div`
   align-content: center;
   height: 100vmax;
   position: relative;
+  
   p {
     color: ${theme.text};
   }
@@ -67,23 +65,4 @@ export const LoginStyled = styled.div`
   }
 `;
 
-export const ButtonActive = styled.button`
-  width: 327px;
-  height: 56px;
-  border-radius: 32px;
-  border: none;
-  color: #1b1b1b;
-  background: #BF9663;
-  margin-bottom: 24px;
-  cursor: pointer;
-`;
-
-export const ButtonDisabled = styled.button`
-  width: 327px;
-  height: 56px;
-  border-radius: 32px;
-  border: none;
-  color: #2b2b2b;
-  background: #a39483;
-  margin-bottom: 24px;
-`;
+export default LoginStyled;

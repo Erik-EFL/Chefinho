@@ -7,11 +7,13 @@ const theme = {
 };
 
 export const HeaderStyled = styled.header`
+  position: relative;
   display: flex;
   background-color: ${theme.bg};
   color: ${theme.title};
   flex-direction: column;
   padding-top: 8px;
+  height: 80px;
 
   span {
     display: flex;
@@ -48,11 +50,15 @@ export const DivComponents = styled.div`
 `;
 
 export const DivSearch = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  z-index: 1;
+  position: absolute;
+  background-color: ${theme.bg};
+  display: grid;
+  grid-template-columns: 1fr ;
+  grid-template-rows: 1fr ;
   width: 100%;
-  padding: 8px 24px;
+  top: 60px;
+  padding: 8px 2px;
 `;
 
 export const InputSearch = styled.input`
@@ -65,12 +71,11 @@ export const InputSearch = styled.input`
 `;
 
 export const BtnSearch = styled.button`
-  padding: 6px 12px;
+  padding: 6px 8px;
   border-radius: 16px;
   background-color: ${theme.title};
   color: #1b1b1b;
   border: none;
-  margin-left: 16px;
 `;
 
 export const DivRadios = styled.div`

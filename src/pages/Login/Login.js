@@ -3,9 +3,8 @@ import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import chef from '../../chef.png';
 import AppContext from '../../context/AppContext';
-import {
-  ButtonActive, ButtonDisabled, LoginStyled
-} from '../../StyledComponents/LoginStyled';
+import { ButtonActive, ButtonDisabled } from '../../StyledComponents/ButtonsStyled';
+import LoginStyled from '../../StyledComponents/LoginStyled';
 import Lock from './assets/Lock.svg';
 import Message from './assets/Message.svg';
 

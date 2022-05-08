@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 const theme = {
-  bg: '#1b1b1b',
   title: '#BF9663',
   text: '#D97016',
 };

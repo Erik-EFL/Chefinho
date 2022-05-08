@@ -55,71 +55,72 @@ function Header(props) {
           </SearchFilters>
         )}
       </DivComponents>
-      {searchInput && (
-        <span>
-          <DivRadios>
-            <label htmlFor="ingredient-radio">
-              <input
-                data-testid="ingredient-search-radio"
-                id="ingredient-radio"
-                type="radio"
-                name="filter-radios"
-                onChange={ ({ target }) => handleFilters(target) }
-                value="ingredient"
+      <DivSearch>
+        {searchInput && (
+          <span>
+            <DivRadios>
+              <label htmlFor="ingredient-radio">
+                <input
+                  data-testid="ingredient-search-radio"
+                  id="ingredient-radio"
+                  type="radio"
+                  name="filter-radios"
+                  onChange={ ({ target }) => handleFilters(target) }
+                  value="ingredient"
+                />
+                {selectedFilter === 'ingredient'
+                  ? <IoIosRadioButtonOn />
+                  : <IoIosRadioButtonOff />}
+                Ingredient
+              </label>
+              <label htmlFor="name-radio">
+                <input
+                  data-testid="name-search-radio"
+                  id="name-radio"
+                  type="radio"
+                  name="filter-radios"
+                  onChange={ ({ target }) => handleFilters(target) }
+                  value="name"
+                />
+                {selectedFilter === 'name'
+                  ? <IoIosRadioButtonOn />
+                  : <IoIosRadioButtonOff />}
+                Name
+              </label>
+              <label htmlFor="letter-radio">
+                <input
+                  data-testid="first-letter-search-radio"
+                  id="letter-radio"
+                  type="radio"
+                  name="filter-radios"
+                  onChange={ ({ target }) => handleFilters(target) }
+                  value="firstLetter"
+                />
+                {selectedFilter === 'firstLetter'
+                  ? <IoIosRadioButtonOn />
+                  : <IoIosRadioButtonOff />}
+                First Letter
+              </label>
+            </DivRadios>
+            <div style={ { display: 'flex' } }>
+              <InputSearch
+                id="search-input"
+                data-testid="search-input"
+                type="text"
+                value={ filterSearchInput }
+                onChange={ ({ target }) => handleSearchInput(target) }
               />
-              {selectedFilter === 'ingredient'
-                ? <IoIosRadioButtonOn />
-                : <IoIosRadioButtonOff />}
-              Ingredient
-            </label>
-            <label htmlFor="name-radio">
-              <input
-                data-testid="name-search-radio"
-                id="name-radio"
-                type="radio"
-                name="filter-radios"
-                onChange={ ({ target }) => handleFilters(target) }
-                value="name"
-              />
-              {selectedFilter === 'name'
-                ? <IoIosRadioButtonOn />
-                : <IoIosRadioButtonOff />}
-              Name
-            </label>
-            <label htmlFor="letter-radio">
-              <input
-                data-testid="first-letter-search-radio"
-                id="letter-radio"
-                type="radio"
-                name="filter-radios"
-                onChange={ ({ target }) => handleFilters(target) }
-                value="firstLetter"
-              />
-              {selectedFilter === 'firstLetter'
-                ? <IoIosRadioButtonOn />
-                : <IoIosRadioButtonOff />}
-              First Letter
-            </label>
-          </DivRadios>
-
-          <DivSearch>
-            <InputSearch
-              id="search-input"
-              data-testid="search-input"
-              type="text"
-              value={ filterSearchInput }
-              onChange={ ({ target }) => handleSearchInput(target) }
-            />
-            <BtnSearch
-              type="button"
-              onClick={ () => setFilteredItems(location) }
-              data-testid="exec-search-btn"
-            >
-              Search
-            </BtnSearch>
-          </DivSearch>
-        </span>
-      )}
+              <BtnSearch
+                type="button"
+                onClick={ () => setFilteredItems(location) }
+                data-testid="exec-search-btn"
+              >
+                Search
+              </BtnSearch>
+            </div>
+          </span>
+        )}
+      </DivSearch>
     </HeaderStyled>
   );
 }
