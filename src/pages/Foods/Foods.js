@@ -5,7 +5,7 @@ import CategoryFilter from '../../Components/CategoryFilter';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import AppContext from '../../context/AppContext';
-import { PageFood } from '../../StyledComponents/FoodStyled';
+import { CardContainer, PageFood } from '../../StyledComponents/FoodStyled';
 
 function Foods() {
   const { initialFetchs: { foods } } = useContext(AppContext);
@@ -22,18 +22,21 @@ function Foods() {
       <CategoryFilter
         type="foods"
       />
-      {initialFoods.map((item, index) => (
-        <Link
-          key={ index }
-          to={ `/foods/${item.idMeal}` }
-        >
-          <Cards
-            image={ item.strMealThumb }
-            index={ index }
-            name={ item.strMeal }
-          />
-        </Link>
-      ))}
+      <CardContainer>
+        {initialFoods.map((item, index) => (
+          <Link
+            key={ index }
+            to={ `/foods/${item.idMeal}` }
+          >
+            <Cards
+              image={ item.strMealThumb }
+              index={ index }
+              name={ item.strMeal }
+            />
+          </Link>
+
+        ))}
+      </CardContainer>
       <MenuInferior />
     </PageFood>
   );

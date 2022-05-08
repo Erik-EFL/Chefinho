@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import './Card.css';
+import { DivCard } from '../StyledComponents/CardStyled';
 
 function Cards({ image, name, index }) {
   return (
-    <div data-testid={ `${index}-recipe-card` }>
+    <DivCard data-testid={ `${index}-recipe-card` }>
       <img
         src={ image }
         alt={ name }
@@ -12,7 +12,7 @@ function Cards({ image, name, index }) {
         data-testid={ `${index}-card-img` }
       />
       <p data-testid={ `${index}-card-name` }>{name}</p>
-    </div>
+    </DivCard>
   );
 }
 
