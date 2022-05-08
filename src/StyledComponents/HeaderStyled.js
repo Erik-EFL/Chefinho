@@ -22,8 +22,12 @@ export const HeaderStyled = styled.header`
 
   svg {
     font-size: 24px;
-    margin: 0px 16px;
     color: ${theme.title};
+  }
+
+  h1 {
+    margin-left: 46px;
+    margin-right: 46px;
   }
 
 `;
@@ -37,7 +41,7 @@ export const SearchFilters = styled.button`
 
 export const DivComponents = styled.div`
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     display:flex;
     width: 100%;
     padding: 0 24px;
@@ -48,8 +52,7 @@ export const DivSearch = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 0 24px;
-  margin: 8px;
+  padding: 8px 24px;
 `;
 
 export const InputSearch = styled.input`
@@ -67,6 +70,7 @@ export const BtnSearch = styled.button`
   background-color: ${theme.title};
   color: #1b1b1b;
   border: none;
+  margin-left: 16px;
 `;
 
 export const DivRadios = styled.div`

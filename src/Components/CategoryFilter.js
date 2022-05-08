@@ -6,6 +6,7 @@ import fetchCategories from '../Service/fetchCategories';
 import fetchDrinks from '../Service/fetchDrinks';
 import fetchFilteredByCategory from '../Service/fetchFilteredByCategory';
 import fetchFoods from '../Service/fetchFoods';
+import { Container } from '../StyledComponents/CategoryFiltersStyled';
 
 export default function CategoryFilter(props) {
   const {
@@ -66,7 +67,7 @@ export default function CategoryFilter(props) {
   }, []);
 
   return (
-    <div>
+    <Container>
       <button
         type="button"
         data-testid="All-category-filter"
@@ -88,7 +89,7 @@ export default function CategoryFilter(props) {
           </button>
         ))
       }
-    </div>
+    </Container>
   );
 }
 

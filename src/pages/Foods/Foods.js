@@ -5,6 +5,7 @@ import CategoryFilter from '../../Components/CategoryFilter';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import AppContext from '../../context/AppContext';
+import { PageFood } from '../../StyledComponents/FoodStyled';
 
 function Foods() {
   const { initialFetchs: { foods } } = useContext(AppContext);
@@ -12,11 +13,12 @@ function Foods() {
   const initialFoods = foods.filter((_i, index) => index < magicNumber);
 
   return (
-    <div>
+    <PageFood>
       <Header
         title="Foods"
         searchButton
       />
+      <h4>Filters by Category</h4>
       <CategoryFilter
         type="foods"
       />
@@ -33,7 +35,7 @@ function Foods() {
         </Link>
       ))}
       <MenuInferior />
-    </div>
+    </PageFood>
   );
 }
 
