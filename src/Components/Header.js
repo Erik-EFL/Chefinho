@@ -1,10 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useState } from 'react';
+import { RiSearchLine, RiUserFill } from 'react-icons/ri';
 import { Link, useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
-import profileIcon from '../images/profileIcon.svg';
-import searchIcon from '../images/searchIcon.svg';
-import './Header.css';
+import { HeaderStyled, SearchButton } from '../StyledComponents/HeaderStyled';
 
 function Header(props) {
   const {
@@ -24,34 +23,28 @@ function Header(props) {
   const history = useHistory();
   const location = history.location.pathname.split('/')[1];
   return (
-    <header>
-      <Link
-        to="/profile"
-      >
-        <img
-          data-testid="profile-top-btn"
-          src={ profileIcon }
-          alt="profileIcon"
-        />
-      </Link>
-      <h1
-        data-testid="page-title"
-      >
-        { title }
-      </h1>
-      {searchButton && (
-        <button
-          type="button"
-          className="search-button"
-          onClick={ toggleSearchInput }
+    <HeaderStyled>
+      <div>
+        <Link
+          to="/profile"
         >
-          <img
-            data-testid="search-top-btn"
-            src={ searchIcon }
-            alt="Search icon."
-          />
-        </button>
-      )}
+          <RiUserFill data-testid="profile-top-btn" />
+        </Link>
+        <h1
+          data-testid="page-title"
+        >
+          { title }
+        </h1>
+        {searchButton && (
+          <SearchButton
+            type="button"
+            className="search-button"
+            onClick={ toggleSearchInput }
+          >
+            <RiSearchLine data-testid="search-top-btn" />
+          </SearchButton>
+        )}
+      </div>
       {searchInput && (
         <div>
           <label htmlFor="search-input">
@@ -105,7 +98,7 @@ function Header(props) {
           </button>
         </div>
       )}
-    </header>
+    </HeaderStyled>
   );
 }
 
