@@ -7,6 +7,7 @@ const theme = {
 };
 
 export const LoginStyled = styled.div`
+
   background: ${theme.bg};
   display: flex;
   flex-direction: column;
@@ -14,6 +15,7 @@ export const LoginStyled = styled.div`
   align-items: center;
   align-content: center;
   height: 100vmax;
+  position: relative;
   p {
     color: ${theme.text};
   }
@@ -29,21 +31,32 @@ export const LoginStyled = styled.div`
     align-items: center;
     margin-top: 32px;
 
-    input {
+    label {
+      input {
       width: 327px;
       height: 56px;
       border-radius: 32px;
       border: 1px #D0DBEA solid;
-      padding-left: 24px;
+      padding-left: 42px;
+      position: relative;
+      }
+
+      input + input{
+        margin-top: 16px;
+      }
+
+      input:focus {
+        outline: 0;
+      }
+
+      img{
+        z-index: 1;
+        position: absolute;
+        left: 32px;
+        margin-top: 16px;
+      }
     }
 
-    input + input{
-      margin-top: 16px;
-    }
-
-    input:focus {
-      outline: 0;
-    }
     
     p {
       margin-top: 24px;

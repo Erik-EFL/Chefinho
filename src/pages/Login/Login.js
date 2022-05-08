@@ -6,6 +6,8 @@ import AppContext from '../../context/AppContext';
 import {
   ButtonActive, ButtonDisabled, LoginStyled
 } from '../../StyledComponents/LoginStyled';
+import Lock from './assets/Lock.svg';
+import Message from './assets/Message.svg';
 
 export default function Login() {
   const { email, setEmail, password, setPassword } = useContext(AppContext);
@@ -41,20 +43,28 @@ export default function Login() {
         <h1>Recipe App!</h1>
         <p>Please enter your account here</p>
         <div>
-          <input
-            type="email"
-            data-testid="email-input"
-            value={ email }
-            placeholder="Email"
-            onChange={ ({ target }) => setEmail(target.value) }
-          />
-          <input
-            type="password"
-            value={ password }
-            data-testid="password-input"
-            placeholder="Password"
-            onChange={ ({ target }) => setPassword(target.value) }
-          />
+          <label htmlFor="email">
+            <img src={ Message } alt="imagem de ícone de mensagem" />
+            <input
+              type="email"
+              id="email"
+              data-testid="email-input"
+              value={ email }
+              placeholder="Email"
+              onChange={ ({ target }) => setEmail(target.value) }
+            />
+          </label>
+          <label htmlFor="password">
+            <img src={ Lock } alt="imagem de ícone de cadeado" />
+            <input
+              type="password"
+              id="password"
+              value={ password }
+              data-testid="password-input"
+              placeholder="Password"
+              onChange={ ({ target }) => setPassword(target.value) }
+            />
+          </label>
           <p><Link to="/refoundPassword">Forgot password?</Link></p>
         </div>
         {!validate()
