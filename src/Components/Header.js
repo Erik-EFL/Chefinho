@@ -1,9 +1,18 @@
 import PropTypes from 'prop-types';
 import React, { useContext, useState } from 'react';
+import { IoIosRadioButtonOff, IoIosRadioButtonOn } from 'react-icons/io';
 import { RiSearchLine, RiUserFill } from 'react-icons/ri';
 import { Link, useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
-import { HeaderStyled, SearchButton } from '../StyledComponents/HeaderStyled';
+import {
+  BtnSearch,
+  DivComponents,
+  DivRadios,
+  DivSearch,
+  HeaderStyled,
+  // eslint-disable-next-line comma-dangle
+  InputSearch, SearchFilters
+} from '../StyledComponents/HeaderStyled';
 
 function Header(props) {
   const {
@@ -15,6 +24,7 @@ function Header(props) {
     setSearchInput(!searchInput);
   };
   const {
+    selectedFilter,
     handleFilters,
     setFilteredItems,
     handleSearchInput,
@@ -24,7 +34,7 @@ function Header(props) {
   const location = history.location.pathname.split('/')[1];
   return (
     <HeaderStyled>
-      <div>
+      <DivComponents>
         <Link
           to="/profile"
         >
@@ -36,67 +46,79 @@ function Header(props) {
           { title }
         </h1>
         {searchButton && (
-          <SearchButton
+          <SearchFilters
             type="button"
             className="search-button"
             onClick={ toggleSearchInput }
           >
             <RiSearchLine data-testid="search-top-btn" />
-          </SearchButton>
+          </SearchFilters>
         )}
-      </div>
+      </DivComponents>
       {searchInput && (
-        <div>
-          <label htmlFor="search-input">
-            <input
+        <span>
+          <DivRadios>
+            <label htmlFor="ingredient-radio">
+              <input
+                data-testid="ingredient-search-radio"
+                id="ingredient-radio"
+                type="radio"
+                name="filter-radios"
+                onChange={ ({ target }) => handleFilters(target) }
+                value="ingredient"
+              />
+              {selectedFilter === 'ingredient'
+                ? <IoIosRadioButtonOn />
+                : <IoIosRadioButtonOff />}
+              Ingredient
+            </label>
+            <label htmlFor="name-radio">
+              <input
+                data-testid="name-search-radio"
+                id="name-radio"
+                type="radio"
+                name="filter-radios"
+                onChange={ ({ target }) => handleFilters(target) }
+                value="name"
+              />
+              {selectedFilter === 'name'
+                ? <IoIosRadioButtonOn />
+                : <IoIosRadioButtonOff />}
+              Name
+            </label>
+            <label htmlFor="letter-radio">
+              <input
+                data-testid="first-letter-search-radio"
+                id="letter-radio"
+                type="radio"
+                name="filter-radios"
+                onChange={ ({ target }) => handleFilters(target) }
+                value="firstLetter"
+              />
+              {selectedFilter === 'firstLetter'
+                ? <IoIosRadioButtonOn />
+                : <IoIosRadioButtonOff />}
+              First Letter
+            </label>
+          </DivRadios>
+
+          <DivSearch>
+            <InputSearch
               id="search-input"
               data-testid="search-input"
               type="text"
               value={ filterSearchInput }
               onChange={ ({ target }) => handleSearchInput(target) }
             />
-          </label>
-          <label htmlFor="ingredient-radio">
-            <input
-              data-testid="ingredient-search-radio"
-              id="ingredient-radio"
-              type="radio"
-              name="filter-radios"
-              onChange={ ({ target }) => handleFilters(target) }
-              value="ingredient"
-            />
-            Ingredient
-          </label>
-          <label htmlFor="name-radio">
-            <input
-              data-testid="name-search-radio"
-              id="name-radio"
-              type="radio"
-              name="filter-radios"
-              onChange={ ({ target }) => handleFilters(target) }
-              value="name"
-            />
-            Name
-          </label>
-          <label htmlFor="letter-radio">
-            <input
-              data-testid="first-letter-search-radio"
-              id="letter-radio"
-              type="radio"
-              name="filter-radios"
-              onChange={ ({ target }) => handleFilters(target) }
-              value="firstLetter"
-            />
-            First Letter
-          </label>
-          <button
-            type="button"
-            onClick={ () => setFilteredItems(location) }
-            data-testid="exec-search-btn"
-          >
-            Search
-          </button>
-        </div>
+            <BtnSearch
+              type="button"
+              onClick={ () => setFilteredItems(location) }
+              data-testid="exec-search-btn"
+            >
+              Search
+            </BtnSearch>
+          </DivSearch>
+        </span>
       )}
     </HeaderStyled>
   );
