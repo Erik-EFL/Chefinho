@@ -24,6 +24,5 @@ export const CardContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  margin-bottom: 80px;
 `;
-
-export const oi = 'oi';

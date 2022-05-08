@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { DivCard } from '../StyledComponents/CardStyled';
+import DivCard from '../StyledComponents/CardStyled';
 
 function Cards({ image, name, index }) {
   return (
