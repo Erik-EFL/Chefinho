@@ -15,6 +15,9 @@ export default class SliderFoods extends Component {
       speed: 500,
       slidesToShow: 2,
       slidesToScroll: 2,
+      arrows: false,
+      adaptiveHeight: true,
+      accessibility: true,
     };
     return (
       <div>

@@ -8,6 +8,7 @@ import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import { fetchRecommendationFoods } from '../../Service/FetchRecommendation';
 import getFavorite from '../../Service/getFavorite';
 import { setFavoriteDrink } from '../../Service/setFavorite';
+import ImageHead from '../../StyledComponents/ImgHead';
 import './DrinkDetails.css';
 
 function DrinkDetails() {
@@ -103,13 +104,15 @@ function DrinkDetails() {
   };
   return (
     <div>
-      <img
-        style={ { width: '95%' } }
-        data-testid="recipe-photo"
-        src={ drinkDetails.strDrinkThumb }
-        alt={ drinkDetails.idDrink }
-        className="imgDetails"
-      />
+      <ImageHead>
+        <img
+          style={ { width: '95%' } }
+          data-testid="recipe-photo"
+          src={ drinkDetails.strDrinkThumb }
+          alt={ drinkDetails.idDrink }
+          className="imgDetails"
+        />
+      </ImageHead>
       <h1 data-testid="recipe-title">{drinkDetails.strDrink}</h1>
       <p data-testid="recipe-category">{drinkDetails.strAlcoholic}</p>
 

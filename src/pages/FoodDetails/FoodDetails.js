@@ -1,13 +1,17 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import FavoriteBtn from '../../Components/Buttons/FavoriteBtn';
+import ShareBtn from '../../Components/Buttons/ShareBtn';
 import SliderFoods from '../../Components/SliderFoods';
-import blackHeartIcon from '../../images/blackHeartIcon.svg';
-import shareIcon from '../../images/shareIcon.svg';
-import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import { fetchRecommendationDrinks } from '../../Service/FetchRecommendation';
-import getFavorite from '../../Service/getFavorite';
-import { setFavoriteFood } from '../../Service/setFavorite';
+import ImageHead from '../../StyledComponents/ImgHead';
+import {
+  CabecalioRecipe, ContainerRecipe,
+  MainContent,
+  Recipes
+} from '../../StyledComponents/RecipesDetails';
 import './FoodDetails.css';
 
 export default function FoodDetails() {
@@ -16,8 +20,6 @@ export default function FoodDetails() {
 
   const [foodDetails, setFoodDetails] = useState([]);
   const [recommendation, setRecommendation] = useState([]);
-  const [copy, setCopy] = useState(false);
-  const [renderFav, setRenderFav] = useState(false);
   // Função que faz o fetch para pegar os detalhes do Food.
   const fetchFoodDetails = async () => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idFood}`;
@@ -30,12 +32,10 @@ export default function FoodDetails() {
     setRecommendation(await fetchRecommendationDrinks());
   };
 
-  const render = () => setRenderFav(getFavorite(idFood));
   // Quando inicializar a pagina chama a função de fazer o fetch.
   useEffect(() => {
     fetchFoodDetails();
     fetchRecommendation();
-    render();
   }, []);
 
   // Pegar a key dos ingredients dentro do objeto;
@@ -60,6 +60,7 @@ export default function FoodDetails() {
 
   const renderIngredients = ingredients.map((item, index) => (
     <p
+      className="ingredientes"
       data-testid={ `${index}-ingredient-name-and-measure` }
       key={ index }
     >
@@ -95,54 +96,49 @@ export default function FoodDetails() {
 
     </button>
   );
-  const copyLink = () => {
-    const url = window.location.href;
-    navigator.clipboard.writeText(url);
-    setCopy(true);
-  };
 
   return (
-    <div>
-      <img
-        style={ { width: '95%' } }
-        data-testid="recipe-photo"
-        src={ foodDetails.strMealThumb }
-        alt={ foodDetails.idMeal }
-      />
-      <h1 data-testid="recipe-title">{foodDetails.strMeal}</h1>
-      <button
-        data-testid="share-btn"
-        type="button"
-        onClick={ copyLink }
-      >
-        <img src={ shareIcon } alt="share" />
-      </button>
-      {copy && <span>Link copied!</span>}
-      {/* Função setFavoriteFood criada na pasta Service - favoritar ou desfavoritar um item */}
-      <button type="button" onClick={ () => setFavoriteFood(foodDetails, setRenderFav) }>
+    <Recipes>
+      <ImageHead>
         <img
-          data-testid="favorite-btn"
-          src={ renderFav ? blackHeartIcon : whiteHeartIcon }
-          alt="favoriteBtn"
+          data-testid="recipe-photo"
+          src={ foodDetails.strMealThumb }
+          alt={ foodDetails.idMeal }
         />
-      </button>
-      <p data-testid="recipe-category">{foodDetails.strCategory}</p>
-      <div>
-        {renderIngredients}
-      </div>
-      <p data-testid="instructions">{foodDetails.strInstructions}</p>
+      </ImageHead>
+      <MainContent>
+        <CabecalioRecipe>
+          <div
+            className="titleSub"
+          >
+            <h1 data-testid="recipe-title">{foodDetails.strMeal}</h1>
+            <p data-testid="recipe-category">{foodDetails.strCategory}</p>
+          </div>
+          <div>
+            <ShareBtn />
+            <FavoriteBtn />
+          </div>
+        </CabecalioRecipe>
+        {/* Função setFavoriteFood criada na pasta Service - favoritar ou desfavoritar um item */}
+        <ContainerRecipe>
+          <div>
+            {renderIngredients}
+          </div>
+          <p data-testid="instructions">{foodDetails.strInstructions}</p>
 
-      <iframe
-        style={ { width: '100%', height: '315px', marginBottom: '50px' } }
-        data-testid="video"
-        src={ foodDetails.strYoutube
+          <iframe
+            style={ { width: '100%', height: '315px', marginBottom: '50px' } }
+            data-testid="video"
+            src={ foodDetails.strYoutube
           && foodDetails.strYoutube.replace('watch?v=', 'embed/') }
-        title="YouTube video player"
-        frameBorder="0"
-        allowFullScreen
-      />
-      {infos.length > 0 && <SliderFoods info={ infos } />}
-      {!checkRecipe && buttonStartRecipe}
-    </div>
+            title="YouTube video player"
+            frameBorder="0"
+            allowFullScreen
+          />
+          {infos.length > 0 && <SliderFoods info={ infos } />}
+          {!checkRecipe && buttonStartRecipe}
+        </ContainerRecipe>
+      </MainContent>
+    </Recipes>
   );
 }

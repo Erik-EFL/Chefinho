@@ -1,17 +1,11 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
-import { Container } from '../../StyledComponents/CategoryFiltersStyled';
+import { ButtonContainer } from '../../StyledComponents/ProfileStyled';
+import ProfileHead from './components/ProfileHead';
 
 export default function Profile({ history }) {
-  const [email, setEmail] = useState('');
-
-  useEffect(() => {
-    const store = JSON.parse(localStorage.getItem('user'));
-    if (store) setEmail(store.email);
-  }, []);
-
   const setClearStorage = () => {
     localStorage.clear();
     history.push('/');
@@ -24,14 +18,8 @@ export default function Profile({ history }) {
         searchButton={ false }
       />
       <div className="profile">
-        <h1
-          style={ { fontSize: '22px', color: '#D97016', textAlign: 'center' } }
-          data-testid="profile-email"
-        >
-          { email }
-
-        </h1>
-        <Container>
+        <ProfileHead />
+        <ButtonContainer>
           <button
             type="button"
             data-testid="profile-done-btn"
@@ -47,13 +35,14 @@ export default function Profile({ history }) {
             Favorite Recipes
           </button>
           <button
+            className="logout"
             type="button"
             data-testid="profile-logout-btn"
             onClick={ setClearStorage }
           >
             Logout
           </button>
-        </Container>
+        </ButtonContainer>
       </div>
       <MenuInferior />
     </div>

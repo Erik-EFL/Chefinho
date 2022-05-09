@@ -14,6 +14,7 @@ export const HeaderStyled = styled.header`
   flex-direction: column;
   padding-top: 8px;
   height: 80px;
+  width: 100%;
 
   span {
     display: flex;
@@ -28,6 +29,7 @@ export const HeaderStyled = styled.header`
   }
 
   h1 {
+    font-size: 36px;
     margin-left: 46px;
     margin-right: 46px;
   }

@@ -12,6 +12,7 @@ export const PageFood = styled.div`
   align-items: center;
 
   h4 {
+    margin-top: -25px;
     color: ${theme.title};
     font-size: 1em;
   }
