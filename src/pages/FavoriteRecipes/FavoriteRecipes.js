@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import FavoriteCards from '../../Components/FavoriteCards';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
+// eslint-disable-next-line max-len
+import { CardContainer, ContainerBtns, PageFavorite } from '../../StyledComponents/FavoriteRecipes/FavoriteRecipesStyled';
 
 export default function FavoriteRecipes() {
   const [favorites, setFavorites] = useState([]);
@@ -22,12 +24,12 @@ export default function FavoriteRecipes() {
     }
   }, [rmHistory]);
   return (
-    <div>
+    <PageFavorite>
       <Header
-        title="Favorite"
+        title="Favorites"
         searchButton={ false }
       />
-      <div>
+      <ContainerBtns>
         <button
           type="button"
           data-testid="filter-by-food-btn"
@@ -52,15 +54,19 @@ export default function FavoriteRecipes() {
           All
 
         </button>
-      </div>
-      {favorites.filter((obj) => obj.type.includes(actualFilter)).map((item, index) => (
-        <FavoriteCards
-          key={ index }
-          item={ item }
-          index={ index }
-          callback={ setRmHistory }
-        />))}
+      </ContainerBtns>
+
+      <CardContainer>
+        {favorites.filter((obj) => obj.type.includes(actualFilter)).map((item, index) => (
+          <FavoriteCards
+            key={ index }
+            item={ item }
+            index={ index }
+            callback={ setRmHistory }
+          />))}
+      </CardContainer>
+
       <MenuInferior />
-    </div>
+    </PageFavorite>
   );
 }
