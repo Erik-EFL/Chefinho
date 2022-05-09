@@ -14,7 +14,8 @@ export function setFavoriteFood(object, callback) {
 
   if (actualStore) { // If para verificar se a chave no Local Storage Existe;
     const verify = actualStore.filter((item) => item.id === object.idMeal);
-    if (!verify) {
+    console.log('verify', verify);
+    if (verify.length === 0) {
       // Se o item não existir dentro da chave de favoritos, adiciona o item!
       localStorage.setItem('favoriteRecipes',
         JSON.stringify([...actualStore, newObj]));
