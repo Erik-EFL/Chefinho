@@ -8,13 +8,13 @@ const theme = {
 const DivCard = styled.div`
   display: flex;
   flex-direction: column;
-  width: 151px;
-  height: 205px;
-  margin: 8px;
+  width: 120px;
+  height: 160px;
+  margin: 16px;
   
   img {
-    width: 151px;
-    height: 151px;
+    width: 120px;
+    height: 120px;
     border-radius: 16px;
   }
 
@@ -22,7 +22,8 @@ const DivCard = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    margin-top: 16px;
+    margin: 0;
+    margin-top: 8px;
     font-size: 17px;
     letter-spacing: 0.5px;
     color: ${theme.text};
