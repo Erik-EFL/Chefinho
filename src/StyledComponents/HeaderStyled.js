@@ -13,7 +13,7 @@ export const HeaderStyled = styled.header`
   color: ${theme.title};
   flex-direction: column;
   padding-top: 8px;
-  height: 80px;
+  height: 75px;
   width: 100%;
 
   span {
@@ -78,6 +78,7 @@ export const BtnSearch = styled.button`
   background-color: ${theme.title};
   color: #1b1b1b;
   border: none;
+  margin-left: 16px;
 `;
 
 export const DivRadios = styled.div`

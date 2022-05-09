@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import FavoriteCards from '../../Components/FavoriteCards';
 import Header from '../../Components/Header';
+import MenuInferior from '../../Components/MenuInferior';
 
 export default function FavoriteRecipes() {
   const [favorites, setFavorites] = useState([]);
@@ -23,7 +24,7 @@ export default function FavoriteRecipes() {
   return (
     <div>
       <Header
-        title="Favorite Recipes"
+        title="Favorite"
         searchButton={ false }
       />
       <div>
@@ -59,6 +60,7 @@ export default function FavoriteRecipes() {
           index={ index }
           callback={ setRmHistory }
         />))}
+      <MenuInferior />
     </div>
   );
 }
