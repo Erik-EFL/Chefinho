@@ -12,7 +12,7 @@ export default function Explore() {
         title="Explore"
         searchButton={ false }
       />
-      <div style={ { maxWidth: '90%', margin: '0 auto' } }>
+      <div style={ { maxWidth: '86%', margin: '0 auto' } }>
         <Container>
           <button
             style={ { width: '150px' } }
