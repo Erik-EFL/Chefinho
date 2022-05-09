@@ -6,8 +6,7 @@ import AppContext from '../../../context/AppContext';
 import '../assets/ListIngredients.css';
 import { setCheckedRecipes, verifyChecked } from '../helper/helper';
 import {
-  reloadRecipe,
-  setLocalStorage,
+  reloadRecipe, setLocalStorage,
   setRecipeInProgress
 } from '../helper/setLocalStorage';
 
@@ -24,6 +23,7 @@ function ListIngredients(props) {
   if (!localStorage.inProgressRecipes) {
     setLocalStorage();
   }
+
   useEffect(() => {
     const checados = document.querySelectorAll('.inputBox');
     setCheckedRecipes(checados, checked, setChecked);

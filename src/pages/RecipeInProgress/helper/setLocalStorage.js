@@ -14,6 +14,19 @@ inProgressRecipes {
 /* Essa function esta sendo utilizada no Login para criar o
   LocalStorage
 */
+
+const newObj2 = [{
+  id: '',
+  type: '',
+  nationality: '',
+  category: '',
+  alcoholicOrNot: '',
+  name: '',
+  image: '',
+  doneDate: 'feito',
+  tags: '',
+}];
+
 export const setLocalStorage = () => localStorage
   .setItem('inProgressRecipes', JSON.stringify(
     {
@@ -21,6 +34,14 @@ export const setLocalStorage = () => localStorage
       meals: {},
     },
   ));
+
+export function setDoneRecipeStorage() {
+  if (!verifyLocalStorage) {
+    localStorage.setItem('doneRecipes', JSON.stringify(
+      newObj2,
+    ));
+  }
+}
 
 export function reloadRecipe(type, setChecked, id) {
   const verifyLocalStorage = JSON.parse(localStorage
@@ -34,9 +55,6 @@ export function reloadRecipe(type, setChecked, id) {
 
 /* Fazer tudo de novo em vez de adicionar um novo. */
 export function setRecipeInProgress(id, ingredient, type) {
-/*   console.log('id', id);
-  console.log('ingredient', ingredient);
-  console.log('type', type); */
   const verifyLocalStorage = JSON.parse(localStorage
     .getItem('inProgressRecipes'));
   if (verifyLocalStorage && type === 'foods') {
@@ -60,6 +78,52 @@ export function setRecipeInProgress(id, ingredient, type) {
     localStorage
       .setItem('inProgressRecipes', JSON.stringify(
         newObj,
+      ));
+  }
+}
+
+export function setDoneRecipe(id, ingredient, type) {
+  console.log('setDoneRecipe', id);
+  console.log('setDoneRecipe', ingredient);
+  console.log('setDoneRecipe', type);
+  const verifyLocalStorage = JSON.parse(localStorage
+    .getItem('doneRecipes'));
+
+  if (verifyLocalStorage && type === 'foods') {
+    const newObjFood = [{
+      id: [id],
+      type: [type],
+      nationality: ingredient.strArea,
+      category: ingredient.strCategory,
+      alcoholicOrNot: '',
+      name: ingredient.strMeal,
+      image: ingredient.strMealThumb,
+      doneDate: 'feito',
+      tags: ingredient.strTags,
+    }];
+    localStorage
+      .setItem('doneRecipes', JSON.stringify(
+        newObjFood,
+      ));
+  }
+
+  if (verifyLocalStorage && type === 'drinks') {
+    console.log('hello setDoneRecipe');
+    const newObjDrink = [{
+      id: [id],
+      type: [type],
+      nationality: ingredient.strArea,
+      category: ingredient.strCategory,
+      alcoholicOrNot: ingredient.strAlcoholic,
+      name: ingredient.strDrink,
+      image: ingredient.strDrinkThumb,
+      doneDate: 'feito',
+      tags: ingredient.strTags,
+    }];
+    newObj.cocktails[id] = ingredient;
+    localStorage
+      .setItem('doneRecipes', JSON.stringify(
+        newObjDrink,
       ));
   }
 }

@@ -10,6 +10,7 @@ import {
   CabecalioRecipe, ContainerRecipe, MainContent, Recipes
 } from '../../StyledComponents/RecipesDetails';
 import ListIngredients from './components/ListIngredients';
+import { setDoneRecipe, setDoneRecipeStorage } from './helper/setLocalStorage';
 
 function RecipeInProgress() {
   const { id } = useParams();
@@ -37,11 +38,18 @@ function RecipeInProgress() {
       });
   }, []);
 
+  if (!localStorage.doneRecipe) {
+    setDoneRecipeStorage();
+  }
+
   useEffect(() => {
     handleChange();
   });
 
-  // console.log('TBN', btnDisabled);
+  const handleClick = () => {
+    history.push('/done-recipes');
+    setDoneRecipe(id, progress, type);
+  };
 
   return (
     <Recipes>
@@ -84,7 +92,7 @@ function RecipeInProgress() {
                       data-testid="finish-recipe-btn"
                       type="submit"
                       disabled={ btnDisabled }
-                      onClick={ () => history.push('/done-recipes') }
+                      onClick={ handleClick }
                     >
                       Finish Recipe
                     </button>
@@ -137,7 +145,7 @@ function RecipeInProgress() {
                       data-testid="finish-recipe-btn"
                       type="submit"
                       disabled={ btnDisabled }
-                      onClick={ () => history.push('/done-recipes') }
+                      onClick={ handleClick }
                     >
                       Finish Recipe
                     </button>
