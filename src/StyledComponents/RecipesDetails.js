@@ -48,13 +48,13 @@ export const CabecalioRecipe = styled.div`
   div {
     width: 100px;
     display: flex;
-    justify-content: space-evenly;
 
     button {
       border: none;
       padding: 8px 8px;
       border-radius: 50%;
       margin-top: -46px;
+      outline: 0;
     }
 
   }
