@@ -16,10 +16,10 @@ const FooterStyled = styled.footer`
   height: 60px;
   justify-content: space-evenly;
   align-items: center;
-
   a {
     height: 40px;
-    color: ${theme.bg}
+    color: ${theme.bg};
+    text-decoration: none;
   }
 
   p {

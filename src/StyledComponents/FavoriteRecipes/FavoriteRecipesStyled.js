@@ -12,7 +12,7 @@ export const ContainerBtns = styled.div`
   width: 100%;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
   button {
     border: none;
     padding: 4px 16px;
