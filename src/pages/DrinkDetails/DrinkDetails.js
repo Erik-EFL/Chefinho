@@ -1,14 +1,15 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import FavoriteBtn from '../../Components/Buttons/FavoriteBtn';
+import ShareBtn from '../../Components/Buttons/ShareBtn';
 import SliderDrink from '../../Components/SliderDrink';
-import blackHeartIcon from '../../images/blackHeartIcon.svg';
-import shareIcon from '../../images/shareIcon.svg';
-import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import { fetchRecommendationFoods } from '../../Service/FetchRecommendation';
-import getFavorite from '../../Service/getFavorite';
-import { setFavoriteDrink } from '../../Service/setFavorite';
 import ImageHead from '../../StyledComponents/ImgHead';
+import {
+  CabecalioRecipe, ContainerRecipe, MainContent, Recipes
+} from '../../StyledComponents/RecipesDetails';
 import './DrinkDetails.css';
 
 function DrinkDetails() {
@@ -17,8 +18,6 @@ function DrinkDetails() {
 
   const [drinkDetails, setDrinkDetails] = useState([]);
   const [recommendation, setRecommendation] = useState([]);
-  const [copy, setCopy] = useState(false);
-  const [renderFav, setRenderFav] = useState(false);
 
   // Função que faz o fetch para pegar os detalhes do Drink.
   const fetchDrinkDetails = async () => {
@@ -32,12 +31,10 @@ function DrinkDetails() {
     setRecommendation(await fetchRecommendationFoods());
   };
 
-  const render = () => setRenderFav(getFavorite(idDrink));
   // Quando inicializar a pagina chama a função de fazer o fetch.
   useEffect(() => {
     fetchDrinkDetails();
     fetchRecommendation();
-    render();
   }, []);
 
   // Pegar a key dos ingredients dentro do objeto;
@@ -97,13 +94,8 @@ function DrinkDetails() {
     </button>
   );
 
-  const copyLink = () => {
-    const url = window.location.href;
-    navigator.clipboard.writeText(url);
-    setCopy(true);
-  };
   return (
-    <div>
+    <Recipes>
       <ImageHead>
         <img
           style={ { width: '95%' } }
@@ -113,37 +105,30 @@ function DrinkDetails() {
           className="imgDetails"
         />
       </ImageHead>
-      <h1 data-testid="recipe-title">{drinkDetails.strDrink}</h1>
-      <p data-testid="recipe-category">{drinkDetails.strAlcoholic}</p>
+      <MainContent>
+        <CabecalioRecipe>
+          <div
+            className="titleSub"
+          >
+            <h1 data-testid="recipe-title">{drinkDetails.strDrink}</h1>
+            <p data-testid="recipe-category">{drinkDetails.strAlcoholic}</p>
+          </div>
+          <div>
+            <ShareBtn />
+            <FavoriteBtn />
+          </div>
+        </CabecalioRecipe>
+        <ContainerRecipe>
+          <div>
+            {renderIngredients}
+          </div>
+          <p data-testid="instructions">{drinkDetails.strInstructions}</p>
 
-      <button
-        data-testid="share-btn"
-        type="button"
-        onClick={ copyLink }
-      >
-        <img src={ shareIcon } alt="share" />
-      </button>
-      {copy && <span>Link copied!</span>}
-      <button
-        type="button"
-        // Função setFavoriteDrink criada na pasta Service - favoritar ou desfavoritar um item */
-        onClick={ () => setFavoriteDrink(drinkDetails, setRenderFav) }
-      >
-        <img
-          data-testid="favorite-btn"
-          src={ renderFav ? blackHeartIcon : whiteHeartIcon }
-          alt="favoriteBtn"
-        />
-      </button>
-      <div>
-        {renderIngredients}
-      </div>
-      <p data-testid="instructions">{drinkDetails.strInstructions}</p>
-
-      {infos.length > 0 && <SliderDrink info={ infos } />}
-      {!checkRecipe && buttonStartRecipe}
-
-    </div>
+          {infos.length > 0 && <SliderDrink info={ infos } />}
+          {!checkRecipe && buttonStartRecipe}
+        </ContainerRecipe>
+      </MainContent>
+    </Recipes>
   );
 }
 
