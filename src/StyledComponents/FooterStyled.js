@@ -22,13 +22,6 @@ const FooterStyled = styled.footer`
     color: ${theme.bg}
   }
 
-  div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
   p {
     font-weight: 200;
     letter-spacing: 0.007em;
@@ -42,6 +35,44 @@ const FooterStyled = styled.footer`
     color: white;
   }
 
+  .explore {
+    position: absolute;
+    margin-top: -56px;
+    width: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    background-color: ${theme.text};
+    font-size: 12px;
+    border-radius: 50%;
+  }
+
+  .explore div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+
+  .explore p {
+    margin: 0px;
+  }
+
+`;
+
+export const TwoLinks = styled.div`
+  display: flex;
+  width: 50%;
+  justify-content: space-evenly;
+  align-items: center;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 `;
 
 export default FooterStyled;

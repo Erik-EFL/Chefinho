@@ -32,19 +32,19 @@ export const CardContainer = styled.div`
 
 export const Card = styled.div`
   display: flex;
-  width: 151px;
   height: 205px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 16px;
 
   a {
-    width: 151px;
     height: 205px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    align-self: center;
   }
   
   img {
@@ -76,7 +76,7 @@ export const Card = styled.div`
 export const UtilsContainer = styled.div`
   display: flex;
   margin-top: -130px;
-  margin-right: -24px;
+  margin-right: -56px;
   position: absolute;
   background: rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(8px);
