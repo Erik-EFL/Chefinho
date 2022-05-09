@@ -35,6 +35,10 @@ const FooterStyled = styled.footer`
     color: ${theme.text};
   }
 
+  .activeExplore {
+    color: ${theme.bg};
+  }
+ 
   .explore {
     position: absolute;
     margin-top: -56px;

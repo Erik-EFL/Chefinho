@@ -41,7 +41,7 @@ function MenuInferior() {
         to="/explore"
         data-testid="explore-bottom-btn"
         src={ exploreIcon }
-        activeClassName="active"
+        activeClassName="activeExplore"
         className="explore"
       >
         <div>
