@@ -13,6 +13,7 @@ import {
 import './DrinkDetails.css';
 
 function DrinkDetails() {
+  const { id } = useParams();
   const history = useHistory();
   const idDrink = useParams().id;
 
@@ -114,7 +115,7 @@ function DrinkDetails() {
           </div>
           <div>
             <ShareBtn />
-            <FavoriteBtn />
+            <FavoriteBtn id={ id } />
           </div>
         </CabecalioRecipe>
         <ContainerRecipe>

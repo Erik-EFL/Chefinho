@@ -1,9 +1,14 @@
+/* eslint-disable comma-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import FavoriteBtn from '../../Components/Buttons/FavoriteBtn';
 import ShareBtn from '../../Components/Buttons/ShareBtn';
 import AppContext from '../../context/AppContext';
+import ImageHead from '../../StyledComponents/ImgHead';
+import {
+  CabecalioRecipe, ContainerRecipe, MainContent, Recipes
+} from '../../StyledComponents/RecipesDetails';
 import ListIngredients from './components/ListIngredients';
 
 function RecipeInProgress() {
@@ -39,82 +44,110 @@ function RecipeInProgress() {
   // console.log('TBN', btnDisabled);
 
   return (
-    <div>
+    <Recipes>
       <main className="mainProgress">
         {progress && type === 'drinks'
           ? (
             progress.map((item) => (
               <div key={ item.idDrink }>
-                <img
-                  className="img-recipe"
-                  src={ item.strDrinkThumb }
-                  alt={ item.strDrink }
-                  data-testid="recipe-photo"
-                  style={ { width: '95%' } }
-                />
-                <h1 data-testid="recipe-title">
-                  {item.strDrink}
-                </h1>
-                <div style={ { display: 'flex' } }>
-                  <ShareBtn />
-                  <FavoriteBtn id={ id } />
-                </div>
-                <h2 data-testid="recipe-category">{item.strCategory}</h2>
-                <ListIngredients
-                  progress={ progress }
-                  id={ id }
-                  type={ type }
-                />
-                <div className="containerSteps">
-                  <h2>Instruction</h2>
-                  <p data-testid="instructions">
-                    {item.strInstructions}
-                  </p>
-                </div>
+                <ImageHead>
+                  <img
+                    src={ item.strDrinkThumb }
+                    alt={ item.strDrink }
+                    data-testid="recipe-photo"
+                  />
+                </ImageHead>
+                <MainContent>
+                  <CabecalioRecipe>
+                    <div className="titleSub">
+                      <h1 data-testid="recipe-title">{item.strDrink}</h1>
+                      <p data-testid="recipe-category">{item.strCategory}</p>
+                    </div>
+                    <div>
+                      <ShareBtn />
+                      <FavoriteBtn id={ id } />
+                    </div>
+                  </CabecalioRecipe>
+                  <ContainerRecipe>
+                    <ListIngredients
+                      progress={ progress }
+                      id={ id }
+                      type={ type }
+                    />
+                    <div className="containerSteps">
+                      <h2>Instruction</h2>
+                      <p data-testid="instructions">
+                        {item.strInstructions}
+                      </p>
+                    </div>
+                    <button
+                      data-testid="finish-recipe-btn"
+                      type="submit"
+                      disabled={ btnDisabled }
+                      onClick={ () => history.push('/done-recipes') }
+                    >
+                      Finish Recipe
+                    </button>
+                  </ContainerRecipe>
+                </MainContent>
               </div>
             )))
           : (
             progress.map((item) => (
               <div key={ item.idMeal }>
-                <img
-                  className="img-recipe"
-                  data-testid="recipe-photo"
-                  src={ item.strMealThumb }
-                  alt={ item.strMeal }
-                  style={ { width: '95%' } }
-                />
-                <h1 data-testid="recipe-title">
-                  {item.strMeal}
-                </h1>
-                <div style={ { display: 'flex' } }>
-                  <ShareBtn />
-                  <FavoriteBtn id={ id } />
-                </div>
-                <h2 data-testid="recipe-category">{item.strCategory}</h2>
-                <ListIngredients
-                  progress={ progress }
-                  id={ id }
-                  type={ type }
-                />
-                <div className="containerSteps">
-                  <h2>Instruction</h2>
-                  <p data-testid="instructions">
-                    {item.strInstructions}
-                  </p>
-                </div>
+                <ImageHead>
+                  <img
+                    data-testid="recipe-photo"
+                    src={ item.strMealThumb }
+                    alt={ item.strMeal }
+                  />
+                </ImageHead>
+                <MainContent>
+                  <CabecalioRecipe>
+                    <div className="titleSub">
+                      <h1 data-testid="recipe-title">
+                        {item.strMeal}
+                      </h1>
+                      <p data-testid="recipe-category">{item.strCategory}</p>
+                    </div>
+                    <div>
+                      <ShareBtn />
+                      <FavoriteBtn id={ id } />
+                    </div>
+                  </CabecalioRecipe>
+                  <ContainerRecipe>
+                    <ListIngredients
+                      progress={ progress }
+                      id={ id }
+                      type={ type }
+                    />
+                    <div className="containerSteps">
+                      <h2>Instruction</h2>
+                      <p data-testid="instructions">
+                        {item.strInstructions}
+                      </p>
+                    </div>
+                    <button
+                      style={ {
+                        border: 'none',
+                        width: '100%',
+                        padding: '8px',
+                        borderRadius: '12px 12px 0 0',
+                        background: '#BF9663' } }
+                      data-testid="finish-recipe-btn"
+                      type="submit"
+                      disabled={ btnDisabled }
+                      onClick={ () => history.push('/done-recipes') }
+                    >
+                      Finish Recipe
+                    </button>
+                  </ContainerRecipe>
+                </MainContent>
               </div>
             ))
           )}
-        <button
-          data-testid="finish-recipe-btn"
-          type="submit"
-          disabled={ btnDisabled }
-          onClick={ () => history.push('/done-recipes') }
-        >
-          Finish Recipe
-        </button>
       </main>
-    </div>
+    </Recipes>
   );
 }
 

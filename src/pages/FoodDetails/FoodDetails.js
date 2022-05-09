@@ -15,6 +15,7 @@ import {
 import './FoodDetails.css';
 
 export default function FoodDetails() {
+  const { id } = useParams();
   const history = useHistory();
   const idFood = useParams().id;
 
@@ -116,7 +117,7 @@ export default function FoodDetails() {
           </div>
           <div>
             <ShareBtn />
-            <FavoriteBtn />
+            <FavoriteBtn id={ id } />
           </div>
         </CabecalioRecipe>
         {/* Função setFavoriteFood criada na pasta Service - favoritar ou desfavoritar um item */}

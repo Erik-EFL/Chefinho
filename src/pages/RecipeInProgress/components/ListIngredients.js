@@ -8,7 +8,7 @@ import { setCheckedRecipes, verifyChecked } from '../helper/helper';
 import {
   reloadRecipe,
   setLocalStorage,
-  setRecipeInProgress,
+  setRecipeInProgress
 } from '../helper/setLocalStorage';
 
 function ListIngredients(props) {
