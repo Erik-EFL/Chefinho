@@ -68,7 +68,7 @@ export const Card = styled.div`
   }
 
   svg {
-    color: #3E5481;
+    color: ${text.paragraph};
     margin: 4px;
   }
 `;

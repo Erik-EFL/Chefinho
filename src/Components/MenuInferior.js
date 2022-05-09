@@ -1,6 +1,7 @@
 import React from 'react';
 import { BiDrink } from 'react-icons/bi';
 import { GiHotMeal } from 'react-icons/gi';
+import { MdFavorite } from 'react-icons/md';
 import { VscCompass } from 'react-icons/vsc';
 import { NavLink } from 'react-router-dom';
 import drinkIcon from '../images/drinkIcon.svg';
@@ -44,6 +45,16 @@ function MenuInferior() {
         <div>
           <GiHotMeal />
           <p>Meals</p>
+        </div>
+      </NavLink>
+
+      <NavLink
+        to="/favorite-recipes"
+        activeClassName="active"
+      >
+        <div>
+          <MdFavorite />
+          <p>Favorites</p>
         </div>
       </NavLink>
     </FooterStyled>
