@@ -7,7 +7,7 @@ const theme = {
 };
 
 const FooterStyled = styled.footer`
-  background-color: ${theme.title};
+  background-color: #2b2b2b;
   bottom: 0;
   display: flex;
   left: 0;
@@ -18,7 +18,7 @@ const FooterStyled = styled.footer`
   align-items: center;
   a {
     height: 40px;
-    color: ${theme.bg};
+    color: white;
     text-decoration: none;
   }
 
@@ -32,7 +32,7 @@ const FooterStyled = styled.footer`
   }
 
   .active {
-    color: white;
+    color: ${theme.text};
   }
 
   .explore {
