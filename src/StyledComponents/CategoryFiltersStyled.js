@@ -10,10 +10,9 @@ export const Container = styled.div`
   display: grid;
   grid-gap: 8px;
   grid-template-columns: 1fr 1fr 1fr;
-
+  margin-bottom: 8px;
   button {
-
-    padding: 2px 22px;
+    padding: 2px 16px;
     border: none;
     border-radius: 32px;
     background-color: ${theme.title};
