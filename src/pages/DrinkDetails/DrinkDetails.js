@@ -98,7 +98,6 @@ function DrinkDetails() {
     <Recipes>
       <ImageHead>
         <img
-          style={ { width: '95%' } }
           data-testid="recipe-photo"
           src={ drinkDetails.strDrinkThumb }
           alt={ drinkDetails.idDrink }

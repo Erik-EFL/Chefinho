@@ -23,6 +23,7 @@ export const ContainerRecipe = styled.div`
 `;
 
 export const CabecalioRecipe = styled.div`
+  position: relative;
   color: ${text.title};
   display: flex;
   justify-content: space-between;
@@ -38,6 +39,7 @@ export const CabecalioRecipe = styled.div`
     display: flex;
     flex-direction: column;
     p {
+      width: 200px;
       margin-top: 0;
       margin-left: 18px;
     }
@@ -52,7 +54,7 @@ export const CabecalioRecipe = styled.div`
       border: none;
       padding: 8px 8px;
       border-radius: 50%;
-      margin-top: -36px;
+      margin-top: -46px;
     }
 
   }
