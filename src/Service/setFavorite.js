@@ -53,7 +53,7 @@ export function setFavoriteDrink(object, callback) {
 
   if (actualStore) { // If para verificar se a chave no Local Storage Existe;
     const verify = actualStore.filter((item) => item.id === object.idDrink);
-    if (!verify) {
+    if (verify.length === 0) {
       // Se o item não existir dentro da chave de favoritos, adiciona o item!
       localStorage.setItem('favoriteRecipes',
         JSON.stringify([...actualStore, newObj]));
@@ -63,7 +63,7 @@ export function setFavoriteDrink(object, callback) {
       const filterItems = actualStore.filter((item) => item.id !== object.idDrink); // Pega tudo que é diferente do item dentro do store atual.
       if (filterItems.length > 0) {
         // Se o filter retornar outros resultados diferentes do meu item eu apenas adiciono eles devolta no LocalStorage.
-        localStorage.setItem('favoriteRecipes', JSON.stringify(remove));
+        localStorage.setItem('favoriteRecipes', JSON.stringify(filterItems));
         callback(false);
       } else {
         // Se não houver nenhum outro item eu removo a chave do localStorage.
