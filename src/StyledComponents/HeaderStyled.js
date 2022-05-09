@@ -12,7 +12,7 @@ export const HeaderStyled = styled.header`
   background-color: ${theme.bg};
   color: ${theme.title};
   flex-direction: column;
-  padding-top: 8px;
+  padding-top: 16px;
   height: 75px;
   width: 100%;
 
@@ -29,7 +29,7 @@ export const HeaderStyled = styled.header`
   }
 
   h1 {
-    font-size: 36px;
+    font-size: 22px;
     margin-left: 46px;
     margin-right: 46px;
   }
