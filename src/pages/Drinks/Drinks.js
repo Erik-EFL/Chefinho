@@ -11,6 +11,7 @@ export default function Drinks() {
   const { initialFetchs: { drinks } } = useContext(AppContext);
   const magicNumber = 12;
   const initialDrinks = drinks.filter((_i, index) => index < magicNumber);
+
   return (
     <div>
       <Header

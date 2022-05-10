@@ -20,9 +20,7 @@ function ListIngredients(props) {
   const [checked, setChecked] = useState('');
   const { handleChange } = useContext(AppContext);
 
-  if (!localStorage.inProgressRecipes) {
-    setLocalStorage();
-  }
+  if (!localStorage.inProgressRecipes)setLocalStorage();
 
   useEffect(() => {
     const checados = document.querySelectorAll('.inputBox');

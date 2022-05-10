@@ -36,11 +36,9 @@ export const setLocalStorage = () => localStorage
   ));
 
 export function setDoneRecipeStorage() {
-  if (!verifyLocalStorage) {
-    localStorage.setItem('doneRecipes', JSON.stringify(
-      newObj2,
-    ));
-  }
+  localStorage.setItem('doneRecipes', JSON.stringify(
+    newObj2,
+  ));
 }
 
 export function reloadRecipe(type, setChecked, id) {
@@ -82,24 +80,21 @@ export function setRecipeInProgress(id, ingredient, type) {
   }
 }
 
-export function setDoneRecipe(id, ingredient, type) {
-  console.log('setDoneRecipe', id);
-  console.log('setDoneRecipe', ingredient);
-  console.log('setDoneRecipe', type);
+export function setDoneRecipe(ingredient, type) {
   const verifyLocalStorage = JSON.parse(localStorage
     .getItem('doneRecipes'));
 
   if (verifyLocalStorage && type === 'foods') {
     const newObjFood = [{
-      id: [id],
+      id: ingredient[0].idMeal,
       type: [type],
-      nationality: ingredient.strArea,
-      category: ingredient.strCategory,
+      nationality: ingredient[0].strArea,
+      category: ingredient[0].strCategory,
       alcoholicOrNot: '',
-      name: ingredient.strMeal,
-      image: ingredient.strMealThumb,
+      name: ingredient[0].strMeal,
+      image: ingredient[0].strMealThumb,
       doneDate: 'feito',
-      tags: ingredient.strTags,
+      tags: ingredient[0].strTags,
     }];
     localStorage
       .setItem('doneRecipes', JSON.stringify(
@@ -110,17 +105,16 @@ export function setDoneRecipe(id, ingredient, type) {
   if (verifyLocalStorage && type === 'drinks') {
     console.log('hello setDoneRecipe');
     const newObjDrink = [{
-      id: [id],
+      id: ingredient[0].idDrink,
       type: [type],
-      nationality: ingredient.strArea,
-      category: ingredient.strCategory,
-      alcoholicOrNot: ingredient.strAlcoholic,
-      name: ingredient.strDrink,
-      image: ingredient.strDrinkThumb,
+      nationality: ingredient[0].strArea,
+      category: ingredient[0].strCategory,
+      alcoholicOrNot: ingredient[0].strAlcoholic,
+      name: ingredient[0].strDrink,
+      image: ingredient[0].strDrinkThumb,
       doneDate: 'feito',
-      tags: ingredient.strTags,
+      tags: ingredient[0].strTags,
     }];
-    newObj.cocktails[id] = ingredient;
     localStorage
       .setItem('doneRecipes', JSON.stringify(
         newObjDrink,
