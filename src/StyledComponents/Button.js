@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { buttons } from './Paletas';
 
-const ButtonStyled = styled.button`
+const Button = styled.button`
     border: none;
     padding: 4px 16px;
     background-color: ${buttons.btn1};
@@ -9,4 +9,4 @@ const ButtonStyled = styled.button`
     margin: 8px;
 `;
 
-export default ButtonStyled;
+export default Button;

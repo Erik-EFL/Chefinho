@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import fetchRandomFood from '../../Service/fetchRandomFood';
-import ButtonStyled from '../../StyledComponents/ButtonStyled';
+import Button from '../../StyledComponents/Button';
 import Container from '../../StyledComponents/ExploreFoods/Styled';
 
 export default function ExploreFoods() {
@@ -21,27 +21,27 @@ export default function ExploreFoods() {
         searchButton={ false }
       />
       <Container>
-        <ButtonStyled
+        <Button
           type="button"
           data-testid="explore-by-ingredient"
           onClick={ () => history.push('/explore/foods/ingredients') }
         >
           By Ingredient
-        </ButtonStyled>
-        <ButtonStyled
+        </Button>
+        <Button
           type="button"
           data-testid="explore-by-nationality"
           onClick={ () => history.push('/explore/foods/nationalities') }
         >
           By Nationality
-        </ButtonStyled>
-        <ButtonStyled
+        </Button>
+        <Button
           type="button"
           data-testid="explore-surprise"
           onClick={ handleSurprise }
         >
           Surprise me!
-        </ButtonStyled>
+        </Button>
       </Container>
       <MenuInferior />
     </div>
