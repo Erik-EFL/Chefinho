@@ -7,16 +7,22 @@ const theme = {
 };
 
 export const Container = styled.div`
-  display: grid;
-  grid-gap: 8px;
-  grid-template-columns: 1fr 1fr 1fr;
-  margin-bottom: 8px;
+  overflow-x: auto;
+  display: flex;
+  padding: 8px;
+
+  ::-webkit-scrollbar {
+  display: none;
+  }
+
   button {
     padding: 2px 16px;
     border: none;
     border-radius: 32px;
     background-color: ${theme.title};
     color: ${theme.bg};
+    flex: none;
+    margin: 0 8px;
   }
 `;
 
