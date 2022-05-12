@@ -17,4 +17,5 @@ export const Select = styled.select`
   display: flex;
   margin: auto;
   outline: none;
+  margin-bottom: 8px;
 `;
