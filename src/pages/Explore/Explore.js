@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
-import { Container } from '../../StyledComponents/CategoryFiltersStyled';
+import Button from '../../StyledComponents/Button';
 
 export default function Explore() {
   const history = useHistory();
@@ -12,25 +12,29 @@ export default function Explore() {
         title="Explore"
         searchButton={ false }
       />
-      <div style={ { maxWidth: '86%', margin: '0 auto' } }>
-        <Container>
-          <button
+      <div style={ { maxWidth: '100%', display: 'flex', justifyContent: 'center' } }>
+        <div
+          style={
+            { display: 'grid', gridTemplateColumns: '1fr 1fr' }
+          }
+        >
+          <Button
             style={ { width: '150px' } }
             type="button"
             data-testid="explore-foods"
             onClick={ () => history.push('/explore/foods') }
           >
             Explore Foods
-          </button>
-          <button
+          </Button>
+          <Button
             style={ { width: '150px' } }
             type="button"
             data-testid="explore-drinks"
             onClick={ () => history.push('/explore/drinks') }
           >
             Explore Drinks
-          </button>
-        </Container>
+          </Button>
+        </div>
       </div>
       <MenuInferior />
     </div>
