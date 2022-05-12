@@ -23,7 +23,6 @@ export default function CardExploreIngredients({ image, name, index, type }) {
       history.push('/drinks');
     }
   };
-
   return (
     <Card
       type="button"

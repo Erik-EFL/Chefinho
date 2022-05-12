@@ -6,6 +6,7 @@ import fetchDrinks from '../Service/fetchDrinks';
 import fetchFilteredByNationality from '../Service/fetchFilteredByNationality';
 import fetchFoods from '../Service/fetchFoods';
 import fetchNationalities from '../Service/fetchNationalities';
+import { Select } from '../StyledComponents/FoodsNationalities/Styled';
 
 export default function NationalitiesDropDown(props) {
   const {
@@ -59,32 +60,30 @@ export default function NationalitiesDropDown(props) {
   }, []);
 
   return (
-    <div>
-      <select
-        data-testid="explore-by-nationality-dropdown"
-        onChange={ handleFilter }
+    <Select
+      data-testid="explore-by-nationality-dropdown"
+      onChange={ handleFilter }
+    >
+      <option>
+        Select a nationality
+      </option>
+      <option
+        data-testid="All-option"
       >
-        <option>
-          Select a nationality
-        </option>
-        <option
-          data-testid="All-option"
-        >
-          All
-        </option>
-        {
-          nationalities.map((e, i) => (
-            <option
-              key={ i }
-              data-testid={ `${e.strArea}-option` }
-              value={ e.strArea }
-            >
-              { e.strArea }
-            </option>
-          ))
-        }
-      </select>
-    </div>
+        All
+      </option>
+      {
+        nationalities.map((e, i) => (
+          <option
+            key={ i }
+            data-testid={ `${e.strArea}-option` }
+            value={ e.strArea }
+          >
+            { e.strArea }
+          </option>
+        ))
+      }
+    </Select>
   );
 }
 

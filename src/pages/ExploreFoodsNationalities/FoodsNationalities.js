@@ -5,6 +5,7 @@ import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import NationalitiesDropDown from '../../Components/NationalitiesDropDown';
 import AppContext from '../../context/AppContext';
+import { ContainerNat } from '../../StyledComponents/FoodsNationalities/Styled';
 
 export default function FoodsNationalities() {
   const { initialFetchs: { foods } } = useContext(AppContext);
@@ -14,24 +15,26 @@ export default function FoodsNationalities() {
   return (
     <div>
       <Header
-        title="Explore Nationalities"
+        title="Nationalities"
         searchButton
       />
       <NationalitiesDropDown
         type="foods"
       />
-      {initialFoods.map((item, index) => (
-        <Link
-          key={ index }
-          to={ `/foods/${item.idMeal}` }
-        >
-          <Cards
-            image={ item.strMealThumb }
-            index={ index }
-            name={ item.strMeal }
-          />
-        </Link>
-      ))}
+      <ContainerNat>
+        {initialFoods.map((item, index) => (
+          <Link
+            key={ index }
+            to={ `/foods/${item.idMeal}` }
+          >
+            <Cards
+              image={ item.strMealThumb }
+              index={ index }
+              name={ item.strMeal }
+            />
+          </Link>
+        ))}
+      </ContainerNat>
       <MenuInferior />
     </div>
   );
