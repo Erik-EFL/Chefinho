@@ -12,7 +12,7 @@ export const HeaderStyled = styled.header`
   background-color: ${theme.bg};
   color: ${theme.title};
   flex-direction: column;
-  padding-top: 16px;
+  padding-top: 24px;
   height: 75px;
   width: 100%;
 

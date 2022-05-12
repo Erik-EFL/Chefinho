@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import fetchRandomFood from '../../Service/fetchRandomFood';
+import ButtonStyled from '../../StyledComponents/ButtonStyled';
+import Container from '../../StyledComponents/ExploreFoods/Styled';
 
 export default function ExploreFoods() {
   const history = useHistory();
@@ -18,29 +20,29 @@ export default function ExploreFoods() {
         title="Explore Foods"
         searchButton={ false }
       />
-      <div>
-        <button
+      <Container>
+        <ButtonStyled
           type="button"
           data-testid="explore-by-ingredient"
           onClick={ () => history.push('/explore/foods/ingredients') }
         >
           By Ingredient
-        </button>
-        <button
+        </ButtonStyled>
+        <ButtonStyled
           type="button"
           data-testid="explore-by-nationality"
           onClick={ () => history.push('/explore/foods/nationalities') }
         >
           By Nationality
-        </button>
-        <button
+        </ButtonStyled>
+        <ButtonStyled
           type="button"
           data-testid="explore-surprise"
           onClick={ handleSurprise }
         >
           Surprise me!
-        </button>
-      </div>
+        </ButtonStyled>
+      </Container>
       <MenuInferior />
     </div>
   );
