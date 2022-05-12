@@ -23,11 +23,9 @@ export const ContainerBtns = styled.div`
 
 export const CardContainer = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-bottom: 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 16px;
 `;
 
 export const Card = styled.div`
