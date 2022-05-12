@@ -5,7 +5,7 @@ import CategoryFilter from '../../Components/CategoryFilter';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import AppContext from '../../context/AppContext';
-import { CardContainer, PageFood } from '../../StyledComponents/FoodStyled';
+import { CardContainer } from '../../StyledComponents/FoodStyled';
 
 function Foods() {
   const { initialFetchs: { foods } } = useContext(AppContext);
@@ -13,17 +13,14 @@ function Foods() {
   const initialFoods = foods.filter((_i, index) => index < magicNumber);
 
   return (
-    <PageFood>
+    <div>
       <Header
         title="Foods"
         searchButton
       />
-      <h4>Filters by Category</h4>
-
       <CategoryFilter
         type="foods"
       />
-
       <CardContainer>
         {initialFoods.map((item, index) => (
           <Link
@@ -40,7 +37,7 @@ function Foods() {
         ))}
       </CardContainer>
       <MenuInferior />
-    </PageFood>
+    </div>
   );
 }
 
