@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import AppContext from '../context/AppContext';
 import fetchFilteredDrinks from '../Service/fetchFilteredDrinks';
 import fetchFilteredFoods from '../Service/fetchFilteredFoods';
+import { Card } from '../StyledComponents/FoodsIngredient/Styled';
 
 export default function CardExploreIngredients({ image, name, index, type }) {
   const { setFoods, setDrinks, setActiveFilter } = useContext(AppContext);
@@ -24,14 +25,14 @@ export default function CardExploreIngredients({ image, name, index, type }) {
   };
 
   return (
-    <button
+    <Card
       type="button"
       data-testid={ `${index}-ingredient-card` }
       onClick={ handleClick }
     >
       <img src={ image } alt={ name } data-testid={ `${index}-card-img` } />
       <h4 data-testid={ `${index}-card-name` }>{name}</h4>
-    </button>
+    </Card>
   );
 }
 

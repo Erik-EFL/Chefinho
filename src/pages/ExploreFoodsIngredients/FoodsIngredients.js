@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import CardExploreIngredients from '../../Components/CardExploreIngredients';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
+import { Container } from '../../StyledComponents/FoodsIngredient/Styled';
 
 export default function FoodsIngredients() {
   const [ingredients, setIngredients] = useState([]);
@@ -21,18 +22,20 @@ export default function FoodsIngredients() {
   return (
     <div>
       <Header
-        title="Explore Ingredients"
+        title="Ingredients"
         searchButton={ false }
       />
-      {ingredients.map((item, index) => (
-        <CardExploreIngredients
-          key={ index }
-          name={ item.strIngredient }
-          image={ `https://www.themealdb.com/images/ingredients/${item.strIngredient}-Small.png` }
-          index={ index }
-          type="food"
-        />
-      ))}
+      <Container>
+        {ingredients.map((item, index) => (
+          <CardExploreIngredients
+            key={ index }
+            name={ item.strIngredient }
+            image={ `https://www.themealdb.com/images/ingredients/${item.strIngredient}-Small.png` }
+            index={ index }
+            type="food"
+          />
+        ))}
+      </Container>
       <MenuInferior />
     </div>
   );
