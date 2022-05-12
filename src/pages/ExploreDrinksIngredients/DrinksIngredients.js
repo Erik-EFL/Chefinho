@@ -27,7 +27,6 @@ export default function DrinksIngredients() {
         searchButton={ false }
       />
       <Container>
-
         {ingredients.map((item, index) => (
           <CardExploreIngredients
             key={ index }

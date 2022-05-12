@@ -16,6 +16,7 @@ export const Card = styled.button`
   }
 
   h4 {
+    margin-top: 8px;
     font-size: 1em;
     color: ${text.paragraph};
   }
