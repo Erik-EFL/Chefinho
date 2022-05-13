@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import BackBtn from '../../Components/Buttons/BackBtn';
 import CardExploreIngredients from '../../Components/CardExploreIngredients';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
@@ -26,6 +27,7 @@ export default function DrinksIngredients() {
         title="Ingredients"
         searchButton={ false }
       />
+      <BackBtn />
       <Container>
         {ingredients.map((item, index) => (
           <CardExploreIngredients

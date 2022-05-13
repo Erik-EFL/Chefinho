@@ -6,6 +6,12 @@ export const ContainerNat = styled.div`
   padding: 0 24px;
   grid-template-columns: 1fr 1fr;
   margin-bottom: 80px;
+  margin-top: 24px;
+
+  a {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 export const Select = styled.select`

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import BackBtn from '../../Components/Buttons/BackBtn';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import fetchRandomFood from '../../Service/fetchRandomFood';
@@ -20,6 +21,7 @@ export default function ExploreFoods() {
         title="Explore Foods"
         searchButton={ false }
       />
+      <BackBtn />
       <Container>
         <Button
           type="button"

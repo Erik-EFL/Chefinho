@@ -5,6 +5,7 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 80px;
+  margin-top: 36px;
 `;
 
 export const Card = styled.button`

@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import BackBtn from '../../Components/Buttons/BackBtn';
 import FavoriteBtn from '../../Components/Buttons/FavoriteBtn';
 import ShareBtn from '../../Components/Buttons/ShareBtn';
 import SliderDrink from '../../Components/SliderDrink';
@@ -97,6 +98,7 @@ function DrinkDetails() {
 
   return (
     <Recipes>
+      <BackBtn />
       <ImageHead>
         <img
           data-testid="recipe-photo"

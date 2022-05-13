@@ -1,9 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import BackBtn from '../../Components/Buttons/BackBtn';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import fetchRandomDrink from '../../Service/fetchRandomDrink';
 import Button from '../../StyledComponents/Button';
+import Container from '../../StyledComponents/ExploreFoods/Styled';
 
 export default function ExploreDrinks() {
   const history = useHistory();
@@ -19,7 +21,8 @@ export default function ExploreDrinks() {
         title="Explore Drinks"
         searchButton={ false }
       />
-      <div style={ { display: 'flex', width: '100%', justifyContent: 'center' } }>
+      <BackBtn />
+      <Container>
         <Button
           type="button"
           data-testid="explore-by-ingredient"
@@ -34,7 +37,7 @@ export default function ExploreDrinks() {
         >
           Surprise me!
         </Button>
-      </div>
+      </Container>
       <MenuInferior />
     </div>
   );
