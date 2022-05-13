@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import DoneDrinkCard from '../../Components/DoneDrinkCard';
 import DoneFoodCard from '../../Components/DoneFoodCard';
 import Header from '../../Components/Header';
+import MenuInferior from '../../Components/MenuInferior';
 import Button from '../../StyledComponents/Button';
 // eslint-disable-next-line max-len
 import { CardContainer } from '../../StyledComponents/FavoriteRecipes/FavoriteRecipesStyled';
@@ -76,6 +77,7 @@ export default function DoneRecipes() {
           )
         }
       </CardContainer>
+      <MenuInferior />
     </div>
   );
 }

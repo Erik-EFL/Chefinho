@@ -26,6 +26,7 @@ export const CardContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 0 16px;
+  margin-bottom: 80px;
 `;
 
 export const Card = styled.div`
