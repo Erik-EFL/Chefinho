@@ -3,6 +3,9 @@ import React, { useEffect, useState } from 'react';
 import DoneDrinkCard from '../../Components/DoneDrinkCard';
 import DoneFoodCard from '../../Components/DoneFoodCard';
 import Header from '../../Components/Header';
+import Button from '../../StyledComponents/Button';
+// eslint-disable-next-line max-len
+import { CardContainer } from '../../StyledComponents/FavoriteRecipes/FavoriteRecipesStyled';
 
 export default function DoneRecipes() {
   const [doneRecipes, setDoneRecipes] = useState(
@@ -23,33 +26,33 @@ export default function DoneRecipes() {
         title="Done Recipes"
         searchButton={ false }
       />
-      <div>
-        <button
+      <div style={ { width: '100%', display: 'flex', justifyContent: 'center' } }>
+        <Button
           type="button"
           data-testid="filter-by-all-btn"
           value="all"
           onClick={ ({ target }) => setActiveFilter(target.value) }
         >
           All
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           data-testid="filter-by-food-btn"
           value="drink"
           onClick={ ({ target }) => setActiveFilter(target.value) }
         >
           Food
-        </button>
-        <button
+        </Button>
+        <Button
           type="button"
           data-testid="filter-by-drink-btn"
           value="food"
           onClick={ ({ target }) => setActiveFilter(target.value) }
         >
           Drinks
-        </button>
+        </Button>
       </div>
-      <div>
+      <CardContainer>
         {
           doneRecipes.filter(
             (recipe) => recipe.type !== activeFilter,
@@ -72,7 +75,7 @@ export default function DoneRecipes() {
             },
           )
         }
-      </div>
+      </CardContainer>
     </div>
   );
 }

@@ -85,7 +85,7 @@ function ListIngredients(props) {
   const renderIngredients = ingredients.map((item, index) => (
     <li
       data-testid={ `${index}-ingredient-step` }
-      key={ item }
+      key={ index }
     >
       <label htmlFor={ item }>
         <input

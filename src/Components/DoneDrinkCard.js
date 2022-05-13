@@ -1,9 +1,9 @@
+import clipboardCopy from 'clipboard-copy';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import { BsFillShareFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import './DoneCards.css';
-import clipboardCopy from 'clipboard-copy';
-import shareIcon from '../images/shareIcon.svg';
+import { DivShareDone, DoneCard } from '../StyledComponents/DoneRecipes/Styled';
 
 function DoneDrinkCard(props) {
   const [copy, setCopy] = useState(false);
@@ -20,59 +20,52 @@ function DoneDrinkCard(props) {
   } = recipe;
 
   const handleShareButton = () => {
-    clipboardCopy(`http://localhost:3000/drinks/${id}`);
+    const TimeOut = 1000;
+    clipboardCopy(`http://localhost:3000/foods/${id}`);
     setCopy(true);
+    const timer = setTimeout(() => {
+      setCopy(false);
+    }, TimeOut);
+    return () => clearTimeout(timer);
   };
 
   return (
-    <div>
+    <DoneCard>
       <Link
         to={ `/drinks/${id}` }
       >
         <img
-          style={ {
-            width: '30px',
-            height: '30px',
-          } }
           data-testid={ `${index}-horizontal-image` }
           src={ image }
           alt={ name }
         />
-      </Link>
-      <p
-        data-testid={ `${index}-horizontal-top-text` }
-      >
-        { alcoholicOrNot }
-      </p>
-      <Link
-        to={ `/drinks/${id}` }
-      >
         <p
+          data-testid={ `${index}-horizontal-top-text` }
+        >
+          { alcoholicOrNot }
+        </p>
+        <p
+          data-testid={ `${index}-horizontal-done-date` }
+        >
+          { `Done: ${doneDate}` }
+        </p>
+        <h2
           data-testid={ `${index}-horizontal-name` }
         >
           { name }
-        </p>
+        </h2>
+        <div className="div-copied">
+          {copy && <p>Link copied!</p>}
+        </div>
       </Link>
-      <p
-        data-testid={ `${index}-horizontal-done-date` }
-      >
-        { doneDate }
-      </p>
-      <div>
-        <button
-          type="button"
-          className="share-button"
+
+      <DivShareDone>
+        <BsFillShareFill
           onClick={ handleShareButton }
-        >
-          <img
-            data-testid={ `${index}-horizontal-share-btn` }
-            src={ shareIcon }
-            alt="Share icon."
-          />
-        </button>
-        {copy && <p>Link copied!</p>}
-      </div>
-    </div>
+          data-testid={ `${index}-horizontal-share-btn` }
+        />
+      </DivShareDone>
+    </DoneCard>
   );
 }
 

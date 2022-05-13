@@ -9,10 +9,10 @@ export default function SetDoneRecipe(obj, type, id, history) {
     nationality: type === 'food' ? obj.strArea : '',
     category: type === 'food' ? obj.strCategory : '',
     alcoholicOrNot: type === 'drink' ? obj.strAlcoholic : '',
-    name: type === 'food' ? obj.srtMeal : obj.strDrink,
+    name: type === 'food' ? obj.strMeal : obj.strDrink,
     image: type === 'food' ? obj.strMealThumb : obj.strDrinkThumb,
     doneDate: today.toLocaleDateString(),
-    tags: obj.strTags ? obj.strTags.split(',') : '',
+    tags: obj.strTags ? obj.strTags.split(',') : [],
   };
   if (atualStore) {
     localStorage.setItem('doneRecipes', JSON.stringify([...atualStore, newObj]));
