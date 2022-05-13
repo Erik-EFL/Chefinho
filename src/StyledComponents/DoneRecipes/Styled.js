@@ -66,7 +66,7 @@ export const DivShareDone = styled.span`
   margin-top: -166px;
   margin-right: -70px;
   padding: 4px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
   border-radius: 8px;
   height: 32px;

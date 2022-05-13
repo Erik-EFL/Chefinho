@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
-import { ButtonContainer } from '../../StyledComponents/ProfileStyled';
+import { ButtonContainer, ProfileContainer } from '../../StyledComponents/ProfileStyled';
 import ProfileHead from './components/ProfileHead';
 
 export default function Profile({ history }) {
@@ -17,7 +17,7 @@ export default function Profile({ history }) {
         title="Profile"
         searchButton={ false }
       />
-      <div className="profile">
+      <ProfileContainer>
         <ProfileHead />
         <ButtonContainer>
           <button
@@ -43,7 +43,7 @@ export default function Profile({ history }) {
             Logout
           </button>
         </ButtonContainer>
-      </div>
+      </ProfileContainer>
       <MenuInferior />
     </div>
   );

@@ -1,33 +1,43 @@
 import styled from 'styled-components';
-
-const theme = {
-  title: '#BF9663',
-  text: '#D97016',
-};
+import { text } from './Paletas';
 
 const DivCard = styled.div`
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 120px;
-  height: 160px;
-  margin: 16px;
+  width: 125px;
+  height: 180px;
+  margin-top: 16px;
 
   img {
-    width: 120px;
-    height: 120px;
+    width: 125px;
+    height: 125px;
     border-radius: 16px;
   }
 
+  h4 {
+    font-size: 1em;
+    color: ${text.paragraph}
+  }
+
   p {
+    line-height: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     margin: 0;
     margin-top: 8px;
-    font-size: 17px;
+    font-size: 12px;
     letter-spacing: 0.5px;
-    color: ${theme.text};
+    color: ${text.paragraph};
   }
+`;
+
+export const InfoContainer = styled.div`
+  width: 100%;
+  height: 70px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export default DivCard;

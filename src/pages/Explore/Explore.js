@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import Button from '../../StyledComponents/Button';
+import { ButtonContainer } from '../../StyledComponents/ProfileStyled';
 
 export default function Explore() {
   const history = useHistory();
@@ -13,13 +14,8 @@ export default function Explore() {
         searchButton={ false }
       />
       <div style={ { maxWidth: '100%', display: 'flex', justifyContent: 'center' } }>
-        <div
-          style={
-            { display: 'grid', gridTemplateColumns: '1fr 1fr' }
-          }
-        >
+        <ButtonContainer>
           <Button
-            style={ { width: '150px' } }
             type="button"
             data-testid="explore-foods"
             onClick={ () => history.push('/explore/foods') }
@@ -27,14 +23,13 @@ export default function Explore() {
             Explore Foods
           </Button>
           <Button
-            style={ { width: '150px' } }
             type="button"
             data-testid="explore-drinks"
             onClick={ () => history.push('/explore/drinks') }
           >
             Explore Drinks
           </Button>
-        </div>
+        </ButtonContainer>
       </div>
       <MenuInferior />
     </div>

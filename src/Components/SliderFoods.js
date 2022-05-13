@@ -16,8 +16,6 @@ export default class SliderFoods extends Component {
       slidesToShow: 2,
       slidesToScroll: 2,
       arrows: false,
-      adaptiveHeight: true,
-      accessibility: true,
     };
     return (
       <div style={ { marginBottom: '80px' } }>

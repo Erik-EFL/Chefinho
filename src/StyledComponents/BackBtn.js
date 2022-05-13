@@ -11,6 +11,7 @@ const DivBackBtn = styled.div`
   justify-content: center;
   position: absolute;
   margin: 16px;
+  cursor: pointer;
   svg {
     font-size: 24px;
     color: #2b2b2b;

@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import DivCard from '../StyledComponents/CardStyled';
+import DivCard, { InfoContainer } from '../StyledComponents/CardStyled';
 
-function Cards({ image, name, index }) {
+function Cards({ image, name, index, type }) {
   return (
     <DivCard data-testid={ `${index}-recipe-card` }>
       <img
@@ -11,7 +11,10 @@ function Cards({ image, name, index }) {
         className="img-meal"
         data-testid={ `${index}-card-img` }
       />
-      <p data-testid={ `${index}-card-name` }>{name}</p>
+      <InfoContainer>
+        <p>{type}</p>
+        <h4 data-testid={ `${index}-card-name` }>{name}</h4>
+      </InfoContainer>
     </DivCard>
   );
 }
@@ -19,6 +22,7 @@ function Cards({ image, name, index }) {
 Cards.propTypes = {
   name: PropTypes.string,
   image: PropTypes.string,
+  type: PropTypes.string,
 }.isRequired;
 
 export default Cards;

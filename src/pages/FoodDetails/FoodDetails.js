@@ -127,6 +127,7 @@ export default function FoodDetails() {
           <div>
             {renderIngredients}
           </div>
+          <h2>Instructions</h2>
           <p data-testid="instructions">{foodDetails.strInstructions}</p>
 
           <iframe

@@ -13,7 +13,11 @@ export default function Drinks() {
   const initialDrinks = drinks.filter((_i, index) => index < magicNumber);
 
   return (
-    <div>
+    <div
+      style={
+        { display: 'flex', flexDirection: 'column', justifyContent: 'center' }
+      }
+    >
       <Header
         title="Drinks"
         searchButton
@@ -33,6 +37,7 @@ export default function Drinks() {
               image={ item.strDrinkThumb }
               index={ index }
               name={ item.strDrink }
+              type={ item.strAlcoholic }
             />
           </Link>
         ))}

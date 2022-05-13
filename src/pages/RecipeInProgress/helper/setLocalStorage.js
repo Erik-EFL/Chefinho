@@ -11,10 +11,6 @@ inProgressRecipes {
 }
 */
 
-/* Essa function esta sendo utilizada no Login para criar o
-  LocalStorage
-*/
-
 const newObj2 = [{
   id: '',
   type: '',

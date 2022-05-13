@@ -31,6 +31,7 @@ function Foods() {
               image={ item.strMealThumb }
               index={ index }
               name={ item.strMeal }
+              type={ item.strCategory }
             />
           </Link>
 

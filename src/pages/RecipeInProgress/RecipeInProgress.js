@@ -2,6 +2,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
+import BackBtn from '../../Components/Buttons/BackBtn';
 import FavoriteBtn from '../../Components/Buttons/FavoriteBtn';
 import ShareBtn from '../../Components/Buttons/ShareBtn';
 import AppContext from '../../context/AppContext';
@@ -45,6 +46,7 @@ function RecipeInProgress() {
   return (
     <Recipes>
       <main className="mainProgress">
+        <BackBtn />
         {progress && type === 'drink'
           ? (
             progress.map((item) => (

@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-
-const theme = {
-  title: '#BF9663',
-  text: '#D97016',
-};
+import { buttons, text } from './Paletas';
 
 export const HeadProfile = styled.div`
   display: flex;
@@ -20,23 +16,32 @@ export const HeadProfile = styled.div`
 
   h1 {
     font-size: 22px;
-    color: #D97016;
+    color: ${text.paragraph};
     text-align: center;
     margin-bottom: 24px;
   }
 `;
 
+export const ProfileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const ButtonContainer = styled.nav`
   display: grid;
-  grid-gap: 8px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 12px;
+  grid-template-columns: 250px;
+  grid-template-rows: 50px 50px 50px;
+  margin-top: 40px;
 
   button {
     border: none;
     padding: 4px 0;
     border-radius: 32px;
-    background-color: ${theme.title};
-    color: ${theme.bg};
+    background-color: ${buttons.btn1};
+    color: ${text.btnText};
     font-size: 14px;
     font-weight: 600;
   }

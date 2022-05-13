@@ -3,17 +3,17 @@ import React from 'react';
 
 export default function RecommendationCard({ image, name, index, type }) {
   return (
-    <div style={ { width: '80%' } }>
-      <button
+    <div>
+      <div
         type="button"
         data-testid={ `${index}-recommendation-card` }
-        style={ { margin: '30px',
+        style={ {
+          margin: '8px',
           height: '217px',
           width: '151px',
           borderRadius: '18px 18px 0 0',
           outline: '0',
           border: 'none',
-          marginLeft: '10px',
         } }
       >
         <img
@@ -23,6 +23,7 @@ export default function RecommendationCard({ image, name, index, type }) {
           src={ image }
           alt={ name }
         />
+        <p>{type}</p>
         <h4
           className="card-title"
           data-testid={ `${index}-recommendation-title` }
@@ -30,8 +31,7 @@ export default function RecommendationCard({ image, name, index, type }) {
           {name}
 
         </h4>
-        <p>{type}</p>
-      </button>
+      </div>
     </div>
   );
 }

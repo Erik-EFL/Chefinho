@@ -32,7 +32,7 @@ function MenuInferior() {
         >
           <div>
             <AiOutlineFileDone />
-            <p>Done Recipe</p>
+            <p>Done</p>
           </div>
         </NavLink>
       </TwoLinks>

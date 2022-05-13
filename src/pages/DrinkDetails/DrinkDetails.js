@@ -124,6 +124,7 @@ function DrinkDetails() {
           <div>
             {renderIngredients}
           </div>
+          <h2>Instructions</h2>
           <p data-testid="instructions">{drinkDetails.strInstructions}</p>
 
           {infos.length > 0 && <SliderDrink info={ infos } />}

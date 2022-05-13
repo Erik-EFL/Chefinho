@@ -39,7 +39,12 @@ export default function Login() {
     <div>
       <LoginStyled>
         <img src={ chef } alt="imagem de logo" style={ { width: '60px' } } />
-        <h1>Recipe App!</h1>
+        <h1>Chefinho!</h1>
+        <p
+          style={ { color: '#BF9663', marginTop: '-15px' } }
+        >
+          Sentiu vontade? Chama o Chefinho!
+        </p>
         <p>Please enter your account here</p>
         <div>
           <label htmlFor="email">

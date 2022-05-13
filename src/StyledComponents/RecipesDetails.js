@@ -11,7 +11,7 @@ export const Recipes = styled.div`
 
 export const ContainerRecipe = styled.div`
   color: ${text.paragraph} ;
-  max-width: 95%;
+  max-width: 85%;
   margin: 0 auto;
   .start-recipe {
     width: 100%;
@@ -20,6 +20,11 @@ export const ContainerRecipe = styled.div`
     padding: 8px;
     border-radius: 12px 12px 0 0;
   }
+    h2 {
+      margin-top: 24px;
+      margin-bottom: 20px;
+      color: ${text.paragraph};
+    }
 `;
 
 export const CabecalioRecipe = styled.div`

@@ -73,13 +73,14 @@ export const Card = styled.div`
 `;
 
 export const UtilsContainer = styled.div`
+  padding: 4px;
   display: flex;
   margin-top: -130px;
   margin-right: -56px;
   position: absolute;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(8px);
-  border-radius: 8px;
+  border-radius: 12px;
   height: 32px;
   justify-content: space-evenly;
   align-items: center;
