@@ -50,7 +50,7 @@ const LoginStyled = styled.div`
       img{
         z-index: 1;
         position: absolute;
-        left: 32px;
+        margin-left: 8px;
         margin-top: 16px;
       }
     }
