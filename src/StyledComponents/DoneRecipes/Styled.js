@@ -63,7 +63,7 @@ export const DivTags = styled.div`
 export const DivShareDone = styled.span`
   display: flex;
   position: absolute;
-  margin-top: -160px;
+  margin-top: -166px;
   margin-right: -70px;
   padding: 4px;
   background: rgba(255, 255, 255, 0.2);
