@@ -17,7 +17,6 @@ export default function DoneRecipes() {
     }
   }, []);
 
-  console.log(doneRecipes);
   return (
     <div>
       <Header

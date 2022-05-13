@@ -5,12 +5,12 @@ import { useHistory, useParams } from 'react-router-dom';
 import FavoriteBtn from '../../Components/Buttons/FavoriteBtn';
 import ShareBtn from '../../Components/Buttons/ShareBtn';
 import AppContext from '../../context/AppContext';
+import SetDoneRecipe from '../../Service/SetDoneRecipe';
 import ImageHead from '../../StyledComponents/ImgHead';
 import {
   CabecalioRecipe, ContainerRecipe, MainContent, Recipes
 } from '../../StyledComponents/RecipesDetails';
 import ListIngredients from './components/ListIngredients';
-import { setDoneRecipe } from './helper/setLocalStorage';
 
 function RecipeInProgress() {
   const { id } = useParams();
@@ -19,19 +19,19 @@ function RecipeInProgress() {
   const { handleChange, btnDisabled } = useContext(AppContext);
   // const [btnDisabled] = useState();
   const path = history.location.pathname;
-  const type = path.includes('drinks') ? 'drinks' : 'foods';
+  const type = path.includes('drinks') ? 'drink' : 'food';
 
   useEffect(() => {
     let url = '';
-    if (type === 'foods') {
+    if (type === 'food') {
       url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
-    } else if (type === 'drinks') {
+    } else if (type === 'drink') {
       url = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`;
     }
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        if (type === 'foods') {
+        if (type === 'food') {
           return setProgress(data.meals);
         }
         return setProgress(data.drinks);
@@ -42,22 +42,10 @@ function RecipeInProgress() {
     handleChange();
   });
 
-  useEffect(() => {
-    const list = document.querySelectorAll('span.ingredients');
-    const allBox = document.querySelectorAll('input[type=checkbox]');
-    if (list.length === allBox.length && localStorage.doneRecipes) {
-      setDoneRecipe(progress, type);
-    }
-  });
-
-  const handleClick = () => {
-    history.push('/done-recipes');
-  };
-
   return (
     <Recipes>
       <main className="mainProgress">
-        {progress && type === 'drinks'
+        {progress && type === 'drink'
           ? (
             progress.map((item) => (
               <div key={ item.idDrink }>
@@ -99,9 +87,9 @@ function RecipeInProgress() {
                         borderRadius: '12px 12px 0 0',
                         background: '#BF9663' } }
                       data-testid="finish-recipe-btn"
-                      type="submit"
+                      type="button"
                       disabled={ btnDisabled }
-                      onClick={ handleClick }
+                      onClick={ () => SetDoneRecipe(progress[0], type, id, history) }
                     >
                       Finish Recipe
                     </button>
@@ -152,9 +140,9 @@ function RecipeInProgress() {
                         borderRadius: '12px 12px 0 0',
                         background: '#BF9663' } }
                       data-testid="finish-recipe-btn"
-                      type="submit"
+                      type="button"
                       disabled={ btnDisabled }
-                      onClick={ handleClick }
+                      onClick={ () => SetDoneRecipe(progress[0], type, id, history) }
                     >
                       Finish Recipe
                     </button>

@@ -73,7 +73,7 @@ export default function FoodDetails() {
   const infos = recommendation.slice(0, magic);
 
   const getDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
-  let checkRecipe;
+  let checkRecipe = [];
   if (getDoneRecipes) {
     checkRecipe = getDoneRecipes.filter((item) => item.id === idFood);
   }
@@ -137,7 +137,7 @@ export default function FoodDetails() {
             allowFullScreen
           />
           {infos.length > 0 && <SliderFoods info={ infos } />}
-          {!checkRecipe && buttonStartRecipe}
+          {checkRecipe.length === 0 && buttonStartRecipe}
         </ContainerRecipe>
       </MainContent>
     </Recipes>

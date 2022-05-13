@@ -70,7 +70,7 @@ function DrinkDetails() {
   const infos = recommendation.slice(0, magic);
 
   const getDoneRecipes = JSON.parse(localStorage.getItem('doneRecipes'));
-  let checkRecipe;
+  let checkRecipe = [];
   if (getDoneRecipes) {
     checkRecipe = getDoneRecipes.filter((item) => item.id === idDrink);
   }
@@ -125,7 +125,7 @@ function DrinkDetails() {
           <p data-testid="instructions">{drinkDetails.strInstructions}</p>
 
           {infos.length > 0 && <SliderDrink info={ infos } />}
-          {!checkRecipe && buttonStartRecipe}
+          {checkRecipe.length === 0 && buttonStartRecipe}
         </ContainerRecipe>
       </MainContent>
     </Recipes>
