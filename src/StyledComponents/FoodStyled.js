@@ -20,9 +20,8 @@ export const PageFood = styled.div`
 
 export const CardContainer = styled.div`
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 16px;
   margin-bottom: 80px;
 `;

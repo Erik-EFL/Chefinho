@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import PropType from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { MdFavorite, MdFavoriteBorder } from 'react-icons/md';
 import { useHistory } from 'react-router-dom';
-import blackHeartIcon from '../../images/blackHeartIcon.svg';
-import whiteHeartIcon from '../../images/whiteHeartIcon.svg';
 import getFavorite from '../../Service/getFavorite';
 import { setFavoriteDrink, setFavoriteFood } from '../../Service/setFavorite';
+import BtnFavorite from '../../StyledComponents/BtnFavorite';
 
 function FavoriteBtn(props) {
   const {
@@ -40,18 +40,14 @@ function FavoriteBtn(props) {
 
   return (
     <div>
-      <button
+      <BtnFavorite
         type="button"
         onClick={ () => (fav && type === 'drinks'
           ? setFavoriteDrink(fav, setRenderFav)
           : setFavoriteFood(fav, setRenderFav)) }
       >
-        <img
-          data-testid="favorite-btn"
-          src={ renderFav ? blackHeartIcon : whiteHeartIcon }
-          alt="favoriteBtn"
-        />
-      </button>
+        { renderFav ? <MdFavorite /> : <MdFavoriteBorder /> }
+      </BtnFavorite>
     </div>
   );
 }

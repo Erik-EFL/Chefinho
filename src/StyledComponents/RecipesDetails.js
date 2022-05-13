@@ -48,15 +48,16 @@ export const CabecalioRecipe = styled.div`
   div {
     width: 100px;
     display: flex;
+  }
 
-    button {
-      border: none;
-      padding: 8px 8px;
-      border-radius: 50%;
-      margin-top: -46px;
-      outline: 0;
-    }
+  svg {
+    color: ${text.title};
+    font-size: 26px;
+  }
 
+  .link-copied {
+    position: absolute;
+    margin-top: 20px;
   }
 `;
 

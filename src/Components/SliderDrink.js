@@ -17,7 +17,7 @@ export default class SliderDrink extends Component {
     };
 
     return (
-      <div>
+      <div style={ { marginBottom: '80px' } }>
         <h2>Recommendations</h2>
         <Slider { ...settings }>
           {info.map((item, index) => (

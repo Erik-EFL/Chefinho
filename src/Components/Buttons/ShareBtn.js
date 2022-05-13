@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { BsFillShareFill } from 'react-icons/bs';
 import { useHistory } from 'react-router-dom';
-import shareIcon from '../../images/shareIcon.svg';
 
 function ShareBtn() {
   const [copy, setCopy] = useState(false);
@@ -27,17 +27,11 @@ function ShareBtn() {
 
   return (
     <div style={ { position: 'relative' } }>
-      <button
-        type="button"
-        data-testid="share-btn"
-        onClick={ copyLink }
-      >
-        <img src={ shareIcon } alt="share" />
-      </button>
+      <BsFillShareFill onClick={ copyLink } />
       <div
         style={ { position: 'absolute', marginTop: '15px', marginLeft: '-18px' } }
       >
-        {copy && <span>Link copied!</span>}
+        {copy && <span className="link-copied">Link copied!</span>}
       </div>
     </div>
   );
