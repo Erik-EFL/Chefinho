@@ -45,8 +45,7 @@ function MenuInferior() {
         className="explore"
       >
         <div>
-          <VscCompass />
-          <p>Explore</p>
+          <VscCompass style={ { fontSize: '36px' } } />
         </div>
       </NavLink>
 
