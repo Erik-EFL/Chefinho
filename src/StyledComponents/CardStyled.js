@@ -11,7 +11,7 @@ const DivCard = styled.div`
   width: 120px;
   height: 160px;
   margin: 16px;
-  
+
   img {
     width: 120px;
     height: 120px;
