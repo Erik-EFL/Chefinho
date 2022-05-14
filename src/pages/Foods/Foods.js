@@ -10,7 +10,6 @@ import { CardContainer } from '../../StyledComponents/FoodStyled';
 function Foods() {
   const { initialFetchs: { foods } } = useContext(AppContext);
   const magicNumber = 12;
-  console.log(foods);
   const initialFoods = foods.filter((_i, index) => index < magicNumber);
   return (
     <div>
