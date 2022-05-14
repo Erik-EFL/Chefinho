@@ -42,9 +42,9 @@ export default function CategoryFilter(props) {
     }
     if (activeFilter !== '' && activeFilter !== 'redirected') {
       const fetchResult = await fetchFilteredByCategory(type, activeFilter);
-      if (type === 'foods') {
+      if (type === 'foods' && fetchResult) {
         setFoods(fetchResult);
-      } else {
+      } else if (type === 'drinks' && fetchResult) {
         setDrinks(fetchResult);
       }
     }
