@@ -61,6 +61,27 @@ export const DivSearch = styled.div`
   width: 100%;
   top: 60px;
   padding: 8px 2px;
+  
+  span {
+    transform: translateY(-200px);
+    animation: slide 1s;
+    animation-fill-mode: forwards;
+  }
+
+@keyframes rmSlide {
+
+  to {
+    transform: translateY(400px);
+  }
+}
+
+
+  
+  @keyframes slide {
+    to {
+      transform: translateY(0)
+    }
+  }
 `;
 
 export const InputSearch = styled.input`

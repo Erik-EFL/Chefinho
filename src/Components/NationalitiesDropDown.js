@@ -42,7 +42,7 @@ export default function NationalitiesDropDown(props) {
     }
     if (activeFilter !== '' && activeFilter !== 'redirected') {
       const fetchResult = await fetchFilteredByNationality(activeFilter);
-      setFoods(fetchResult);
+      if (fetchResult) setFoods(fetchResult);
     }
   };
 

@@ -20,6 +20,7 @@ function Header(props) {
     searchButton,
   } = props;
   const [searchInput, setSearchInput] = useState(false);
+
   const toggleSearchInput = () => {
     setSearchInput(!searchInput);
   };
