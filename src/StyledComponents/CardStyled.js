@@ -17,7 +17,10 @@ const DivCard = styled.div`
 
   h4 {
     font-size: 1em;
-    color: ${text.paragraph}
+    color: ${text.paragraph};
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   p {
