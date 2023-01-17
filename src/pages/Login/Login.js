@@ -3,8 +3,9 @@ import React, { useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import chef from '../../chef.png';
 import AppContext from '../../context/AppContext';
+import { Box } from '../../StyledComponents/Box';
 import { ButtonActive, ButtonDisabled } from '../../StyledComponents/ButtonsStyled';
-import LoginStyled from '../../StyledComponents/LoginStyled';
+import { LoginStyled } from '../../StyledComponents/LoginStyled';
 import Lock from './assets/Lock.svg';
 import Message from './assets/Message.svg';
 
@@ -36,7 +37,7 @@ export default function Login() {
   };
 
   return (
-    <div>
+    <Box>
       <LoginStyled>
         <img src={ chef } alt="imagem de logo" style={ { width: '60px' } } />
         <h1>Chefinho!</h1>
@@ -97,6 +98,6 @@ export default function Login() {
           <Link to="/register">Sing Up</Link>
         </p>
       </LoginStyled>
-    </div>
+    </Box>
   );
 }

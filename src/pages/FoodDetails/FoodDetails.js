@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-max-depth */
 /* eslint-disable comma-dangle */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
@@ -7,6 +8,7 @@ import FavoriteBtn from '../../Components/Buttons/FavoriteBtn';
 import ShareBtn from '../../Components/Buttons/ShareBtn';
 import SliderFoods from '../../Components/SliderFoods';
 import { fetchRecommendationDrinks } from '../../Service/FetchRecommendation';
+import { Box } from '../../StyledComponents/Box';
 import ImageHead from '../../StyledComponents/ImgHead';
 import {
   CabecalioRecipe, ContainerRecipe,
@@ -100,49 +102,51 @@ export default function FoodDetails() {
   );
 
   return (
-    <Recipes>
-      <BackBtn />
-      <ImageHead>
-        <img
-          data-testid="recipe-photo"
-          src={ foodDetails.strMealThumb }
-          alt={ foodDetails.idMeal }
-        />
-      </ImageHead>
-      <MainContent>
-        <CabecalioRecipe>
-          <div
-            className="titleSub"
-          >
-            <h1 data-testid="recipe-title">{foodDetails.strMeal}</h1>
-            <p data-testid="recipe-category">{foodDetails.strCategory}</p>
-          </div>
-          <div>
-            <ShareBtn />
-            <FavoriteBtn id={ id } />
-          </div>
-        </CabecalioRecipe>
-        {/* Função setFavoriteFood criada na pasta Service - favoritar ou desfavoritar um item */}
-        <ContainerRecipe>
-          <div>
-            {renderIngredients}
-          </div>
-          <h2>Instructions</h2>
-          <p data-testid="instructions">{foodDetails.strInstructions}</p>
-
-          <iframe
-            style={ { width: '100%', height: '315px', marginBottom: '50px' } }
-            data-testid="video"
-            src={ foodDetails.strYoutube
-          && foodDetails.strYoutube.replace('watch?v=', 'embed/') }
-            title="YouTube video player"
-            frameBorder="0"
-            allowFullScreen
+    <Box>
+      <Recipes>
+        <BackBtn />
+        <ImageHead>
+          <img
+            data-testid="recipe-photo"
+            src={ foodDetails.strMealThumb }
+            alt={ foodDetails.idMeal }
           />
-          {infos.length > 0 && <SliderFoods info={ infos } />}
-          {checkRecipe.length === 0 && buttonStartRecipe}
-        </ContainerRecipe>
-      </MainContent>
-    </Recipes>
+        </ImageHead>
+        <MainContent>
+          <CabecalioRecipe>
+            <div
+              className="titleSub"
+            >
+              <h1 data-testid="recipe-title">{foodDetails.strMeal}</h1>
+              <p data-testid="recipe-category">{foodDetails.strCategory}</p>
+            </div>
+            <div>
+              <ShareBtn />
+              <FavoriteBtn id={ id } />
+            </div>
+          </CabecalioRecipe>
+          {/* Função setFavoriteFood criada na pasta Service - favoritar ou desfavoritar um item */}
+          <ContainerRecipe>
+            <div>
+              {renderIngredients}
+            </div>
+            <h2>Instructions</h2>
+            <p data-testid="instructions">{foodDetails.strInstructions}</p>
+
+            <iframe
+              style={ { width: '100%', height: '315px', marginBottom: '50px' } }
+              data-testid="video"
+              src={ foodDetails.strYoutube
+          && foodDetails.strYoutube.replace('watch?v=', 'embed/') }
+              title="YouTube video player"
+              frameBorder="0"
+              allowFullScreen
+            />
+            {infos.length > 0 && <SliderFoods info={ infos } />}
+            {checkRecipe.length === 0 && buttonStartRecipe}
+          </ContainerRecipe>
+        </MainContent>
+      </Recipes>
+    </Box>
   );
 }

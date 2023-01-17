@@ -4,6 +4,7 @@ import BackBtn from '../../Components/Buttons/BackBtn';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import fetchRandomDrink from '../../Service/fetchRandomDrink';
+import { Box } from '../../StyledComponents/Box';
 import Button from '../../StyledComponents/Button';
 import Container from '../../StyledComponents/ExploreFoods/Styled';
 
@@ -16,7 +17,7 @@ export default function ExploreDrinks() {
   };
 
   return (
-    <div>
+    <Box>
       <Header
         title="Explore Drinks"
         searchButton={ false }
@@ -39,6 +40,6 @@ export default function ExploreDrinks() {
         </Button>
       </Container>
       <MenuInferior />
-    </div>
+    </Box>
   );
 }

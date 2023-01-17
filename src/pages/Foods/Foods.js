@@ -5,6 +5,7 @@ import CategoryFilter from '../../Components/CategoryFilter';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import AppContext from '../../context/AppContext';
+import { Box } from '../../StyledComponents/Box';
 import { CardContainer } from '../../StyledComponents/FoodStyled';
 
 function Foods() {
@@ -12,7 +13,7 @@ function Foods() {
   const magicNumber = 12;
   const initialFoods = foods.filter((_i, index) => index < magicNumber);
   return (
-    <div>
+    <Box>
       <Header
         title="Foods"
         searchButton
@@ -37,7 +38,7 @@ function Foods() {
         ))}
       </CardContainer>
       <MenuInferior />
-    </div>
+    </Box>
   );
 }
 

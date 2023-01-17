@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
+import { Box } from '../../StyledComponents/Box';
 import { ButtonContainer, ProfileContainer } from '../../StyledComponents/ProfileStyled';
 import ProfileHead from './components/ProfileHead';
 
@@ -12,7 +13,7 @@ export default function Profile({ history }) {
   };
 
   return (
-    <div>
+    <Box>
       <Header
         title="Profile"
         searchButton={ false }
@@ -45,7 +46,7 @@ export default function Profile({ history }) {
         </ButtonContainer>
       </ProfileContainer>
       <MenuInferior />
-    </div>
+    </Box>
   );
 }
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import FavoriteCards from '../../Components/FavoriteCards';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
+import { Box } from '../../StyledComponents/Box';
 // eslint-disable-next-line max-len
 import { CardContainer, ContainerBtns, PageFavorite } from '../../StyledComponents/FavoriteRecipes/FavoriteRecipesStyled';
 
@@ -24,49 +25,54 @@ export default function FavoriteRecipes() {
     }
   }, [rmHistory]);
   return (
-    <PageFavorite>
-      <Header
-        title="Favorites"
-        searchButton={ false }
-      />
-      <ContainerBtns>
-        <button
-          type="button"
-          data-testid="filter-by-food-btn"
-          onClick={ () => setActualFilter('food') }
-        >
-          Food
+    <Box>
+      <PageFavorite>
+        <Header
+          title="Favorites"
+          searchButton={ false }
+        />
+        <ContainerBtns>
+          <button
+            type="button"
+            data-testid="filter-by-food-btn"
+            onClick={ () => setActualFilter('food') }
+          >
+            Food
 
-        </button>
-        <button
-          type="button"
-          data-testid="filter-by-drink-btn"
-          onClick={ () => setActualFilter('drink') }
-        >
-          Drinks
+          </button>
+          <button
+            type="button"
+            data-testid="filter-by-drink-btn"
+            onClick={ () => setActualFilter('drink') }
+          >
+            Drinks
 
-        </button>
-        <button
-          type="button"
-          data-testid="filter-by-all-btn"
-          onClick={ () => setActualFilter('') }
-        >
-          All
+          </button>
+          <button
+            type="button"
+            data-testid="filter-by-all-btn"
+            onClick={ () => setActualFilter('') }
+          >
+            All
 
-        </button>
-      </ContainerBtns>
+          </button>
+        </ContainerBtns>
 
-      <CardContainer>
-        {favorites.filter((obj) => obj.type.includes(actualFilter)).map((item, index) => (
-          <FavoriteCards
-            key={ index }
-            item={ item }
-            index={ index }
-            callback={ setRmHistory }
-          />))}
-      </CardContainer>
+        <CardContainer>
+          {favorites.filter(
+            (obj) => obj.type.includes(actualFilter),
+          ).map((item, index) => (
+            <FavoriteCards
+              key={ index }
+              item={ item }
+              index={ index }
+              callback={ setRmHistory }
+            />
+          ))}
+        </CardContainer>
 
-      <MenuInferior />
-    </PageFavorite>
+        <MenuInferior />
+      </PageFavorite>
+    </Box>
   );
 }

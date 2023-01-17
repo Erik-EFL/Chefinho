@@ -6,6 +6,7 @@ import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import NationalitiesDropDown from '../../Components/NationalitiesDropDown';
 import AppContext from '../../context/AppContext';
+import { Box } from '../../StyledComponents/Box';
 import { ContainerNat } from '../../StyledComponents/FoodsNationalities/Styled';
 
 export default function FoodsNationalities() {
@@ -14,7 +15,7 @@ export default function FoodsNationalities() {
   const initialFoods = foods.filter((_i, index) => index < magicNumber);
 
   return (
-    <div>
+    <Box>
       <Header
         title="Nationalities"
         searchButton
@@ -38,6 +39,6 @@ export default function FoodsNationalities() {
         ))}
       </ContainerNat>
       <MenuInferior />
-    </div>
+    </Box>
   );
 }

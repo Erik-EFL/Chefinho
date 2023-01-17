@@ -27,6 +27,11 @@ export const ProfileContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  width: 360px;
+  height: 630px;
+
+  max-height: 85vh;
 `;
 
 export const ButtonContainer = styled.nav`

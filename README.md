@@ -65,6 +65,37 @@ desenvolvedores, trabalhando em equipe.
 
   <br />
 </details>
+<br />
+
+### 📚 Como rodar o projeto
+
+
+<details>
+  <summary> 🖥️ Rodando o projeto</summary>
+  <br />
+
+  * Clone o repositório utilizando o comando `git clone git@github.com:Erik-EFL/recipe-app-Chefinho.git`
+  * Entre na pasta do projeto com `cd recipe-app-Chefinho`
+  * Instale as dependências com `npm install`
+  * Inicie o projeto com `npm start`
+  * O projeto sera aberto no seu navegador em `http://localhost:3000`
+
+  <br />
+</details>
+
+<details>
+  <summary> 📱 Como utilizar a aplicação</summary>
+  <br />
+
+  * Através do link no menu lateral aqui no github ou do ambiente de desenvolvimento seguindo os passos acima.
+  * O login pode ser feito com qualquer email e senha, desde que siga esses padrões:
+    * Email: test@test.com (não é necessário criar um novo usuário)
+    * Senha: 1234567 (precisa ter no mínimo 7 caracteres)
+  * Após o login, você será redirecionado para a página de receitas, onde poderá ver todas as receitas cadastradas e navegar entre as páginas.
+
+  <br />
+</details>
+  <br />
 
 <details>
   <summary> 🖥️ Implementações futuras 🖥️</summary>

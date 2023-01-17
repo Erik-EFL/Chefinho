@@ -11,9 +11,7 @@ const FooterStyled = styled.footer`
   bottom: 0;
   display: flex;
   left: 0;
-  position: fixed;
   gap: 16px;
-  width: 100%;
   height: 60px;
   justify-content: center;
   align-items: center;
@@ -42,7 +40,7 @@ const FooterStyled = styled.footer`
   .activeExplore {
     color: ${theme.bg};
   }
- 
+
   .explore {
     position: absolute;
     margin-top: -56px;
@@ -75,7 +73,7 @@ export const TwoLinks = styled.div`
   width: 50%;
   justify-content: space-evenly;
   align-items: center;
-  
+
   div {
     display: flex;
     justify-content: center;

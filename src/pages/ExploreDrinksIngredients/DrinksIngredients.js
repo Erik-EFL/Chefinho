@@ -3,6 +3,7 @@ import BackBtn from '../../Components/Buttons/BackBtn';
 import CardExploreIngredients from '../../Components/CardExploreIngredients';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
+import { Box } from '../../StyledComponents/Box';
 import { Container } from '../../StyledComponents/FoodsIngredient/Styled';
 
 export default function DrinksIngredients() {
@@ -22,7 +23,7 @@ export default function DrinksIngredients() {
   }, []);
 
   return (
-    <div>
+    <Box>
       <Header
         title="Ingredients"
         searchButton={ false }
@@ -42,6 +43,6 @@ export default function DrinksIngredients() {
         ))}
       </Container>
       <MenuInferior />
-    </div>
+    </Box>
   );
 }

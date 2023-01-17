@@ -19,12 +19,21 @@ export const PageFood = styled.div`
 `;
 
 export const CardContainer = styled.div`
-
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 16px;
-  margin: 0 8px;
-  margin-bottom: 80px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: auto;
+
+  height: 600px;
+
+  height: 76.5vh;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
 
   a {
     display: flex;

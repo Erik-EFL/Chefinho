@@ -11,12 +11,14 @@ const LoginStyled = styled.div`
   justify-content: center;
   align-items: center;
   align-content: center;
-  height: 100vmax;
+  height: 100vh;
   position: relative;
-  
+  margin: auto;
+
   p {
     color: ${theme.text};
   }
+
   h1 {
     color: ${theme.title};
     text-align: center;
@@ -55,7 +57,7 @@ const LoginStyled = styled.div`
       }
     }
 
-    
+
     p {
       margin-top: 24px;
       margin-bottom: 72px;
@@ -65,4 +67,17 @@ const LoginStyled = styled.div`
   }
 `;
 
-export default LoginStyled;
+const Box = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 100%;
+  position: relative;
+`;
+
+export {
+  LoginStyled,
+  Box,
+};

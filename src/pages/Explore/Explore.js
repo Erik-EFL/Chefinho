@@ -2,18 +2,28 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
+import { Box } from '../../StyledComponents/Box';
 import Button from '../../StyledComponents/Button';
 import { ButtonContainer } from '../../StyledComponents/ProfileStyled';
 
 export default function Explore() {
   const history = useHistory();
   return (
-    <div>
+    <Box>
       <Header
         title="Explore"
         searchButton={ false }
       />
-      <div style={ { maxWidth: '100%', display: 'flex', justifyContent: 'center' } }>
+      <div
+        style={
+          {
+            maxWidth: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            height: '640px',
+            maxHeight: '85vh' }
+        }
+      >
         <ButtonContainer>
           <Button
             type="button"
@@ -32,6 +42,6 @@ export default function Explore() {
         </ButtonContainer>
       </div>
       <MenuInferior />
-    </div>
+    </Box>
   );
 }
