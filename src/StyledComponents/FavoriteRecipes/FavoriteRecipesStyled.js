@@ -37,6 +37,7 @@ export const CardContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   margin: auto;
+  width: 100%;
 
   overflow-y: auto;
   overflow-x: hidden;

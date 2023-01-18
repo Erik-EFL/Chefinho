@@ -6,6 +6,7 @@ const Box = styled.div`
   position: relative;
   border: none;
   background-color: transparent;
+  width: 100%;
 
   @media (min-width: 360px) {
     width: 360px;
