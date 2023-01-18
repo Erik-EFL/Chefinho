@@ -24,6 +24,7 @@ function Header(props) {
   const toggleSearchInput = () => {
     setSearchInput(!searchInput);
   };
+
   const {
     selectedFilter,
     handleFilters,
@@ -31,6 +32,7 @@ function Header(props) {
     handleSearchInput,
     filterSearchInput,
   } = useContext(AppContext);
+
   const history = useHistory();
   const location = history.location.pathname.split('/')[1];
   return (

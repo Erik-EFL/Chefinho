@@ -1,19 +1,10 @@
 import styled from 'styled-components';
 import { buttons, text } from '../Paletas';
 
-const screenHeight = window.innerHeight;
-
 export const PageFavorite = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-
-  @media (min-width: 360px) {
-    max-height: 100vh;
-    max-width: 360px;
-    height: ${screenHeight}px;
-    width: 360px;
-  }
 `;
 
 export const ContainerBtns = styled.div`
@@ -22,6 +13,7 @@ export const ContainerBtns = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 8px;
+  margin-top: 60px;
 
   button {
     border: none;
@@ -44,13 +36,6 @@ export const CardContainer = styled.div`
 
   ::-webkit-scrollbar {
     width: 0px;
-  }
-
-  @media (min-width: 360px) {
-    max-width: 360px;
-
-    width: 360px;
-    height: ${screenHeight}px;
   }
 `;
 

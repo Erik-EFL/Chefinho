@@ -7,14 +7,27 @@ const theme = {
 };
 
 export const HeaderStyled = styled.header`
-  position: relative;
-  display: flex;
+  top: 0;
+  left: 0;
+
+  @media (max-width: 768px) {
+    display: flex;
+    width: 100%;
+    left: 0;
+
+    position: fixed;
+  }
+
+
   background-color: ${theme.bg};
   color: ${theme.title};
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding-top: 24px;
   height: 75px;
   width: 100%;
+
 
   span {
     display: flex;
@@ -61,7 +74,7 @@ export const DivSearch = styled.div`
   width: 100%;
   top: 60px;
   padding: 8px 2px;
-  
+
   span {
     transform: translateY(-200px);
     animation: slide 1s;
@@ -76,7 +89,7 @@ export const DivSearch = styled.div`
 }
 
 
-  
+
   @keyframes slide {
     to {
       transform: translateY(0)

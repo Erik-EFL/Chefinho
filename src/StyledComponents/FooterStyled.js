@@ -8,15 +8,19 @@ const theme = {
 
 const FooterStyled = styled.footer`
   background-color: #2b2b2b;
-  bottom: 0;
   display: flex;
-  left: 0;
+  bottom: 0;
   gap: 16px;
   height: 60px;
   justify-content: center;
   align-items: center;
 
+  @media (max-width: 768px) {
+    width: 100%;
+    left: 0;
 
+    position: fixed;
+  }
 
   a {
     height: 40px;
