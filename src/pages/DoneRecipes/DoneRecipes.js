@@ -6,9 +6,9 @@ import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import Button from '../../StyledComponents/Button';
 // eslint-disable-next-line max-len
-import { Box } from '../../StyledComponents/Box';
 import {
-  CardContainer } from '../../StyledComponents/FavoriteRecipes/FavoriteRecipesStyled';
+  CardContainer,
+} from '../../StyledComponents/FavoriteRecipes/FavoriteRecipesStyled';
 
 export default function DoneRecipes() {
   const [doneRecipes, setDoneRecipes] = useState(
@@ -24,7 +24,7 @@ export default function DoneRecipes() {
   }, []);
 
   return (
-    <Box>
+    <>
       <Header
         title="Done Recipes"
         searchButton={ false }
@@ -80,6 +80,6 @@ export default function DoneRecipes() {
         }
       </CardContainer>
       <MenuInferior />
-    </Box>
+    </>
   );
 }

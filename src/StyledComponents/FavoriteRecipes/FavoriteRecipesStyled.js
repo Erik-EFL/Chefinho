@@ -1,10 +1,19 @@
 import styled from 'styled-components';
 import { buttons, text } from '../Paletas';
 
+const screenHeight = window.innerHeight;
+
 export const PageFavorite = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+
+  @media (min-width: 360px) {
+    max-height: 100vh;
+    max-width: 360px;
+    height: ${screenHeight}px;
+    width: 360px;
+  }
 `;
 
 export const ContainerBtns = styled.div`
@@ -13,11 +22,13 @@ export const ContainerBtns = styled.div`
   justify-content: space-evenly;
   align-items: center;
   margin-bottom: 8px;
+
   button {
     border: none;
     padding: 4px 16px;
     background-color: ${buttons.btn1};
     border-radius: 32px;
+    margin-top: 24px;
   }
 `;
 
@@ -27,15 +38,18 @@ export const CardContainer = styled.div`
   gap: 10px;
   margin: auto;
 
-  height: 600px;
-
-  max-height: 76.5vh;
-
   overflow-y: auto;
   overflow-x: hidden;
 
   ::-webkit-scrollbar {
     width: 0px;
+  }
+
+  @media (min-width: 360px) {
+    max-width: 360px;
+
+    width: 360px;
+    height: ${screenHeight}px;
   }
 `;
 
