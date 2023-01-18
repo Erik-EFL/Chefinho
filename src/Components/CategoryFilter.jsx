@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable react-hooks/exhaustive-deps */
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
@@ -64,7 +65,11 @@ export default function CategoryFilter(props) {
   }, []);
 
   return (
-    <BoxButton>
+    <BoxButton
+      className="scrollbar-x"
+      ref={ scrollbarRef }
+      onScroll={ handleScroll }
+    >
       <button
         type="button"
         data-testid="All-category-filter"

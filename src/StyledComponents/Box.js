@@ -49,21 +49,25 @@ const BoxScroll = styled.div`
 const BoxButton = styled.nav`
   display: flex;
   flex-direction: row;
-  justify-content: center;
   gap: 12px;
   width: 90%;
   margin-bottom: 8px;
   margin-top: 60px;
+  position: relative;
 
-
-  overflow-y: hidden;
   overflow-x: scroll;
+  white-space: nowrap;
   -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  overflow-scrolling: touch;
+  -webkit-transform: translate3d(0,0,0);
+  transform: translate3d(0,0,0);
   ::-webkit-scrollbar {
-    width: 0px;
+    background: transparent;
   }
 
   button {
+    display: inline-block;
     border: none;
     width: 100%;
     height: 25px;
@@ -80,6 +84,7 @@ const BoxButton = styled.nav`
 
   @media (min-width: 768px) {
     margin-top: 0;
+    width: 100%;
   }
 `;
 
