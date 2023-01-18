@@ -37,7 +37,7 @@ export const ButtonContainer = styled.nav`
   flex-direction: column;
   justify-content: center;
   align-item: center;
-
+  height: 98vh;
   gap: 10px;
 
   button {
@@ -52,7 +52,6 @@ export const ButtonContainer = styled.nav`
   }
 
   @media (min-width: 768px) {
-    height: 98vh;
     max-width: 360px;
     max-height: 100vh;
 

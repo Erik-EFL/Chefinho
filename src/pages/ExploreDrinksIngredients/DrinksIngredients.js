@@ -29,9 +29,10 @@ export default function DrinksIngredients() {
       <BoxScroll
         style={
           {
-            marginTop: '20px',
+            marginTop: '80px',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '40px' }
+            rowGap: '0',
+            columnGap: '20px' }
         }
       >
         {ingredients.map((item, index) => (

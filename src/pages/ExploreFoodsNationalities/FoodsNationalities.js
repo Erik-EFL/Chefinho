@@ -21,7 +21,11 @@ export default function FoodsNationalities() {
       <NationalitiesDropDown
         type="foods"
       />
-      <BoxScroll>
+      <BoxScroll
+        style={ {
+          marginTop: '-6px',
+        } }
+      >
         {initialFoods.map((item, index) => (
           <Link
             key={ index }

@@ -28,9 +28,10 @@ export default function FoodsIngredients() {
       <BoxScroll
         style={
           {
-            marginTop: '10px',
+            marginTop: '80px',
             gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '30px' }
+            rowGap: '0',
+            columnGap: '20px' }
         }
       >
         {ingredients.map((item, index) => (

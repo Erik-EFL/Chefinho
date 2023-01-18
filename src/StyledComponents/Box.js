@@ -28,7 +28,7 @@ const BoxScroll = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5px 90px;
-  height: 78vh;
+  height: 75vh;
 
   overflow-y: scroll;
   overflow-x: hidden;
@@ -50,9 +50,8 @@ const BoxButton = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  gap: 10px;
-  width: 100%;
-  align-items: center;
+  gap: 12px;
+  width: 90%;
   margin-bottom: 8px;
   margin-top: 60px;
 
@@ -71,6 +70,7 @@ const BoxButton = styled.nav`
     background-color: ${buttons.btn1};
     margin-top: 24px;
     border-radius: 5px;
+    padding: 0 12px;
 
     font-family: 'Montserrat', sans-serif;
     font-size: 14px;

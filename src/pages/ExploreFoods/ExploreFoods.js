@@ -5,7 +5,7 @@ import MenuInferior from '../../Components/MenuInferior';
 import fetchRandomFood from '../../Service/fetchRandomFood';
 import { Box } from '../../StyledComponents/Box';
 import Button from '../../StyledComponents/Button';
-import Container from '../../StyledComponents/ExploreFoods/Styled';
+import { ButtonContainer } from '../../StyledComponents/ProfileStyled';
 
 export default function ExploreFoods() {
   const history = useHistory();
@@ -21,7 +21,7 @@ export default function ExploreFoods() {
         title="Explore Foods"
         searchButton={ false }
       />
-      <Container>
+      <ButtonContainer>
         <Button
           type="button"
           data-testid="explore-by-ingredient"
@@ -43,7 +43,7 @@ export default function ExploreFoods() {
         >
           Surprise me!
         </Button>
-      </Container>
+      </ButtonContainer>
       <MenuInferior />
     </Box>
   );

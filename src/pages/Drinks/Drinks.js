@@ -23,7 +23,11 @@ export default function Drinks() {
         type="drinks"
       />
 
-      <BoxScroll>
+      <BoxScroll
+        style={ {
+          marginTop: '-6px',
+        } }
+      >
         {initialDrinks.map((item, index) => (
           <Link
             key={ index }

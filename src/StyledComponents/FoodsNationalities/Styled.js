@@ -24,4 +24,5 @@ export const Select = styled.select`
   margin: auto;
   outline: none;
   margin-bottom: 8px;
+  margin-top: 90px;
 `;

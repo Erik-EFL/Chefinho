@@ -56,10 +56,7 @@ export default function CategoryFilter(props) {
 
   const getCategories = async () => {
     const fetchResult = await fetchCategories(type);
-    const position = 0;
-    const position2 = 5;
-    const sliced = fetchResult.slice(position, position2);
-    setCategories(sliced);
+    setCategories(fetchResult);
   };
 
   useEffect(() => {
