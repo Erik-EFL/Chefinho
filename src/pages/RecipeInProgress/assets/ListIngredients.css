@@ -1,3 +1,7 @@
 .checked {
   text-decoration: line-through solid #d97016;
 }
+
+.containerIngredients li {
+  list-style: none;
+}

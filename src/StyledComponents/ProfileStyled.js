@@ -29,17 +29,16 @@ export const ProfileContainer = styled.div`
   align-items: center;
 
   width: 360px;
-  height: 630px;
-
   max-height: 85vh;
 `;
 
 export const ButtonContainer = styled.nav`
-  display: grid;
-  grid-gap: 12px;
-  grid-template-columns: 250px;
-  grid-template-rows: 50px 50px 50px;
-  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-item: center;
+
+  gap: 10px;
 
   button {
     border: none;
@@ -49,9 +48,14 @@ export const ButtonContainer = styled.nav`
     color: ${text.btnText};
     font-size: 14px;
     font-weight: 600;
+    width: 15rem;
   }
 
-  .logout {
+  @media (min-width: 768px) {
+    height: 98vh;
+    max-width: 360px;
+    max-height: 100vh;
 
+    margin: auto;
   }
 `;

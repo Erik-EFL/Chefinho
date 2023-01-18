@@ -6,9 +6,6 @@
 }
 
 body {
-  align-items: center;
   background-color: #1d1d1d;
-  display: flex;
-  flex-direction: column;
   font-family: Roboto , sans-serif;
 }

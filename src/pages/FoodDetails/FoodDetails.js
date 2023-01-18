@@ -68,7 +68,7 @@ export default function FoodDetails() {
       data-testid={ `${index}-ingredient-name-and-measure` }
       key={ index }
     >
-      {`- ${item} - ${measures[index]}`}
+      {`${item} - ${measures[index]}`}
     </p>
   ));
 

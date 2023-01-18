@@ -14,33 +14,22 @@ export default function Explore() {
         title="Explore"
         searchButton={ false }
       />
-      <div
-        style={
-          {
-            maxWidth: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            height: '640px',
-            maxHeight: '85vh' }
-        }
-      >
-        <ButtonContainer>
-          <Button
-            type="button"
-            data-testid="explore-foods"
-            onClick={ () => history.push('/explore/foods') }
-          >
-            Explore Foods
-          </Button>
-          <Button
-            type="button"
-            data-testid="explore-drinks"
-            onClick={ () => history.push('/explore/drinks') }
-          >
-            Explore Drinks
-          </Button>
-        </ButtonContainer>
-      </div>
+      <ButtonContainer>
+        <Button
+          type="button"
+          data-testid="explore-foods"
+          onClick={ () => history.push('/explore/foods') }
+        >
+          Explore Foods
+        </Button>
+        <Button
+          type="button"
+          data-testid="explore-drinks"
+          onClick={ () => history.push('/explore/drinks') }
+        >
+          Explore Drinks
+        </Button>
+      </ButtonContainer>
       <MenuInferior />
     </Box>
   );

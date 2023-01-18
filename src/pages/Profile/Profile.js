@@ -19,8 +19,8 @@ export default function Profile({ history }) {
         searchButton={ false }
       />
       <ProfileContainer>
-        <ProfileHead />
         <ButtonContainer>
+          <ProfileHead />
           <button
             type="button"
             data-testid="profile-done-btn"

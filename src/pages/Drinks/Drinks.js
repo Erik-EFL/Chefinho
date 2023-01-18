@@ -4,9 +4,8 @@ import Cards from '../../Components/Cards';
 import CategoryFilter from '../../Components/CategoryFilter';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
+import { Box, BoxScroll } from '../../StyledComponents/Box';
 import AppContext from '../../context/AppContext';
-import { Box } from '../../StyledComponents/Box';
-import { CardContainer } from '../../StyledComponents/FoodStyled';
 
 export default function Drinks() {
   const { initialFetchs: { drinks } } = useContext(AppContext);
@@ -24,7 +23,7 @@ export default function Drinks() {
         type="drinks"
       />
 
-      <CardContainer>
+      <BoxScroll>
         {initialDrinks.map((item, index) => (
           <Link
             key={ index }
@@ -38,7 +37,7 @@ export default function Drinks() {
             />
           </Link>
         ))}
-      </CardContainer>
+      </BoxScroll>
       <MenuInferior />
     </Box>
   );

@@ -13,6 +13,7 @@ import {
   CabecalioRecipe, ContainerRecipe, MainContent, Recipes
 } from '../../StyledComponents/RecipesDetails';
 import './DrinkDetails.css';
+import { Box } from '../../StyledComponents/Box';
 
 function DrinkDetails() {
   const { id } = useParams();
@@ -93,46 +94,47 @@ function DrinkDetails() {
       onClick={ () => history.push(`/drinks/${idDrink}/in-progress`) }
     >
       {checkProgress ? 'Continue Recipe' : 'Start Recipe'}
-
     </button>
   );
 
   return (
-    <Recipes>
-      <BackBtn />
-      <ImageHead>
-        <img
-          data-testid="recipe-photo"
-          src={ drinkDetails.strDrinkThumb }
-          alt={ drinkDetails.idDrink }
-          className="imgDetails"
-        />
-      </ImageHead>
-      <MainContent>
-        <CabecalioRecipe>
-          <div
-            className="titleSub"
-          >
-            <h1 data-testid="recipe-title">{drinkDetails.strDrink}</h1>
-            <p data-testid="recipe-category">{drinkDetails.strAlcoholic}</p>
-          </div>
-          <div>
-            <ShareBtn />
-            <FavoriteBtn id={ id } />
-          </div>
-        </CabecalioRecipe>
-        <ContainerRecipe>
-          <div>
-            {renderIngredients}
-          </div>
-          <h2>Instructions</h2>
-          <p data-testid="instructions">{drinkDetails.strInstructions}</p>
+    <Box>
+      <Recipes>
+        <BackBtn />
+        <ImageHead>
+          <img
+            data-testid="recipe-photo"
+            src={ drinkDetails.strDrinkThumb }
+            alt={ drinkDetails.idDrink }
+            className="imgDetails"
+          />
+        </ImageHead>
+        <MainContent>
+          <CabecalioRecipe>
+            <div
+              className="titleSub"
+            >
+              <h1 data-testid="recipe-title">{drinkDetails.strDrink}</h1>
+              <p data-testid="recipe-category">{drinkDetails.strAlcoholic}</p>
+            </div>
+            <div>
+              <ShareBtn />
+              <FavoriteBtn id={ id } />
+            </div>
+          </CabecalioRecipe>
+          <ContainerRecipe>
+            <div>
+              {renderIngredients}
+            </div>
+            <h2>Instructions</h2>
+            <p data-testid="instructions">{drinkDetails.strInstructions}</p>
 
-          {infos.length > 0 && <SliderDrink info={ infos } />}
-          {checkRecipe.length === 0 && buttonStartRecipe}
-        </ContainerRecipe>
-      </MainContent>
-    </Recipes>
+            {infos.length > 0 && <SliderDrink info={ infos } />}
+            {checkRecipe.length === 0 && buttonStartRecipe}
+          </ContainerRecipe>
+        </MainContent>
+      </Recipes>
+    </Box>
   );
 }
 

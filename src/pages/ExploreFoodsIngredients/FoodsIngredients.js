@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import BackBtn from '../../Components/Buttons/BackBtn';
 import CardExploreIngredients from '../../Components/CardExploreIngredients';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
-import { Box } from '../../StyledComponents/Box';
-import { Container } from '../../StyledComponents/FoodsIngredient/Styled';
+import { Box, BoxScroll } from '../../StyledComponents/Box';
 
 export default function FoodsIngredients() {
   const [ingredients, setIngredients] = useState([]);
@@ -27,8 +25,14 @@ export default function FoodsIngredients() {
         title="Ingredients"
         searchButton={ false }
       />
-      <BackBtn />
-      <Container>
+      <BoxScroll
+        style={
+          {
+            marginTop: '10px',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '30px' }
+        }
+      >
         {ingredients.map((item, index) => (
           <CardExploreIngredients
             key={ index }
@@ -38,7 +42,7 @@ export default function FoodsIngredients() {
             type="food"
           />
         ))}
-      </Container>
+      </BoxScroll>
       <MenuInferior />
     </Box>
   );

@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  display: grid;
+  display: flex;
+  flex-direction: column;
   margin: auto;
   width: max-content;
-  grid-template-columns: 1fr;
-  grid-template-rows: 3fr;
+  width: 15rem;
 `;
 
 export default Container;

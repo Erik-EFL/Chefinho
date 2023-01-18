@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import BackBtn from '../../Components/Buttons/BackBtn';
 import Cards from '../../Components/Cards';
 import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import NationalitiesDropDown from '../../Components/NationalitiesDropDown';
+import { Box, BoxScroll } from '../../StyledComponents/Box';
 import AppContext from '../../context/AppContext';
-import { Box } from '../../StyledComponents/Box';
-import { ContainerNat } from '../../StyledComponents/FoodsNationalities/Styled';
 
 export default function FoodsNationalities() {
   const { initialFetchs: { foods } } = useContext(AppContext);
@@ -20,11 +18,10 @@ export default function FoodsNationalities() {
         title="Nationalities"
         searchButton
       />
-      <BackBtn />
       <NationalitiesDropDown
         type="foods"
       />
-      <ContainerNat>
+      <BoxScroll>
         {initialFoods.map((item, index) => (
           <Link
             key={ index }
@@ -37,7 +34,7 @@ export default function FoodsNationalities() {
             />
           </Link>
         ))}
-      </ContainerNat>
+      </BoxScroll>
       <MenuInferior />
     </Box>
   );

@@ -5,11 +5,15 @@ export const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 80px;
-  margin-top: 36px;
+  margin-top: 60px;
+
+  @media (max-width: 768px) {
+
+  }
 `;
 
 export const Card = styled.button`
-  margin: 8px;
+
   border: none;
   background-color: transparent;
   img {

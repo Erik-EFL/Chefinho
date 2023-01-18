@@ -1,12 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import PropTypes from 'prop-types';
 import React, { useContext, useEffect, useState } from 'react';
-import AppContext from '../context/AppContext';
 import fetchCategories from '../Service/fetchCategories';
 import fetchDrinks from '../Service/fetchDrinks';
 import fetchFilteredByCategory from '../Service/fetchFilteredByCategory';
 import fetchFoods from '../Service/fetchFoods';
-import { Container } from '../StyledComponents/CategoryFiltersStyled';
+import { BoxButton } from '../StyledComponents/Box';
+import AppContext from '../context/AppContext';
 
 export default function CategoryFilter(props) {
   const {
@@ -67,7 +67,7 @@ export default function CategoryFilter(props) {
   }, []);
 
   return (
-    <Container>
+    <BoxButton>
       <button
         type="button"
         data-testid="All-category-filter"
@@ -77,19 +77,19 @@ export default function CategoryFilter(props) {
         All
       </button>
       {
-        categories.map((e, i) => (
+        categories.map((category, index) => (
           <button
-            key={ i }
+            key={ index }
             type="button"
-            data-testid={ `${e.strCategory}-category-filter` }
-            value={ e.strCategory }
+            data-testid={ `${category.strCategory}-category-filter` }
+            value={ category.strCategory }
             onClick={ handleFilter }
           >
-            { e.strCategory }
+            { category.strCategory }
           </button>
         ))
       }
-    </Container>
+    </BoxButton>
   );
 }
 

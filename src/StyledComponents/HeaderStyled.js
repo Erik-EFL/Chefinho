@@ -16,6 +16,7 @@ export const HeaderStyled = styled.header`
     left: 0;
 
     position: fixed;
+    z-index: 1;
   }
 
 

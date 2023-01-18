@@ -6,9 +6,7 @@ import Header from '../../Components/Header';
 import MenuInferior from '../../Components/MenuInferior';
 import Button from '../../StyledComponents/Button';
 // eslint-disable-next-line max-len
-import {
-  CardContainer,
-} from '../../StyledComponents/FavoriteRecipes/FavoriteRecipesStyled';
+import { Box, BoxButton, BoxScroll } from '../../StyledComponents/Box';
 
 export default function DoneRecipes() {
   const [doneRecipes, setDoneRecipes] = useState(
@@ -24,12 +22,12 @@ export default function DoneRecipes() {
   }, []);
 
   return (
-    <>
+    <Box>
       <Header
         title="Done Recipes"
         searchButton={ false }
       />
-      <div style={ { width: '100%', display: 'flex', justifyContent: 'center' } }>
+      <BoxButton>
         <Button
           type="button"
           data-testid="filter-by-all-btn"
@@ -54,8 +52,8 @@ export default function DoneRecipes() {
         >
           Drinks
         </Button>
-      </div>
-      <CardContainer>
+      </BoxButton>
+      <BoxScroll>
         {
           doneRecipes.filter(
             (recipe) => recipe.type !== activeFilter,
@@ -78,8 +76,8 @@ export default function DoneRecipes() {
             },
           )
         }
-      </CardContainer>
+      </BoxScroll>
       <MenuInferior />
-    </>
+    </Box>
   );
 }

@@ -9,10 +9,19 @@ const theme = {
 export const Container = styled.div`
   overflow-x: auto;
   display: flex;
-  padding: 8px;
+  align-items: center;
+  padding: 10px;
+  margin-top: 10px;
+  height: 30px;
+  gap: 8px;
 
   ::-webkit-scrollbar {
-  display: none;
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    margin-top: 0;
+    width: 360px;
   }
 
   button {
@@ -22,7 +31,6 @@ export const Container = styled.div`
     background-color: ${theme.title};
     color: ${theme.bg};
     flex: none;
-    margin: 0 8px;
   }
 `;
 

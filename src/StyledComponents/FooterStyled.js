@@ -14,11 +14,10 @@ const FooterStyled = styled.footer`
   height: 60px;
   justify-content: center;
   align-items: center;
+  width: 100%;
 
   @media (max-width: 768px) {
-    width: 100%;
     left: 0;
-
     position: fixed;
   }
 

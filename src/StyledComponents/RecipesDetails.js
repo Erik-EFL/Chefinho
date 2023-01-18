@@ -3,28 +3,44 @@ import { buttons, text } from './Paletas';
 
 export const Recipes = styled.div`
   position: relative;
+  height: 98vh;
+  max-height: 100vh;
 
-  .ingredientes {
-    margin-left: 14px;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  ::-webkit-scrollbar {
+    width: 0px;
   }
+`;
+
+export const MainContent = styled.div`
+  position: absolute;
+  width: 100%;
+  margin-top: -60px;
+  background-color: black;
+  border-radius: 32px 32px 0 0;
 `;
 
 export const ContainerRecipe = styled.div`
   color: ${text.paragraph} ;
-  max-width: 85%;
+  width: 92%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
   .start-recipe {
-    width: 100%;
+    position: relative;
     background: ${buttons.btn1};
     border: none;
     padding: 8px;
     border-radius: 12px 12px 0 0;
   }
-    h2 {
-      margin-top: 24px;
-      margin-bottom: 20px;
-      color: ${text.paragraph};
-    }
+
+  h2 {
+    margin-top: 24px;
+    margin-bottom: 20px;
+    color: ${text.paragraph};
+  }
 `;
 
 export const CabecalioRecipe = styled.div`
@@ -64,12 +80,4 @@ export const CabecalioRecipe = styled.div`
     position: absolute;
     margin-top: 20px;
   }
-`;
-
-export const MainContent = styled.div`
-  position: absolute;
-  width: 100vw;
-  margin-top: -60px;
-  background-color: black;
-  border-radius: 32px 32px 0 0;
 `;
