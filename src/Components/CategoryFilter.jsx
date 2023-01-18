@@ -65,11 +65,7 @@ export default function CategoryFilter(props) {
   }, []);
 
   return (
-    <BoxButton
-      className="scrollbar-x"
-      ref={ scrollbarRef }
-      onScroll={ handleScroll }
-    >
+    <BoxButton>
       <button
         type="button"
         data-testid="All-category-filter"
